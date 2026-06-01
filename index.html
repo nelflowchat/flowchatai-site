@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FlowchatAI · Agent IA de qualification de leads et prise de RDV pour agences immobilières en Belgique</title>
+  <meta name="description" content="FlowchatAI qualifie vos leads immobiliers et prend vos rendez-vous automatiquement par SMS, 24h/24. Agent IA en production, sur-mesure pour la Belgique. Réservez votre démo." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://flowchatai.co/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_BE" />
+  <meta property="og:url" content="https://flowchatai.co/" />
+  <meta property="og:site_name" content="FlowchatAI" />
+  <meta property="og:title" content="FlowchatAI · Vos leads qualifiés et vos RDV pris automatiquement" />
+  <meta property="og:description" content="L'agent IA qui répond à vos leads immobiliers en quelques secondes, les qualifie et cale le RDV. 24h/24, même le week-end." />
+  <meta property="og:image" content="https://flowchatai.co/logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FlowchatAI · Vos leads qualifiés et vos RDV pris automatiquement" />
+  <meta name="twitter:description" content="L'agent IA qui répond à vos leads immobiliers en quelques secondes, les qualifie et cale le RDV. 24h/24, même le week-end." />
+  <meta name="twitter:image" content="https://flowchatai.co/logo.png" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta name="theme-color" content="#01012c" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Schema.org : Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FlowchatAI",
+    "legalName": "Olymp Automations",
+    "url": "https://flowchatai.co/",
+    "logo": "https://flowchatai.co/logo.png",
+    "email": "nel@flowchatai.co",
+    "description": "Agent IA conversationnel qui qualifie les leads et prend les rendez-vous automatiquement par SMS, sur-mesure pour les agences immobilières belges.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bruxelles",
+      "addressCountry": "BE"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Belgique"
+    }
+  }
+  </script>
+
+  <!-- Schema.org : Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Qualification de leads et prise de rendez-vous automatisée par IA",
+    "provider": {
+      "@type": "Organization",
+      "name": "FlowchatAI"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Belgique"
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Agences immobilières et PME de services"
+    },
+    "description": "FlowchatAI répond à chaque nouveau lead par SMS en quelques secondes, le qualifie et cale le rendez-vous dans votre agenda, 24h/24."
+  }
+  </script>
+
+  <!-- Schema.org : FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Est-ce que l'IA risque de faire fuir mes leads ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. La conversation est calibrée pour votre agence, naturelle et professionnelle, et vous validez le ton avant la mise en ligne. Testez l'agent AfroCare en live pour vous faire une idée."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mes données et celles de mes leads sont-elles protégées ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. FlowchatAI est conçu dans le respect du RGPD, les données sont traitées uniquement pour le service et hébergées proprement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps prend l'installation ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La configuration est rapide et sur-mesure. On branche vos sources de leads, votre agenda et vos questions de qualification, puis vous validez avant la mise en service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Est-ce que ça s'intègre à mes outils ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. L'agent se connecte à vos sources de leads, à votre agenda et à votre suivi client."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Et si ça ne fonctionne pas pour mon agence ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vous êtes couvert par la garantie 30 jours : si le système ne prend pas vos rendez-vous automatiquement, l'installation vous est remboursée."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien ça coûte ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pour les agences fondatrices : 1 497 € d'installation et 367 €/mois, bloqué à vie. Posez-vous la question à l'envers : combien vaut un seul mandat gagné grâce à un lead que vous auriez perdu un dimanche soir ?"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="FlowchatAI, accueil">
+        <img src="logo.png" alt="FlowchatAI" class="brand-logo" width="42" height="42" />
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#comment">Comment ça marche</a>
+        <a href="#preuve">La preuve</a>
+        <a href="#offre">L'offre</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#" data-vf-open class="btn btn-primary btn-sm">Réserver ma démo</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner reveal">
+        <span class="badge"><span class="dot"></span> Agent IA déjà en production · testable en live</span>
+        <h1>Vos leads immobiliers qualifiés et vos RDV pris automatiquement, <span class="grad">24h/24</span>.</h1>
+        <p class="lead">Un lead recontacté dans les 5 minutes a bien plus de chances de se transformer en mandat. FlowchatAI répond à chaque nouveau lead, le qualifie et cale le rendez-vous dans votre agenda, à votre place, même le soir et le week-end.</p>
+        <div class="hero-cta">
+          <a href="#" data-vf-open class="btn btn-primary btn-lg">Réserver ma démo de 15 min</a>
+          <a href="https://afrocare.be" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Tester un agent en live</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Le problème -->
+    <section class="section" id="probleme">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Le problème</span>
+          <h2>Vos meilleurs leads se perdent pendant que vous travaillez.</h2>
+        </div>
+        <div class="grid grid-3">
+          <article class="card reveal">
+            <h3>Le temps de réponse vous coûte des mandats</h3>
+            <p>Vos leads d'Immoweb, Logic-Immo ou Zimmo arrivent à toute heure. Le temps de les rappeler, ils ont déjà contacté trois autres agences.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Le soir et le week-end, personne ne répond</h3>
+            <p>C'est précisément là que tombent beaucoup de demandes. Elles attendent lundi. Souvent, c'est trop tard.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Votre temps vaut mieux que ça</h3>
+            <p>Il devrait aller à la visite, l'estimation et la négociation, pas à répéter « Quel est votre budget ? » et « Vous cherchez à louer ou à acheter ? ».</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Comment ça marche -->
+    <section class="section section-alt" id="comment">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Comment ça marche</span>
+          <h2>Du lead au rendez-vous en 3 minutes, sans lever le petit doigt.</h2>
+        </div>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num">1</span>
+            <div>
+              <h3>Le lead arrive</h3>
+              <p>Depuis un portail, votre site ou vos publicités, peu importe la source.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">2</span>
+            <div>
+              <h3>SMS d'accueil en quelques secondes</h3>
+              <p>Le lead reçoit un message immédiat, à toute heure.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">3</span>
+            <div>
+              <h3>Qualification intelligente</h3>
+              <p>L'agent pose les bonnes questions, comprend les réponses et attribue un score (urgence, budget, financement, type de bien).</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">4</span>
+            <div>
+              <h3>RDV calé automatiquement</h3>
+              <p>Pour les leads sérieux, l'agent propose des créneaux réels et réserve dans l'agenda du bon collaborateur.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">5</span>
+            <div>
+              <h3>CRM à jour en temps réel</h3>
+              <p>Chaque lead est tracé, rien ne se perd.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="callout reveal">~3 minutes du lead au rendez-vous. Zéro intervention humaine. Disponible 24h/24.</p>
+      </div>
+    </section>
+
+    <!-- 4. La preuve -->
+    <section class="section" id="preuve">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">La preuve</span>
+          <h2>Ce n'est pas une promesse. C'est déjà en production.</h2>
+        </div>
+        <div class="proof reveal">
+          <p>Mon agent IA tourne en production depuis octobre 2025 pour un institut beauté belge, AfroCare. Il gère la première ligne de relation client tous les jours, en autonomie. Vous pouvez le tester en live, maintenant.</p>
+          <a href="https://afrocare.be" target="_blank" rel="noopener" class="btn btn-ghost">Tester un agent en live → afrocare.be</a>
+          <p class="proof-note">Même moteur conversationnel, éprouvé chez un vrai client, que je décline aujourd'hui pour les agences immobilières.</p>
+        </div>
+        <div class="grid grid-4 counters">
+          <div class="counter reveal"><span class="counter-num">~3 min</span><span class="counter-label">du lead au rendez-vous</span></div>
+          <div class="counter reveal"><span class="counter-num">0</span><span class="counter-label">intervention humaine</span></div>
+          <div class="counter reveal"><span class="counter-num">24/7</span><span class="counter-label">toujours disponible</span></div>
+          <div class="counter reveal"><span class="counter-num">100%</span><span class="counter-label">des leads reçoivent une réponse immédiate</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Pourquoi FlowchatAI -->
+    <section class="section section-alt" id="pourquoi">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Pourquoi FlowchatAI</span>
+          <h2>Pensé pour les agences belges, pas un chatbot générique.</h2>
+        </div>
+        <div class="grid grid-2">
+          <article class="card reveal">
+            <h3>Sur-mesure pour la Belgique</h3>
+            <p>19 communes de Bruxelles, code IPI, réglementation et fiscalité locale. L'agent parle votre marché.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Le canal SMS, lu presque à coup sûr</h3>
+            <p>Bien plus efficace que l'email, là où vos leads regardent vraiment.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Conversation naturelle, en français et en anglais</h3>
+            <p>Pas un questionnaire rigide, un vrai échange.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Conforme RGPD</h3>
+            <p>Les données de vos leads sont traitées proprement et en sécurité.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Aussi pour les PME -->
+    <section class="section">
+      <div class="container">
+        <div class="band reveal">
+          <div>
+            <span class="eyebrow">Aussi pour les PME de services</span>
+            <h2>Vous n'êtes pas une agence immobilière ?</h2>
+            <p>La même technologie fonctionne pour toute PME de services qui a des prospects à qualifier ou un support client à automatiser. C'est exactement ce qui tourne aujourd'hui pour AfroCare dans la beauté. Parlons de votre cas.</p>
+          </div>
+          <a href="#" data-vf-open class="btn btn-ghost btn-lg">Voir si c'est fait pour moi</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. L'offre Client Fondateur -->
+    <section class="section section-alt" id="offre">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Offre Client Fondateur</span>
+          <h2>3 agences fondatrices. Des conditions qui ne reviendront pas.</h2>
+        </div>
+        <div class="offer reveal">
+          <p class="offer-intro">Je lance la verticale immobilière et je sélectionne 3 agences fondatrices. En échange de votre retour, vous obtenez le meilleur tarif que je proposerai jamais.</p>
+          <ul class="offer-list">
+            <li><span class="offer-old">2 500 €</span><strong>Installation : 1 497 €</strong></li>
+            <li><strong>Abonnement : 367 €/mois</strong>, bloqué à vie</li>
+            <li><strong>Garantie 30 jours :</strong> si le système ne prend pas vos rendez-vous automatiquement, je vous rembourse l'installation.</li>
+          </ul>
+          <a href="#" data-vf-open class="btn btn-primary btn-lg">Réserver ma place fondatrice</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section class="section" id="faq">
+      <div class="container container-narrow">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Vos questions</h2>
+        </div>
+        <div class="faq">
+          <details class="reveal">
+            <summary>Est-ce que l'IA risque de faire fuir mes leads ?</summary>
+            <p>Non. La conversation est calibrée pour votre agence, naturelle et professionnelle, et vous validez le ton avant la mise en ligne. Testez l'agent AfroCare en live pour vous faire une idée.</p>
+          </details>
+          <details class="reveal">
+            <summary>Mes données et celles de mes leads sont-elles protégées ?</summary>
+            <p>Oui. FlowchatAI est conçu dans le respect du RGPD, les données sont traitées uniquement pour le service et hébergées proprement.</p>
+          </details>
+          <details class="reveal">
+            <summary>Combien de temps prend l'installation ?</summary>
+            <p>La configuration est rapide et sur-mesure. On branche vos sources de leads, votre agenda et vos questions de qualification, puis vous validez avant la mise en service.</p>
+          </details>
+          <details class="reveal">
+            <summary>Est-ce que ça s'intègre à mes outils ?</summary>
+            <p>Oui. L'agent se connecte à vos sources de leads, à votre agenda et à votre suivi client.</p>
+          </details>
+          <details class="reveal">
+            <summary>Et si ça ne fonctionne pas pour mon agence ?</summary>
+            <p>Vous êtes couvert par la garantie 30 jours : si le système ne prend pas vos rendez-vous automatiquement, l'installation vous est remboursée.</p>
+          </details>
+          <details class="reveal">
+            <summary>Combien ça coûte ?</summary>
+            <p>Pour les agences fondatrices : 1 497 € d'installation et 367 €/mois, bloqué à vie. Posez-vous la question à l'envers : combien vaut un seul mandat gagné grâce à un lead que vous auriez perdu un dimanche soir ?</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CTA final -->
+    <section class="section cta-final">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="container container-narrow reveal">
+        <span class="eyebrow">Voyez-le fonctionner</span>
+        <h2>Voyez-le fonctionner en 15 minutes.</h2>
+        <p class="lead">Je vous envoie un vrai SMS comme si vous étiez un lead, et vous voyez le rendez-vous se prendre tout seul. Vous décidez après. Rien à préparer.</p>
+        <a href="#" data-vf-open class="btn btn-primary btn-lg">Réserver ma démo de 15 min</a>
+        <p class="cta-contact">Une question ? <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 10. Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="brand-name">FlowchatAI</span>
+        <p>Une solution Olymp Automations. Bruxelles, Belgique.</p>
+      </div>
+      <nav class="footer-links" aria-label="Liens légaux">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="confidentialite.html">Politique de confidentialité (RGPD)</a>
+      </nav>
+      <p class="copyright">© <span id="year">2026</span> FlowchatAI</p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+
+  <!-- Agent IA FlowchatAI (Voiceflow) -->
+  <script type="text/javascript">
+    (function (d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function () {
+        window.voiceflow.chat.load({
+          verify: { projectID: '698a3a90edb54740de5b5cd6' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: { url: 'https://runtime-api.voiceflow.com' }
+        });
+      };
+      v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+      v.type = 'text/javascript';
+      s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+</body>
+</html>
