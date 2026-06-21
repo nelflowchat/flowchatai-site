@@ -1,412 +1,723 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>FlowchatAI · Agent IA de qualification de leads et prise de RDV pour agences immobilières en Belgique et en France</title>
-  <meta name="description" content="FlowchatAI qualifie vos leads immobiliers et prend vos rendez-vous automatiquement, en moins de 60 secondes, par SMS et WhatsApp, 24h/24. Agent IA sur mesure pour les agences en Belgique et en France. Réservez votre démo." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://flowchatai.co/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="fr_BE" />
-  <meta property="og:url" content="https://flowchatai.co/" />
-  <meta property="og:site_name" content="FlowchatAI" />
-  <meta property="og:title" content="FlowchatAI · Vos leads qualifiés et vos RDV pris automatiquement" />
-  <meta property="og:description" content="L'agent IA qui répond à vos leads immobiliers en moins de 60 secondes, par SMS et WhatsApp, les qualifie et cale le RDV. 24h/24, même le week-end." />
-  <meta property="og:image" content="https://flowchatai.co/logo.png" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FlowchatAI · Vos leads qualifiés et vos RDV pris automatiquement" />
-  <meta name="twitter:description" content="L'agent IA qui répond à vos leads immobiliers en moins de 60 secondes, par SMS et WhatsApp, les qualifie et cale le RDV. 24h/24, même le week-end." />
-  <meta name="twitter:image" content="https://flowchatai.co/logo.png" />
-
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="apple-touch-icon" href="logo.png" />
-  <meta name="theme-color" content="#01012c" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Schema.org : Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "FlowchatAI",
-    "legalName": "Olymp Automations",
-    "url": "https://flowchatai.co/",
-    "logo": "https://flowchatai.co/logo.png",
-    "email": "nel@flowchatai.co",
-    "description": "Agent IA conversationnel qui qualifie les leads et prend les rendez-vous automatiquement par SMS et WhatsApp, sur mesure pour les agences immobilières en Belgique et en France.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Bruxelles",
-      "addressCountry": "BE"
-    },
-    "areaServed": [
-      { "@type": "Country", "name": "Belgique" },
-      { "@type": "Country", "name": "France" }
-    ]
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlowChatAI · Agent IA de qualification de leads et prise de RDV pour agences immobilières — Belgique & France</title>
+<meta name="description" content="L'agent IA en marque blanche qui répond à vos leads immobiliers en moins de 60 secondes, par WhatsApp et SMS, les qualifie et cale le RDV dans votre agenda. 24h/24, à vos couleurs, connecté à votre CRM." />
+<meta name="theme-color" content="#01012c" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#181640; --navy-alt:#211e54; --surface:#242156; --surface-2:#2a2660;
+    --white:#ffffff; --lav:#cbb4f3; --lav-dim:rgba(203,180,243,.74); --muted:rgba(203,180,243,.74);
+    --accent:#db0eb7; --accent-deep:#a30b89;
+    --brand:#db0eb7; /* white-label accent, swappable */
+    --line:rgba(184,140,246,.2);
+    --r:16px; --maxw:1180px;
+    --shadow:0 22px 60px -28px rgba(0,0,0,.6);
+    --glass:linear-gradient(180deg, rgba(54,52,120,.55), rgba(34,32,86,.45));
+    --glass-edge:inset 0 1px 0 rgba(255,255,255,.07);
   }
-  </script>
-
-  <!-- Schema.org : Service -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Qualification de leads et prise de rendez-vous automatisée par IA",
-    "provider": {
-      "@type": "Organization",
-      "name": "FlowchatAI"
-    },
-    "areaServed": [
-      { "@type": "Country", "name": "Belgique" },
-      { "@type": "Country", "name": "France" }
-    ],
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Agences immobilières et PME de services"
-    },
-    "description": "FlowchatAI répond à chaque nouveau lead en moins de 60 secondes, par SMS et WhatsApp, le qualifie et cale le rendez-vous dans votre agenda, 24h/24."
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--navy); color:var(--lav);
+    font-family:'Inter',system-ui,sans-serif; font-size:17px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
   }
-  </script>
+  h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; line-height:1.05; letter-spacing:-.02em; margin:0; color:var(--white)}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:500}
+  .section{padding:96px 0; position:relative}
+  /* sections : indigo sombre éclairci (texte clair) */
+  .section--porcelain{background:#1a1844}
+  .section--paper{background:linear-gradient(180deg, #231f58, #1c1a4a)}
+  .section--navy{background:linear-gradient(120% 130% at 15% 0%, #3a1f6b 0%, #1d1a4c 62%)}
+  .tick{color:var(--accent)}
 
-  <!-- Schema.org : FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Est-ce que l'IA risque de faire fuir mes leads ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Non. La conversation est calibrée pour votre agence, naturelle et professionnelle, et vous validez le ton avant la mise en ligne. Testez l'agent AfroCare en live pour vous faire une idée."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Mes données et celles de mes leads sont-elles protégées ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Oui. FlowchatAI est conçu dans le respect du RGPD, les données sont traitées uniquement pour le service et hébergées proprement."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Combien de temps prend l'installation ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La configuration est rapide et sur-mesure. On branche vos sources de leads, votre agenda et vos questions de qualification, puis vous validez avant la mise en service."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Est-ce que ça s'intègre à mes outils ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Oui. L'agent se connecte à vos sources de leads, à votre agenda et à votre suivi client."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Et si ça ne fonctionne pas pour mon agence ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Vous êtes couvert par la garantie 30 jours : si le système ne prend pas vos rendez-vous automatiquement, l'installation vous est remboursée."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Combien ça coûte ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "À partir de 1 697 € d'installation et à partir de 397 €/mois, selon le périmètre. Posez-vous la question à l'envers : combien vaut un seul mandat gagné grâce à un lead que vous auriez perdu un dimanche soir ?"
-        }
-      }
-    ]
+  /* buttons */
+  .btn{display:inline-flex; align-items:center; gap:9px; font-weight:600; font-size:15px;
+    padding:14px 22px; border-radius:999px; text-decoration:none; border:1px solid transparent; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease, background .15s}
+  .btn:focus-visible{outline:3px solid var(--brand); outline-offset:3px}
+  .btn--primary{background:var(--brand); color:#fff; box-shadow:0 12px 28px -10px color-mix(in srgb,var(--brand) 65%, transparent)}
+  .btn--primary:hover{transform:translateY(-2px); box-shadow:0 18px 40px -12px color-mix(in srgb,var(--brand) 70%, transparent)}
+  .btn--ghost{background:rgba(184,140,246,.05); border-color:var(--lav); color:var(--white); backdrop-filter:blur(6px)}
+  .btn--ghost:hover{background:rgba(184,140,246,.12)}
+  .btn--ink{background:rgba(184,140,246,.06); border:1px solid var(--line); color:var(--white)}
+  .btn--ink:hover{transform:translateY(-2px); box-shadow:var(--shadow); background:rgba(184,140,246,.12)}
+
+  /* nav */
+  .nav{position:sticky; top:0; z-index:50; background:rgba(22,20,58,.66); backdrop-filter:blur(16px) saturate(140%); -webkit-backdrop-filter:blur(16px) saturate(140%); border-bottom:1px solid var(--line); box-shadow:0 10px 30px -22px rgba(0,0,0,.6), inset 0 -1px 0 rgba(184,140,246,.06)}
+  .nav__in{display:flex; align-items:center; justify-content:space-between; height:64px}
+  .brandmark{display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-family:'Bricolage Grotesque'; font-weight:700; font-size:19px; letter-spacing:-.02em}
+  .brandmark .dot{width:11px; height:11px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 30%, transparent)}
+  .nav__links{display:flex; gap:28px; align-items:center}
+  .nav__links a{color:var(--lav); text-decoration:none; font-size:14.5px; font-weight:500}
+  .nav__links a:hover{color:var(--accent)}
+  .nav .btn{padding:10px 18px}
+  @media(max-width:860px){.nav__links a:not(.btn){display:none}}
+
+  /* hero */
+  .hero{position:relative; background:radial-gradient(120% 130% at 80% -10%, #3a1f6b 0%, var(--navy) 55%); color:var(--lav); padding:64px 0 88px; overflow:hidden; isolation:isolate}
+  .hero__bg{position:absolute; left:0; right:0; bottom:0; height:90%; z-index:0; opacity:.11; pointer-events:none;
+    -webkit-mask-image:radial-gradient(125% 105% at 50% 100%, #000 28%, transparent 80%);
+    mask-image:radial-gradient(125% 105% at 50% 100%, #000 28%, transparent 80%)}
+  .hero__bg svg{width:100%; height:100%; display:block}
+  .hero__veil{position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(62% 58% at 38% 44%, rgba(20,18,58,.5), rgba(20,18,58,0) 70%)}
+  .hero__glow{position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:
+      radial-gradient(440px 340px at 24% 40%, color-mix(in srgb,var(--brand) 28%, transparent), transparent 70%),
+      radial-gradient(460px 380px at 78% 52%, color-mix(in srgb,var(--brand) 20%, transparent), transparent 72%)}
+  .hero__grid{position:relative; z-index:3; display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center}
+  @media(max-width:960px){.hero__grid{grid-template-columns:1fr; gap:44px}}
+  .hero__tag{display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.06em; color:#eaa9e0; background:rgba(219,14,183,.14); border:1px solid rgba(219,14,183,.32); padding:7px 13px; border-radius:999px; backdrop-filter:blur(6px)}
+  .hero__tag .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(219,14,183,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(219,14,183,.55)}70%{box-shadow:0 0 0 10px rgba(219,14,183,0)}100%{box-shadow:0 0 0 0 rgba(219,14,183,0)}}
+  .hero h1{font-size:clamp(34px,5vw,58px); margin:22px 0 0; min-height:1.05em; color:var(--white)}
+  .hero h1 .accent{color:var(--brand)}
+  .hero__sub{margin-top:22px; font-size:18.5px; color:var(--lav); max-width:33ch}
+  .hero__cta{display:flex; gap:14px; flex-wrap:wrap; margin-top:30px}
+  .hero__trust{margin-top:26px; display:flex; gap:18px; flex-wrap:wrap; font-size:13px; color:var(--lav-dim); font-family:'IBM Plex Mono',monospace}
+  .hero__trust span{display:inline-flex; align-items:center; gap:7px}
+
+  /* A/B switch */
+  .abp{display:inline-flex; gap:4px; margin-top:4px; background:rgba(184,140,246,.08); border:1px solid var(--line); padding:4px; border-radius:999px}
+  .abp button{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.05em; color:var(--lav); background:transparent; border:0; padding:6px 13px; border-radius:999px; cursor:pointer; transition:.15s}
+  .abp button[aria-pressed="true"]{background:var(--brand); color:#fff; font-weight:500}
+  .abp button:focus-visible{outline:2px solid #fff; outline-offset:2px}
+  .ablabel{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--lav-dim); letter-spacing:.1em; text-transform:uppercase; margin-right:4px}
+
+  /* phone / chat */
+  .phone{justify-self:center; width:330px; max-width:100%; background:linear-gradient(180deg, rgba(20,20,80,.85), rgba(10,11,58,.92)); border:1px solid rgba(184,140,246,.28); border-radius:34px; padding:14px; box-shadow:0 44px 90px -30px rgba(0,0,0,.85), var(--glass-edge); position:relative; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px)}
+  .phone__bar{display:flex; align-items:center; justify-content:space-between; padding:4px 8px 12px; color:#b88cf6}
+  .phone__id{display:flex; align-items:center; gap:9px}
+  .phone__avatar{width:34px;height:34px;border-radius:50%;background:var(--brand);display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:700;color:#fff;font-size:14px}
+  .phone__name{font-size:13.5px; font-weight:600; color:#fff; line-height:1.1}
+  .phone__chan{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#e3a9da}
+  .phone__timer{font-family:'IBM Plex Mono',monospace; font-size:12px; color:#9a93c4; text-align:right}
+  .phone__timer b{color:var(--accent)}
+  .thread{background:#05052a; border-radius:22px; padding:16px 14px; min-height:360px; display:flex; flex-direction:column; gap:10px}
+  .msg{max-width:82%; padding:10px 13px; border-radius:16px; font-size:13.5px; line-height:1.4; opacity:0; transform:translateY(8px); animation:rise .4s forwards}
+  .msg--lead{align-self:flex-start; background:#262657; color:#ece9ff; border-bottom-left-radius:5px}
+  .msg--agent{align-self:flex-end; background:var(--brand); color:#fff; border-bottom-right-radius:5px; font-weight:500}
+  .msg__time{display:block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; opacity:.65; margin-top:4px}
+  @keyframes rise{to{opacity:1; transform:none}}
+  .typing{align-self:flex-end; background:var(--brand); padding:12px 14px; border-radius:16px; border-bottom-right-radius:5px; display:flex; gap:4px; opacity:0; animation:rise .3s forwards}
+  .typing span{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.6;animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+  .rdv{align-self:stretch; margin-top:2px; background:#11123f; border:1px solid rgba(219,14,183,.45); border-radius:14px; padding:12px 14px; opacity:0; transform:translateY(8px); animation:rise .45s forwards}
+  .rdv__top{display:flex; align-items:center; gap:8px; font-size:12px; color:#eaa9e0; font-family:'IBM Plex Mono',monospace}
+  .rdv__main{color:#fff; font-weight:600; font-size:14px; margin-top:6px}
+  .rdv__sub{color:#b88cf6; font-size:12px; margin-top:2px}
+
+  /* white-label swatches */
+  .swatches{display:flex; align-items:center; gap:10px; justify-content:center; margin-top:16px}
+  .swatches .lbl{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--lav-dim); letter-spacing:.08em}
+  .swatch{width:24px;height:24px;border-radius:50%;border:2px solid rgba(184,140,246,.3);cursor:pointer;padding:0;transition:transform .15s}
+  .swatch:hover{transform:scale(1.12)}
+  .swatch[aria-pressed="true"]{border-color:#fff; box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+  .swatch:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+  /* generic headers */
+  .head{max-width:760px}
+  .head h2{font-size:clamp(28px,3.6vw,42px); margin:16px 0 0}
+  .head p{margin-top:14px; color:var(--lav-dim); font-size:18px}
+
+  /* glass cards — shared depth + hover */
+  .card,.pillar,.plan,.proofcard{
+    background:var(--glass); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    box-shadow:var(--glass-edge), 0 24px 50px -34px rgba(0,0,0,.75);
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
   }
-  </script>
+  .card:hover,.pillar:hover{
+    transform:translateY(-5px);
+    border-color:color-mix(in srgb,var(--brand) 55%, transparent);
+    box-shadow:0 32px 60px -32px rgba(0,0,0,.85), 0 0 0 1px color-mix(in srgb,var(--brand) 28%, transparent), var(--glass-edge);
+  }
+
+  /* problem cards */
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px}
+  @media(max-width:860px){.cards{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line); border-radius:var(--r); padding:26px}
+  .card h3{font-size:20px; margin-bottom:10px}
+  .card p{color:var(--lav-dim); font-size:15.5px}
+  .card__k{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); letter-spacing:.1em}
+
+  /* process timeline */
+  .steps{margin-top:48px; display:grid; gap:0}
+  .step{display:grid; grid-template-columns:64px 1fr; gap:22px; padding:22px 0; border-top:1px solid var(--line)}
+  .step:last-child{border-bottom:1px solid var(--line)}
+  .step__n{font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--accent); font-weight:500; padding-top:3px}
+  .step h3{font-size:20px; margin-bottom:6px}
+  .step p{color:var(--lav-dim); font-size:15.5px; max-width:62ch}
+  .ribbon{margin-top:34px; display:flex; gap:26px; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--lav)}
+  .ribbon span{display:inline-flex; align-items:center; gap:8px}
+
+  /* pillars */
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px}
+  @media(max-width:860px){.pillars{grid-template-columns:1fr}}
+  .pillar{padding:28px; border-radius:var(--r); border:1px solid var(--line)}
+  .pillar .ico{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:rgba(219,14,183,.16);margin-bottom:16px;font-size:20px}
+  .pillar h3{font-size:19px;margin-bottom:8px}
+  .pillar p{color:var(--lav-dim); font-size:15px}
+
+  /* network band */
+  .net{display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center}
+  @media(max-width:860px){.net{grid-template-columns:1fr; gap:30px}}
+  .net h2{font-size:clamp(26px,3.4vw,40px)}
+  .netlist{list-style:none; padding:0; margin:24px 0 0; display:grid; gap:12px}
+  .netlist li{display:flex; gap:12px; align-items:flex-start; color:var(--lav); font-size:15.5px}
+  .netlist .tick{margin-top:3px}
+
+  /* compliance */
+  .compgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px 36px; margin-top:40px}
+  @media(max-width:760px){.compgrid{grid-template-columns:1fr}}
+  .comp{display:flex; gap:14px; align-items:flex-start}
+  .comp .tick{margin-top:4px; flex:0 0 auto}
+  .comp b{display:block; font-size:16px; margin-bottom:2px; color:var(--white)}
+  .comp span{color:var(--lav-dim); font-size:14.5px}
+  .compfoot{margin-top:34px; font-size:14.5px; color:var(--lav-dim); border-left:3px solid var(--accent); padding-left:16px; max-width:70ch}
+
+  /* proof */
+  .proof{display:grid; grid-template-columns:1.1fr .9fr; gap:44px; align-items:center}
+  @media(max-width:860px){.proof{grid-template-columns:1fr}}
+  .proofcard{border:1px solid var(--line); border-radius:var(--r); padding:30px; color:var(--lav)}
+  .proofcard .live{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#eaa9e0}
+  .proofcard h3{color:var(--white);font-size:22px;margin:14px 0 10px}
+  .proofcard p{color:var(--lav-dim);font-size:15px}
+  .stats{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:8px}
+  .stat .num{font-family:'Bricolage Grotesque'; font-weight:700; font-size:34px; letter-spacing:-.02em; color:var(--white)}
+  .stat .lab{font-size:13.5px; color:var(--lav-dim); margin-top:2px}
+
+  /* pricing */
+  .price{display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:48px; align-items:stretch}
+  @media(max-width:860px){.price{grid-template-columns:1fr}}
+  .plan{border:1px solid var(--line); border-radius:20px; padding:32px; display:flex; flex-direction:column}
+  .plan--feat{border:1.5px solid var(--brand); box-shadow:0 30px 60px -34px rgba(0,0,0,.8), 0 0 0 1px color-mix(in srgb,var(--brand) 22%, transparent), var(--glass-edge); position:relative}
+  .plan__badge{position:absolute; top:-13px; left:32px; background:var(--brand); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:5px 12px; border-radius:999px; font-weight:500}
+  .plan h3{font-size:22px}
+  .plan__price{margin:16px 0 6px; font-family:'Bricolage Grotesque'; font-weight:700; font-size:30px; letter-spacing:-.02em; color:var(--white)}
+  .plan__price small{font-size:15px; color:var(--lav-dim); font-weight:400; font-family:'Inter'}
+  .plan__install{font-size:14px; color:var(--lav-dim)}
+  .plan ul{list-style:none; padding:0; margin:22px 0 26px; display:grid; gap:11px}
+  .plan li{display:flex; gap:10px; font-size:15px; color:var(--lav)}
+  .plan li .tick{color:var(--accent); margin-top:3px; flex:0 0 auto}
+  .plan .btn{margin-top:auto; justify-content:center}
+  .guarantee{margin-top:26px; display:flex; gap:12px; align-items:center; justify-content:center; font-size:14.5px; color:var(--lav-dim)}
+  .guarantee .shield{color:var(--accent)}
+
+  /* faq */
+  .faq{margin-top:40px; max-width:820px}
+  .faq details{border-top:1px solid var(--line); padding:6px 0}
+  .faq details:last-child{border-bottom:1px solid var(--line)}
+  .faq summary{cursor:pointer; list-style:none; padding:18px 40px 18px 0; font-family:'Bricolage Grotesque'; font-weight:600; font-size:18px; position:relative; color:var(--white)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+"; position:absolute; right:6px; top:16px; font-size:24px; color:var(--accent); transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq p{color:var(--lav-dim); font-size:15.5px; padding:0 40px 20px 0}
+
+  /* final cta */
+  .final{position:relative; overflow:hidden; background:linear-gradient(120% 130% at 20% 0%, #3a1f6b, var(--navy)); color:#fff; border:1px solid var(--line); border-radius:24px; padding:56px; text-align:center; box-shadow:var(--shadow)}
+  .final__bg{position:absolute; left:0; right:0; bottom:0; height:72%; z-index:0; opacity:.06; pointer-events:none;
+    -webkit-mask-image:linear-gradient(180deg, transparent, #000 60%);
+    mask-image:linear-gradient(180deg, transparent, #000 60%)}
+  .final__bg svg{width:100%; height:100%; display:block}
+  .final__glow{position:absolute; inset:0; z-index:0; pointer-events:none; background:radial-gradient(420px 260px at 50% 12%, color-mix(in srgb,var(--brand) 22%, transparent), transparent 70%)}
+  .final__in{position:relative; z-index:1}
+  .final h2{font-size:clamp(28px,3.6vw,42px)}
+  .final p{margin:16px auto 0; color:var(--lav); max-width:50ch; font-size:17px}
+  .final .btn{margin-top:28px}
+  .sigs{margin-top:30px; display:flex; gap:10px 22px; flex-wrap:wrap; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--lav-dim)}
+
+  /* footer */
+  .foot{background:var(--navy); color:var(--lav-dim); padding:44px 0; font-size:14px; border-top:1px solid var(--line)}
+  .foot__in{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center}
+  .foot a{color:var(--lav); text-decoration:none}
+  .foot a:hover{color:var(--accent)}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important}
+    .reveal{opacity:1; transform:none; transition:none}
+    .msg,.rdv,.typing{opacity:1; transform:none}
+  }
+</style>
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="site-header" id="top">
-    <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="FlowchatAI, accueil">
-        <img src="logo.png" alt="FlowchatAI" class="brand-logo" width="42" height="42" />
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="#comment">Comment ça marche</a>
-        <a href="#preuve">La preuve</a>
-        <a href="#offre">L'offre</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <a href="#" data-vf-open class="btn btn-primary btn-sm">Réserver ma démo</a>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav__in">
+    <a class="brandmark" href="#top"><span class="dot"></span>FlowChatAI</a>
+    <div class="nav__links">
+      <a href="#process">Comment ça marche</a>
+      <a href="#preuve">La preuve</a>
+      <a href="#offre">L'offre</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--primary" href="#demo">Réserver ma démo</a>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main>
-    <!-- 1. Hero -->
-    <section class="hero">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="container hero-inner reveal">
-        <span class="badge"><span class="dot"></span> Agent IA déjà en production · testable en live</span>
-        <h1>Vos leads immobiliers qualifiés et vos RDV pris automatiquement, <span class="grad">24h/24</span>.</h1>
-        <p class="lead">Un lead recontacté dans la minute a bien plus de chances de se transformer en mandat. FlowchatAI répond à chaque nouveau lead en moins de 60 secondes, le qualifie et cale le rendez-vous dans votre agenda, à votre place, par SMS et WhatsApp, même le soir et le week-end.</p>
-        <div class="hero-cta">
-          <a href="#" data-vf-open class="btn btn-primary btn-lg">Réserver ma démo de 15 min</a>
-          <a href="https://afrocare.be" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Tester un agent en live</a>
+<!-- HERO -->
+<header class="hero" id="top">
+  <!-- real-estate watermark: skyline + blueprint (inline SVG, filigrane) -->
+  <div class="hero__bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 720" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="fcaGrid" width="54" height="54" patternUnits="userSpaceOnUse">
+          <path d="M54 0H0V54" stroke="#b88cf6" stroke-width="1" fill="none" opacity="0.4"/>
+        </pattern>
+        <pattern id="fcaWin" width="26" height="34" patternUnits="userSpaceOnUse">
+          <rect x="7" y="9" width="11" height="14" rx="1" fill="#b88cf6" opacity="0.42"/>
+        </pattern>
+      </defs>
+      <!-- blueprint grid -->
+      <rect x="0" y="0" width="1440" height="720" fill="url(#fcaGrid)"/>
+      <!-- architect dimension line -->
+      <g stroke="#b88cf6" stroke-width="1.4" opacity="0.5">
+        <line x1="200" y1="252" x2="590" y2="252"/>
+        <line x1="200" y1="246" x2="200" y2="258"/>
+        <line x1="590" y1="246" x2="590" y2="258"/>
+        <circle cx="395" cy="252" r="3" fill="#b88cf6" stroke="none"/>
+      </g>
+      <!-- skyline buildings -->
+      <g stroke="#b88cf6" stroke-width="1.6">
+        <rect x="60"   y="430" width="120" height="290" fill="url(#fcaWin)"/>
+        <rect x="200"  y="330" width="92"  height="390" fill="url(#fcaWin)"/>
+        <rect x="312"  y="486" width="150" height="234" fill="url(#fcaWin)"/>
+        <rect x="486"  y="392" width="80"  height="328" fill="url(#fcaWin)"/>
+        <line x1="526" y1="392" x2="526" y2="350"/>
+        <rect x="590"  y="300" width="168" height="420" fill="url(#fcaWin)"/>
+        <rect x="784"  y="448" width="116" height="272" fill="url(#fcaWin)"/>
+        <rect x="922"  y="360" width="138" height="360" fill="url(#fcaWin)"/>
+        <rect x="1086" y="426" width="104" height="294" fill="url(#fcaWin)"/>
+        <rect x="1214" y="322" width="156" height="398" fill="url(#fcaWin)"/>
+      </g>
+      <!-- stylized house (plan / blueprint) -->
+      <g stroke="#b88cf6" stroke-width="1.6" opacity="0.7" fill="none">
+        <path d="M980 212 l46 -34 l46 34"/>
+        <path d="M992 206 v54 h68 v-54"/>
+        <rect x="1018" y="228" width="16" height="32"/>
+      </g>
+      <!-- stylized key -->
+      <g stroke="#b88cf6" stroke-width="1.6" opacity="0.6" fill="none">
+        <circle cx="262" cy="152" r="16"/>
+        <line x1="278" y1="152" x2="344" y2="152"/>
+        <line x1="326" y1="152" x2="326" y2="166"/>
+        <line x1="340" y1="152" x2="340" y2="168"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="wrap hero__grid">
+    <div>
+      <span class="hero__tag"><span class="pulse"></span>Agent IA déjà en production · testable en live</span>
+
+      <h1 id="heroTitle"><span class="accent">L'assistant IA</span> de votre agence immobilière, sur WhatsApp et SMS.</h1>
+
+      <div style="margin-top:18px; display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+        <span class="ablabel">Accroche</span>
+        <div class="abp" role="group" aria-label="Choisir l'accroche">
+          <button data-ab="0" aria-pressed="true">A</button>
+          <button data-ab="1" aria-pressed="false">B</button>
+          <button data-ab="2" aria-pressed="false">C</button>
         </div>
       </div>
-    </section>
 
-    <!-- 2. Le problème -->
-    <section class="section" id="probleme">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Le problème</span>
-          <h2>Vos meilleurs leads se perdent pendant que vous travaillez.</h2>
-        </div>
-        <div class="grid grid-3">
-          <article class="card reveal">
-            <h3>Le temps de réponse vous coûte des mandats</h3>
-            <p>Vos leads d'Immoweb, Logic-Immo ou Zimmo arrivent à toute heure. Le temps de les rappeler, ils ont déjà contacté trois autres agences.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Le soir et le week-end, personne ne répond</h3>
-            <p>C'est précisément là que tombent beaucoup de demandes. Elles attendent lundi. Souvent, c'est trop tard.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Votre temps vaut mieux que ça</h3>
-            <p>Il devrait aller à la visite, l'estimation et la négociation, pas à répéter « Quel est votre budget ? » et « Vous cherchez à louer ou à acheter ? ».</p>
-          </article>
-        </div>
+      <p class="hero__sub">Un lead recontacté dans la minute a bien plus de chances de devenir un mandat. FlowChatAI répond à chaque nouveau lead en moins de 60 secondes, le qualifie et cale le RDV — à votre nom, à vos couleurs, connecté à votre CRM. 24h/24, même le week-end.</p>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#demo">Réserver ma démo de 15 min →</a>
+        <a class="btn btn--ghost" href="https://afrocare.be" target="_blank" rel="noopener">Tester un agent en live</a>
       </div>
-    </section>
 
-    <!-- 3. Comment ça marche -->
-    <section class="section section-alt" id="comment">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Comment ça marche</span>
-          <h2>Du lead au rendez-vous en 3 minutes, sans lever le petit doigt.</h2>
-        </div>
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step-num">1</span>
-            <div>
-              <h3>Le lead arrive</h3>
-              <p>Depuis un portail, votre site ou vos publicités, peu importe la source.</p>
-            </div>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">2</span>
-            <div>
-              <h3>Réponse en moins de 60 secondes</h3>
-              <p>Le lead reçoit un message immédiat, par SMS ou WhatsApp, à toute heure.</p>
-            </div>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">3</span>
-            <div>
-              <h3>Qualification intelligente</h3>
-              <p>L'agent pose les bonnes questions, comprend les réponses et attribue un score (urgence, budget, financement, type de bien).</p>
-            </div>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">4</span>
-            <div>
-              <h3>RDV calé automatiquement</h3>
-              <p>Pour les leads sérieux, l'agent propose des créneaux réels et réserve dans l'agenda du bon collaborateur.</p>
-            </div>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">5</span>
-            <div>
-              <h3>CRM à jour en temps réel</h3>
-              <p>Chaque lead est tracé, rien ne se perd.</p>
-            </div>
-          </li>
-        </ol>
-        <p class="callout reveal">~3 minutes du lead au rendez-vous. Zéro intervention humaine. Disponible 24h/24.</p>
+      <div class="hero__trust">
+        <span><span class="tick">✓</span> Spécialiste immo FR &amp; BE</span>
+        <span><span class="tick">✓</span> En marque blanche</span>
+        <span><span class="tick">✓</span> Conforme RGPD</span>
       </div>
-    </section>
+    </div>
 
-    <!-- 4. La preuve -->
-    <section class="section" id="preuve">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">La preuve</span>
-          <h2>Ce n'est pas une promesse. C'est déjà en production.</h2>
-        </div>
-        <div class="proof reveal">
-          <p>Mon agent IA tourne en production depuis octobre 2025 pour un institut beauté belge, AfroCare. Il gère la première ligne de relation client tous les jours, en autonomie. Vous pouvez le tester en live, maintenant.</p>
-          <a href="https://afrocare.be" target="_blank" rel="noopener" class="btn btn-ghost">Tester un agent en live → afrocare.be</a>
-          <p class="proof-note">Même moteur conversationnel, éprouvé chez un vrai client, que je décline aujourd'hui pour les agences immobilières.</p>
-        </div>
-        <div class="grid grid-4 counters">
-          <div class="counter reveal"><span class="counter-num">~3 min</span><span class="counter-label">du lead au rendez-vous</span></div>
-          <div class="counter reveal"><span class="counter-num">0</span><span class="counter-label">intervention humaine</span></div>
-          <div class="counter reveal"><span class="counter-num">24/7</span><span class="counter-label">toujours disponible</span></div>
-          <div class="counter reveal"><span class="counter-num">100%</span><span class="counter-label">des leads reçoivent une réponse immédiate</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. Pourquoi FlowchatAI -->
-    <section class="section section-alt" id="pourquoi">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Pourquoi FlowchatAI</span>
-          <h2>Pensé pour votre agence immobilière, pas un outil générique.</h2>
-        </div>
-        <div class="grid grid-2">
-          <article class="card reveal">
-            <h3>À votre nom et vos couleurs</h3>
-            <p>Un agent personnalisé à votre agence, qui connait vos biens et parle votre marché, en Belgique comme en France.</p>
-          </article>
-          <article class="card reveal">
-            <h3>SMS et WhatsApp, lus presque à coup sûr</h3>
-            <p>Bien plus efficaces que l'email, là où vos leads regardent vraiment.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Conversation naturelle, en français et en anglais</h3>
-            <p>Pas un questionnaire rigide, un vrai échange, utile aussi pour la clientèle expatriée.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Conforme RGPD</h3>
-            <p>Les données de vos leads sont traitées proprement et en sécurité.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. Aussi pour les PME -->
-    <section class="section">
-      <div class="container">
-        <div class="band reveal">
-          <div>
-            <span class="eyebrow">Aussi pour les PME de services</span>
-            <h2>Vous n'êtes pas une agence immobilière ?</h2>
-            <p>La même technologie fonctionne pour toute PME de services qui a des prospects à qualifier ou un support client à automatiser. C'est exactement ce qui tourne aujourd'hui pour AfroCare dans la beauté. Parlons de votre cas.</p>
+    <!-- signature: live conversation -->
+    <div>
+      <div class="phone" id="phone">
+        <div class="phone__bar">
+          <div class="phone__id">
+            <div class="phone__avatar" id="avatar">VA</div>
+            <div>
+              <div class="phone__name">Votre Agence</div>
+              <div class="phone__chan">WhatsApp · automatisé</div>
+            </div>
           </div>
-          <a href="#" data-vf-open class="btn btn-ghost btn-lg">Voir si c'est fait pour moi</a>
+          <div class="phone__timer">réponse en<br><b id="timer">0:00</b></div>
         </div>
+        <div class="thread" id="thread" aria-label="Exemple de conversation"></div>
       </div>
-    </section>
-
-    <!-- 7. L'offre Client Fondateur -->
-    <section class="section section-alt" id="offre">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Offre Client Fondateur</span>
-          <h2>Mes premières agences fondatrices. Des conditions de lancement.</h2>
-        </div>
-        <div class="offer reveal">
-          <p class="offer-intro">Je lance la verticale immobilière et je sélectionne mes premières agences. En échange de votre retour, vous bénéficiez de mes conditions de lancement.</p>
-          <ul class="offer-list">
-            <li><strong>Installation : à partir de 1 697 €</strong></li>
-            <li><strong>Abonnement : à partir de 397 €/mois</strong></li>
-            <li><strong>Garantie 30 jours :</strong> si le système ne prend pas vos rendez-vous automatiquement, je vous rembourse l'installation.</li>
-          </ul>
-          <a href="#" data-vf-open class="btn btn-primary btn-lg">Réserver ma place fondatrice</a>
-        </div>
+      <div class="swatches" role="group" aria-label="Couleur de marque de l'agence">
+        <span class="lbl">À vos couleurs</span>
+        <button class="swatch" style="background:#db0eb7" data-color="#db0eb7" aria-pressed="true" aria-label="Magenta"></button>
+        <button class="swatch" style="background:#7c3aed" data-color="#7c3aed" aria-pressed="false" aria-label="Violet"></button>
+        <button class="swatch" style="background:#2bb8d6" data-color="#2bb8d6" aria-pressed="false" aria-label="Cyan"></button>
+        <button class="swatch" style="background:#f59e0b" data-color="#f59e0b" aria-pressed="false" aria-label="Ambre"></button>
       </div>
-    </section>
-
-    <!-- 8. FAQ -->
-    <section class="section" id="faq">
-      <div class="container container-narrow">
-        <div class="section-head reveal">
-          <span class="eyebrow">FAQ</span>
-          <h2>Vos questions</h2>
-        </div>
-        <div class="faq">
-          <details class="reveal">
-            <summary>Est-ce que l'IA risque de faire fuir mes leads ?</summary>
-            <p>Non. La conversation est calibrée pour votre agence, naturelle et professionnelle, et vous validez le ton avant la mise en ligne. Testez l'agent AfroCare en live pour vous faire une idée.</p>
-          </details>
-          <details class="reveal">
-            <summary>Mes données et celles de mes leads sont-elles protégées ?</summary>
-            <p>Oui. FlowchatAI est conçu dans le respect du RGPD, les données sont traitées uniquement pour le service et hébergées proprement.</p>
-          </details>
-          <details class="reveal">
-            <summary>Combien de temps prend l'installation ?</summary>
-            <p>La configuration est rapide et sur-mesure. On branche vos sources de leads, votre agenda et vos questions de qualification, puis vous validez avant la mise en service.</p>
-          </details>
-          <details class="reveal">
-            <summary>Est-ce que ça s'intègre à mes outils ?</summary>
-            <p>Oui. L'agent se connecte à vos sources de leads, à votre agenda et à votre suivi client.</p>
-          </details>
-          <details class="reveal">
-            <summary>Et si ça ne fonctionne pas pour mon agence ?</summary>
-            <p>Vous êtes couvert par la garantie 30 jours : si le système ne prend pas vos rendez-vous automatiquement, l'installation vous est remboursée.</p>
-          </details>
-          <details class="reveal">
-            <summary>Combien ça coûte ?</summary>
-            <p>À partir de 1 697 € d'installation et à partir de 397 €/mois, selon le périmètre. Posez-vous la question à l'envers : combien vaut un seul mandat gagné grâce à un lead que vous auriez perdu un dimanche soir ?</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CTA final -->
-    <section class="section cta-final">
-      <div class="cta-glow" aria-hidden="true"></div>
-      <div class="container container-narrow reveal">
-        <span class="eyebrow">Voyez-le fonctionner</span>
-        <h2>Voyez-le fonctionner en 15 minutes.</h2>
-        <p class="lead">Je vous envoie un vrai SMS comme si vous étiez un lead, et vous voyez le rendez-vous se prendre tout seul. Vous décidez après. Rien à préparer.</p>
-        <a href="#" data-vf-open class="btn btn-primary btn-lg">Réserver ma démo de 15 min</a>
-        <p class="cta-contact">Une question ? <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a></p>
-      </div>
-    </section>
-  </main>
-
-  <!-- 10. Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <span class="brand-name">FlowchatAI</span>
-        <p>Une solution Olymp Automations. Bruxelles, Belgique.</p>
-      </div>
-      <nav class="footer-links" aria-label="Liens légaux">
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="confidentialite.html">Politique de confidentialité (RGPD)</a>
-      </nav>
-      <p class="copyright">© <span id="year">2026</span> FlowchatAI</p>
     </div>
-  </footer>
+  </div>
+</header>
 
-  <script src="main.js" defer></script>
+<!-- PROBLEM -->
+<section class="section section--porcelain">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Le problème</span>
+      <h2>Vos meilleurs leads se perdent pendant que vous travaillez.</h2>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card__k">// délai</div>
+        <h3>Le temps de réponse vous coûte des mandats</h3>
+        <p>Vos leads d'Immoweb, Logic-Immo, SeLoger ou Zimmo arrivent à toute heure. Le temps de les rappeler, ils ont déjà contacté trois autres agences. Le premier qui répond capte la visite.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card__k">// horaires</div>
+        <h3>Le soir et le week-end, personne ne décroche</h3>
+        <p>C'est précisément là que tombent une grande partie des demandes. Elles attendent lundi. Souvent, c'est déjà trop tard.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card__k">// valeur</div>
+        <h3>Votre temps vaut mieux que ça</h3>
+        <p>Il devrait aller à la visite, à l'estimation et à la négociation — pas à répéter « Quel est votre budget ? » à chaque nouveau contact.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Agent IA FlowchatAI (Voiceflow) -->
-  <script type="text/javascript">
-    (function (d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function () {
-        window.voiceflow.chat.load({
-          verify: { projectID: '698a3a90edb54740de5b5cd5' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production',
-          voice: { url: 'https://runtime-api.voiceflow.com' }
-        });
-      };
-      v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
-      v.type = 'text/javascript';
-      s.parentNode.insertBefore(v, s);
-    })(document, 'script');
-  </script>
+<!-- PROCESS -->
+<section class="section section--paper" id="process">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Comment ça marche</span>
+      <h2>Du lead au rendez-vous en quelques minutes, sans lever le petit doigt.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step__n">01</div><div><h3>Le lead arrive</h3><p>Depuis un portail, votre site ou vos publicités — peu importe la source, l'agent la capte.</p></div></div>
+      <div class="step reveal"><div class="step__n">02</div><div><h3>Réponse en moins de 60 secondes</h3><p>Le lead reçoit un message immédiat, par WhatsApp ou SMS, à toute heure. Une vraie conversation, pas un accusé de réception.</p></div></div>
+      <div class="step reveal"><div class="step__n">03</div><div><h3>Qualification intelligente</h3><p>L'agent pose les bonnes questions, comprend les réponses et attribue un score : urgence, budget, financement, type de bien, secteur.</p></div></div>
+      <div class="step reveal"><div class="step__n">04</div><div><h3>RDV calé automatiquement</h3><p>Pour les leads sérieux, l'agent propose des créneaux réels et réserve dans l'agenda du bon collaborateur.</p></div></div>
+      <div class="step reveal"><div class="step__n">05</div><div><h3>CRM à jour en temps réel</h3><p>Chaque échange est tracé et synchronisé dans votre outil. Rien ne se perd, un négociateur reprend la main quand il le faut.</p></div></div>
+    </div>
+    <div class="ribbon reveal">
+      <span><span class="tick">●</span> Quelques minutes du lead au RDV</span>
+      <span><span class="tick">●</span> Zéro intervention humaine</span>
+      <span><span class="tick">●</span> Disponible 24h/24</span>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="section section--porcelain">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Pourquoi FlowChatAI</span>
+      <h2>Pensé pour votre agence — pas un outil générique recyclé.</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="ico">💬</div>
+        <h3>WhatsApp-native, et aussi SMS</h3>
+        <p>Le canal de la conversation immédiate, lu presque à coup sûr. Plus efficace que l'email, plus moderne qu'un standard vocal. Vous touchez le prospect là où il répond.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ico">🎨</div>
+        <h3>En marque blanche, à chaque agence</h3>
+        <p>Couleur, logo et base de connaissances propres à votre agence. L'agent connaît vos biens, parle votre marché et porte votre nom. Pour vos leads : « votre assistante », pas un outil tiers.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="ico">🔗</div>
+        <h3>Orchestration CRM-native FR/BE</h3>
+        <p>Qualification, scoring, RDV et synchro agenda/CRM dans une seule infrastructure connectée — pensée pour les outils des agences françaises et belges.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section class="section section--navy">
+  <div class="wrap net">
+    <div class="reveal">
+      <span class="eyebrow">Réseaux &amp; franchises</span>
+      <h2>Un assistant IA en marque blanche, homogène sur tout votre réseau.</h2>
+      <p style="color:var(--lav-dim); margin-top:16px">Même niveau de réactivité et même image sur toutes vos agences, sans alourdir vos équipes. Chaque point de vente garde sa marque ; le réseau garde le contrôle.</p>
+      <a class="btn btn--primary" href="#demo" style="margin-top:26px">Discuter d'un déploiement réseau →</a>
+    </div>
+    <ul class="netlist reveal">
+      <li><span class="tick">✓</span> Déploiement multi-agences en marque blanche</li>
+      <li><span class="tick">✓</span> Routage des leads par point de vente</li>
+      <li><span class="tick">✓</span> Conformité et ton validés une fois, appliqués partout</li>
+      <li><span class="tick">✓</span> Connexion à vos CRM et à vos sources de leads</li>
+      <li><span class="tick">✓</span> Reporting centralisé pour la tête de réseau</li>
+    </ul>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="section section--paper">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">RGPD &amp; conformité</span>
+      <h2>La conformité n'est pas une case à cocher. C'est intégré au produit.</h2>
+      <p>Répondez d'avance à l'objection « RGPD / IA, est-ce risqué ? ». Chez FlowChatAI, la conformité est embarquée, pas promise.</p>
+    </div>
+    <div class="compgrid">
+      <div class="comp reveal"><span class="tick">✓</span><div><b>Opt-in &amp; STOP gérés nativement</b><span>Consentement recueilli, opposition prise en compte immédiatement et propagée à tous les canaux.</span></div></div>
+      <div class="comp reveal"><span class="tick">✓</span><div><b>Journal de consentement</b><span>Qui, quand, quel canal, quel libellé : la preuve est conservée.</span></div></div>
+      <div class="comp reveal"><span class="tick">✓</span><div><b>Purge automatique</b><span>Suppression en fin de conservation, numéros opt-out nettoyés.</span></div></div>
+      <div class="comp reveal"><span class="tick">✓</span><div><b>Hébergement UE</b><span>Données traitées uniquement pour le service.</span></div></div>
+      <div class="comp reveal"><span class="tick">✓</span><div><b>Cadre WhatsApp à jour</b><span>Les CGU de janvier 2026 autorisent les assistants métier (qualification, RDV). Vous êtes dans le cadre.</span></div></div>
+      <div class="comp reveal"><span class="tick">✓</span><div><b>Humain dans la boucle</b><span>Pas de décision entièrement automatisée à effet significatif : un négociateur reprend la main.</span></div></div>
+    </div>
+    <p class="compfoot reveal">Côté agence, vous êtes responsable de traitement ; FlowChatAI est votre sous-traitant, avec DPA (art. 28 RGPD) à l'appui. Conforme CNIL (FR) et APD/GBA (BE).</p>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section section--porcelain" id="preuve">
+  <div class="wrap proof">
+    <div class="reveal">
+      <span class="eyebrow">La preuve</span>
+      <h2 style="font-size:clamp(26px,3.4vw,40px); margin-top:14px">Ce n'est pas une promesse. Le moteur tourne déjà en production.</h2>
+      <p style="color:var(--lav-dim); margin-top:16px; font-size:17px">Le moteur conversationnel de FlowChatAI tourne en autonomie depuis octobre 2025, tous les jours, pour un vrai client. Testez-le en live — c'est la meilleure façon de juger la qualité de conversation.</p>
+      <div class="stats" style="margin-top:26px">
+        <div class="stat"><div class="num">~3 min</div><div class="lab">du lead au rendez-vous</div></div>
+        <div class="stat"><div class="num">0</div><div class="lab">intervention humaine</div></div>
+        <div class="stat"><div class="num">24/7</div><div class="lab">toujours disponible</div></div>
+        <div class="stat"><div class="num">100 %</div><div class="lab">des leads répondus</div></div>
+      </div>
+    </div>
+    <div class="proofcard reveal">
+      <span class="live"><span class="pulse" style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block"></span> EN PRODUCTION</span>
+      <h3>Même moteur, éprouvé chez un client réel.</h3>
+      <p>Que je décline aujourd'hui exclusivement pour les agences immobilières FR/BE. Vous pouvez le tester maintenant.</p>
+      <a class="btn btn--primary" href="https://afrocare.be" target="_blank" rel="noopener" style="margin-top:20px">Tester un agent en live →</a>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="section section--paper" id="offre">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Offre Client Fondateur</span>
+      <h2>Mes premières agences fondatrices. Des conditions de lancement.</h2>
+      <p>Je lance la verticale immobilière et je sélectionne mes premières agences. En échange de votre retour, vous bénéficiez de mes conditions de lancement.</p>
+    </div>
+    <div class="price">
+      <div class="plan plan--feat reveal">
+        <span class="plan__badge">Place fondatrice</span>
+        <h3>Agence</h3>
+        <div class="plan__price">à partir de 397 € <small>/ mois</small></div>
+        <div class="plan__install">Installation à partir de 1 697 €</div>
+        <ul>
+          <li><span class="tick">✓</span> WhatsApp + SMS</li>
+          <li><span class="tick">✓</span> Marque blanche : couleur, logo, base de connaissances</li>
+          <li><span class="tick">✓</span> Qualification + scoring des leads</li>
+          <li><span class="tick">✓</span> Prise de RDV + synchro agenda</li>
+          <li><span class="tick">✓</span> 1 CRM connecté</li>
+          <li><span class="tick">✓</span> Support standard</li>
+        </ul>
+        <a class="btn btn--primary" href="#demo">Réserver ma place fondatrice</a>
+      </div>
+      <div class="plan reveal">
+        <h3>Réseau / White-label+</h3>
+        <div class="plan__price">Sur mesure</div>
+        <div class="plan__install">Parlons de votre réseau</div>
+        <ul>
+          <li><span class="tick">✓</span> Tout l'offre Agence, et&nbsp;:</li>
+          <li><span class="tick">✓</span> Déploiement multi-agences brandé</li>
+          <li><span class="tick">✓</span> Routage multi-sites</li>
+          <li><span class="tick">✓</span> CRM + routage des leads</li>
+          <li><span class="tick">✓</span> Support prioritaire dédié</li>
+          <li><span class="tick">✓</span> Reporting centralisé</li>
+        </ul>
+        <a class="btn btn--ink" href="#demo">Nous contacter</a>
+      </div>
+    </div>
+    <div class="guarantee reveal"><span class="shield">🛡</span> Garantie 30 jours : si le système ne prend pas vos rendez-vous automatiquement, je vous rembourse l'installation.</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--porcelain" id="faq">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Vos questions</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>Et le téléphone, alors ?</summary><p>Le téléphone reste à vous. Et un appel manqué ne se perd plus : il déclenche automatiquement un WhatsApp ou un SMS qui reprend l'appelant et engage la conversation. Vous captez le prospect sans le coût d'un standard vocal — et là où il répond vraiment.</p></details>
+      <details><summary>Est-ce que l'IA risque de faire fuir mes leads ?</summary><p>Non. La conversation est calibrée pour votre agence, naturelle et professionnelle, et vous validez le ton avant la mise en ligne. Testez l'agent en live pour vous faire une idée par vous-même.</p></details>
+      <details><summary>Encore un chatbot gadget ?</summary><p>Tout l'inverse. Marque blanche, base de connaissances de votre agence et intégration CRM : l'agent parle votre métier et vit dans vos outils. Vos leads ne voient pas un widget générique, ils voient votre agence.</p></details>
+      <details><summary>Mes données et celles de mes leads sont-elles protégées ?</summary><p>Oui. Opt-in et STOP gérés, journal de consentement, purge automatique, hébergement UE, DPA à l'appui. Conforme CNIL (FR) et APD/GBA (BE). La conformité est intégrée au produit, pas ajoutée après coup.</p></details>
+      <details><summary>Combien de temps prend l'installation ?</summary><p>Rapide et sur mesure. On branche vos sources de leads, votre agenda et vos questions de qualification, on personnalise l'agent à votre marque, puis vous validez avant la mise en service.</p></details>
+      <details><summary>Est-ce que ça s'intègre à mes outils ?</summary><p>Oui. L'agent se connecte à vos sources de leads, à votre agenda et à votre CRM.</p></details>
+      <details><summary>Et si ça ne fonctionne pas pour mon agence ?</summary><p>Vous êtes couvert par la garantie 30 jours : si le système ne prend pas vos rendez-vous automatiquement, l'installation vous est remboursée.</p></details>
+      <details><summary>Combien ça coûte ?</summary><p>Posez-vous la question à l'envers : combien vaut un seul mandat gagné grâce à un lead que vous auriez perdu un dimanche soir ? Nos conditions fondatrices et le détail du périmètre se discutent en 15 minutes de démo.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section section--porcelain" id="demo" style="padding-top:0">
+  <div class="wrap">
+    <div class="final reveal">
+      <!-- subtle real-estate silhouette -->
+      <div class="final__bg" aria-hidden="true">
+        <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#b88cf6" stroke-width="1.4" opacity="0.9" fill="none">
+            <rect x="40" y="90" width="90" height="110"/>
+            <rect x="150" y="50" width="70" height="150"/>
+            <rect x="240" y="110" width="110" height="90"/>
+            <rect x="370" y="70" width="60" height="130"/>
+            <rect x="450" y="40" width="120" height="160"/>
+            <rect x="590" y="100" width="90" height="100"/>
+            <rect x="700" y="64" width="110" height="136"/>
+            <rect x="830" y="96" width="80" height="104"/>
+            <rect x="930" y="54" width="120" height="146"/>
+            <rect x="1070" y="110" width="90" height="90"/>
+          </g>
+        </svg>
+      </div>
+      <div class="final__glow" aria-hidden="true"></div>
+      <div class="final__in">
+        <span class="eyebrow">Voyez-le fonctionner</span>
+        <h2 style="margin-top:14px">Voyez-le fonctionner en 15 minutes.</h2>
+        <p>Je vous envoie un vrai message comme si vous étiez un lead, et vous voyez le rendez-vous se prendre tout seul. Vous décidez après. Rien à préparer.</p>
+        <a class="btn btn--primary" href="https://calendly.com/automations-flowchatai/demo-offerte" target="_blank" rel="noopener">Réserver ma démo de 15 min →</a>
+        <div class="sigs">
+          <span>« L'assistant IA de votre agence, sur WhatsApp et SMS. »</span>
+          <span>« Plus aucun lead perdu. Plus aucun RDV manqué. »</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>Une question ? <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a><br><span style="color:var(--lav-dim)">FlowChatAI — une solution Olymp Automations. Bruxelles, Belgique.</span></div>
+    <div>
+      <a href="mentions-legales.html">Mentions légales</a> &nbsp;·&nbsp; <a href="confidentialite.html">Politique de confidentialité (RGPD)</a><br>
+      <span style="color:var(--lav-dim)">© 2026 FlowChatAI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- A/B hero headlines ----
+  const headlines = [
+    '<span class="accent">L\'assistant IA</span> de votre agence immobilière, sur WhatsApp et SMS.',
+    'Vos leads, <span class="accent">répondus en moins d\'une minute.</span> À vos couleurs.',
+    '<span class="accent">Plus aucun lead perdu.</span> Plus aucun RDV manqué.'
+  ];
+  const titleEl = document.getElementById('heroTitle');
+  document.querySelectorAll('.abp button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('.abp button').forEach(x=>x.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');
+      titleEl.innerHTML = headlines[+b.dataset.ab];
+    });
+  });
+
+  // ---- white-label color ----
+  document.querySelectorAll('.swatch').forEach(s=>{
+    s.addEventListener('click', ()=>{
+      document.querySelectorAll('.swatch').forEach(x=>x.setAttribute('aria-pressed','false'));
+      s.setAttribute('aria-pressed','true');
+      document.documentElement.style.setProperty('--brand', s.dataset.color);
+    });
+  });
+
+  // ---- hero chat sequence ----
+  const thread = document.getElementById('thread');
+  const timerEl = document.getElementById('timer');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const seq = [
+    {t:'lead', txt:'Bonjour, j\'ai vu l\'appartement 3 ch. à Uccle, il est toujours dispo ?', time:'22:41'},
+    {typing:true, wait:700},
+    {t:'agent', txt:'Bonsoir 👋 Oui, toujours disponible. Pour vous proposer une visite : c\'est pour un achat ou une location ?', time:'22:41'},
+    {t:'lead', txt:'Achat. Budget autour de 450k, je peux visiter cette semaine.', time:'22:42'},
+    {typing:true, wait:600},
+    {t:'agent', txt:'Parfait. Jeudi 18h ou samedi 11h avec Julie, votre conseillère ?', time:'22:42'},
+    {t:'lead', txt:'Jeudi 18h 👍', time:'22:42'},
+    {rdv:true}
+  ];
+  function bubble(item){
+    if(item.typing){
+      const d=document.createElement('div'); d.className='typing'; d.innerHTML='<span></span><span></span><span></span>';
+      thread.appendChild(d); return d;
+    }
+    if(item.rdv){
+      const d=document.createElement('div'); d.className='rdv';
+      d.innerHTML='<div class="rdv__top">📅 RDV CALÉ · CRM À JOUR</div><div class="rdv__main">Visite — jeudi, 18:00</div><div class="rdv__sub">Lead qualifié · score 87 · assigné à Julie</div>';
+      thread.appendChild(d); return d;
+    }
+    const d=document.createElement('div'); d.className='msg msg--'+item.t;
+    d.innerHTML=item.txt+'<span class="msg__time">'+item.time+'</span>';
+    thread.appendChild(d); return d;
+  }
+  function runTimer(){
+    if(reduce){timerEl.innerHTML='0:47'; return;}
+    let s=0; const id=setInterval(()=>{ s++; timerEl.textContent='0:'+String(s).padStart(2,'0');
+      if(s>=47){clearInterval(id); timerEl.innerHTML='0:47'; }},33);
+  }
+  function play(){
+    if(reduce){ seq.forEach(it=>{ if(!it.typing) bubble(it); }); timerEl.innerHTML='0:47'; return; }
+    let delay=400; runTimer();
+    seq.forEach(item=>{
+      setTimeout(()=>{
+        if(item.typing){ const el=bubble(item); setTimeout(()=>el.remove(), item.wait||600); }
+        else bubble(item);
+        thread.scrollTop=thread.scrollHeight;
+      }, delay);
+      delay += item.typing ? (item.wait||600) : 1100;
+    });
+  }
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){play(); io.disconnect();}})});
+  io.observe(document.getElementById('phone'));
+
+  // ---- scroll reveals ----
+  const ro = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); ro.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+
+<!-- Agent IA FlowchatAI (Voiceflow) — bulle de chat embarquée sur le site -->
+<script type="text/javascript">
+  (function (d, t) {
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function () {
+      window.voiceflow.chat.load({
+        verify: { projectID: '698a3a90edb54740de5b5cd5' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production',
+        voice: { url: 'https://runtime-api.voiceflow.com' }
+      });
+    };
+    v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+    v.type = 'text/javascript';
+    s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
 </body>
 </html>
