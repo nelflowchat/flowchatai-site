@@ -340,7 +340,7 @@
 
       <div class="hero__cta">
         <a class="btn btn--primary" href="#demo">Réserver ma démo de 15 min →</a>
-        <a class="btn btn--ghost" href="https://afrocare.be" target="_blank" rel="noopener">Tester un agent en live</a>
+        <a class="btn btn--ghost" href="#" data-vf-open>Tester l'agent en direct</a>
       </div>
 
       <div class="hero__trust">
@@ -509,7 +509,7 @@
       <span class="live"><span class="pulse" style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block"></span> EN PRODUCTION</span>
       <h3>Même moteur, éprouvé chez un client réel.</h3>
       <p>Que je décline aujourd'hui exclusivement pour les agences immobilières FR/BE. Vous pouvez le tester maintenant.</p>
-      <a class="btn btn--primary" href="https://afrocare.be" target="_blank" rel="noopener" style="margin-top:20px">Tester un agent en live →</a>
+      <a class="btn btn--primary" href="#" data-vf-open style="margin-top:20px">Tester l'agent en direct →</a>
     </div>
   </div>
 </section>
@@ -700,6 +700,14 @@
   // ---- scroll reveals ----
   const ro = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); ro.unobserve(e.target);}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  // ---- boutons qui ouvrent l'agent du site (Voiceflow) ----
+  document.querySelectorAll('[data-vf-open]').forEach(b=>{
+    b.addEventListener('click', e=>{
+      e.preventDefault();
+      if(window.voiceflow && window.voiceflow.chat){ window.voiceflow.chat.open(); }
+    });
+  });
 </script>
 
 <!-- Agent IA FlowchatAI (Voiceflow) — bulle de chat embarquée sur le site -->
