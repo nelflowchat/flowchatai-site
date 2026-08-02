@@ -752,7 +752,15 @@
     }
   }
   if (reduce){
+    // Le visiteur a demande moins d'animations (reglage d'accessibilite iOS
+    // "Reduire les animations", ou mode economie d'energie sur Safari) : on ne
+    // joue pas la conversation. On affiche l'echange complet, cale sur son
+    // debut et non sur sa fin, et on le rend defilable a la main. Sinon la
+    // demo ressemble a une animation bloquee sur une bulle coupee en deux.
     SCRIPT.forEach(function(m){ if(m.from==='rdv') addRdv(m); else addBubble(m); });
+    chatBody.scrollTop = 0;
+    chatBody.style.overflowY = 'auto';
+    chatBody.style.webkitOverflowScrolling = 'touch';
   } else {
     loop();
   }
