@@ -91,11 +91,50 @@ img { max-width: 100%; height: auto; }
 .legal p { margin: 0 0 16px; }
 .legal strong { color: #0B1F33; font-weight: 600; }
 
+.legal h3 {
+  font-family: Manrope, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #0B1F33;
+  margin: 28px 0 10px;
+}
+
 .legal ul {
   margin: 0 0 20px;
   padding: 0 0 0 22px;
 }
 .legal li { margin-bottom: 9px; }
+
+/* Tableaux (registre des sous-traitants). Larges par nature : ils defilent
+   dans leur propre conteneur plutot que de faire deborder la page. */
+.legal table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 0 0 24px;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+.legal table thead { background: #F7F8FA; }
+.legal table th,
+.legal table td {
+  border: 1px solid #E5E9EF;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  min-width: 140px;
+}
+.legal table th {
+  font-family: Manrope, sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #0B1F33;
+  white-space: nowrap;
+}
+.legal table td strong { color: #0B1F33; }
 
 /* casse les longues chaines (emails, URLs) au lieu de deborder */
 .legal a { overflow-wrap: anywhere; }
