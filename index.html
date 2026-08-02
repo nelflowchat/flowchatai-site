@@ -135,7 +135,10 @@
       width: 100% !important; justify-content: center !important; font-size: 15.5px !important;
     }
     .hero-phone { width: min(320px, 100%) !important; padding: 8px !important; border-radius: 34px !important; }
-    .phone-screen { height: 440px !important; border-radius: 27px !important; }
+    /* assez haut pour que la conversation animee reste lisible :
+       en dessous de ~500 px les bulles se retrouvent coupees en deux */
+    .phone-screen { height: 520px !important; border-radius: 27px !important; }
+    #chatBody { padding: 12px 10px !important; gap: 8px !important; }
     .hero-badges { gap: 8px !important; }
     .hero-badges li { font-size: 12.5px !important; padding: 6px 12px !important; }
 
@@ -780,6 +783,25 @@
     if (ev.matches) setMenu(false);
   });
 
+  // ---- liens Calendly sur petit ecran ----
+  // Sur telephone, la fiche de l'evenement (titre, duree, description) occupe
+  // tout le premier ecran et repousse le calendrier sous la ligne de flottaison :
+  // le visiteur croit que le planning ne s'affiche pas. On demande a Calendly de
+  // la masquer, uniquement en dessous de 640 px pour garder la fiche sur desktop.
+  var mqPetitEcran = window.matchMedia('(max-width: 640px)');
+  function syncLiensCalendly(){
+    document.querySelectorAll('a[href*="calendly.com"]').forEach(function(a){
+      try {
+        var u = new URL(a.href);
+        if (mqPetitEcran.matches) u.searchParams.set('hide_event_type_details', '1');
+        else u.searchParams.delete('hide_event_type_details');
+        a.href = u.toString();
+      } catch (e) { /* URL invalide, on laisse le lien tel quel */ }
+    });
+  }
+  syncLiensCalendly();
+  mqPetitEcran.addEventListener('change', syncLiensCalendly);
+
   // ---- Voiceflow agent ----
   function openAgent(){
     if (window.voiceflow && window.voiceflow.chat && window.voiceflow.chat.open){ window.voiceflow.chat.open(); }
@@ -799,7 +821,9 @@
         verify: { projectID: '698a3a90edb54740de5b5cd5' },
         url: 'https://general-runtime.voiceflow.com',
         versionID: 'production',
-        voice: { url: 'https://runtime-api.voiceflow.com' }
+        voice: { url: 'https://runtime-api.voiceflow.com' },
+        // remonte le lanceur au-dessus de la barre d'outils mobile
+        assistant: { stylesheet: 'https://flowchatai.co/voiceflow-widget.css' }
       });
     };
     v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';

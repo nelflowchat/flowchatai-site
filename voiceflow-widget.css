@@ -1,0 +1,16 @@
+/* ============================================================
+   Ajustements du widget de chat Voiceflow (agent Lucy).
+   Injecte dans le shadow DOM du widget via l'option
+   assistant.stylesheet de window.voiceflow.chat.load().
+   ============================================================ */
+
+/* Sur telephone, la barre d'outils du navigateur (Safari iOS notamment)
+   recouvre le bas de la fenetre. Le lanceur, place a 20 px du bord,
+   passait dessous et devenait invisible. On le remonte, en tenant compte
+   de la zone sure des ecrans a encoche. */
+@media (max-width: 640px) {
+  .vfrc-launcher__container,
+  [class*="vfrc-launcher__container"] {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 84px) !important;
+  }
+}
