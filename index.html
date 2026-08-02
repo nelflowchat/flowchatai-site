@@ -36,9 +36,13 @@
 ]}
 </script>
 <style>
-  html { scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body { margin: 0; background: #FFFFFF; color: #52606D; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  img, svg { max-width: 100%; }
+  /* ancres : compense la hauteur du header collant */
+  section[id] { scroll-margin-top: 80px; }
   a { color: #1677FF; }
   a:hover { color: #0B5FD9; }
   :focus-visible { outline: 3px solid #1677FF; outline-offset: 2px; border-radius: 4px; }
@@ -61,6 +65,118 @@
     * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     .reveal { opacity: 1; transform: none; }
   }
+
+  /* ============================================================
+     RESPONSIVE
+     Le corps de page est en styles inline (export Claude Design),
+     donc ces regles doivent porter !important pour gagner.
+     ============================================================ */
+
+  /* Les conteneurs de page (max-width + padding) gardent le modele de boite
+     d'origine, sinon border-box retrecit toute la maquette desktop de 48 px.
+     Sans largeur fixe, aucun risque de debordement sur mobile. */
+  header > nav,
+  main > section > div,
+  footer > div,
+  footer > div:last-child > p { box-sizing: content-box; }
+
+  .nav-burger { display: none; }
+  .cta-mini { display: none; }
+  .nav-burger:hover { background: #F7F8FA !important; }
+
+  /* ---------- Tablette et en dessous : nav en menu deroulant ---------- */
+  @media (max-width: 900px) {
+    .site-nav { gap: 14px !important; padding: 12px 20px !important; }
+    .nav-burger { display: inline-flex !important; }
+
+    .nav-links {
+      display: none !important;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      align-items: stretch !important;
+      gap: 0 !important;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E5E9EF;
+      box-shadow: 0 12px 28px rgba(11,31,51,0.10);
+      padding: 8px 20px 16px;
+    }
+    .nav-links.open { display: flex !important; }
+    .nav-links .navlink {
+      padding: 14px 4px !important;
+      font-size: 16.5px !important;
+      border-bottom: 1px solid #EDF0F4;
+    }
+    .nav-links .navlink:last-child { border-bottom: none; }
+
+    /* colonnes de contenu : on repasse en pile bien avant l'ecrasement */
+    .hero-grid, .reseaux-grid { gap: 36px !important; }
+  }
+
+  /* ---------- Telephone ---------- */
+  @media (max-width: 640px) {
+    /* rythme vertical et gouttieres */
+    main > section > div { padding: 56px 20px !important; }
+    #hero > div { padding: 36px 20px 48px !important; gap: 32px !important; }
+    footer > div { padding: 40px 20px 32px !important; }
+    footer > div:last-child > p { padding: 16px 20px !important; }
+
+    /* header */
+    .site-nav { padding: 10px 16px !important; }
+    .nav-logo { height: 26px !important; }
+    .nav-cta { font-size: 13.5px !important; padding: 10px 14px !important; gap: 6px !important; }
+    .nav-cta-icon { display: none !important; }
+
+    /* hero */
+    .hero-title { font-size: clamp(27px, 7.4vw, 34px) !important; }
+    .hero-sub { font-size: 16.5px !important; }
+    .hero-actions { flex-direction: column !important; gap: 12px !important; }
+    .hero-actions > a, .hero-actions > button {
+      width: 100% !important; justify-content: center !important; font-size: 15.5px !important;
+    }
+    .hero-phone { width: min(320px, 100%) !important; padding: 8px !important; border-radius: 34px !important; }
+    .phone-screen { height: 440px !important; border-radius: 27px !important; }
+    .hero-badges { gap: 8px !important; }
+    .hero-badges li { font-size: 12.5px !important; padding: 6px 12px !important; }
+
+    /* cartes et blocs */
+    .card { padding: 24px 20px !important; }
+    .plan { padding: 28px 22px !important; }
+    .plan-price { font-size: 32px !important; }
+    .steps { gap: 14px !important; }
+    .step { padding: 20px 18px !important; }
+    .banner-dark { padding: 22px 20px !important; }
+    .faq-item { padding: 0 18px !important; }
+    .faq-item summary { font-size: 15.5px !important; padding: 17px 0 !important; }
+    .faq-item p { font-size: 15px !important; }
+
+    /* pied de page */
+    .foot-inner { flex-direction: column !important; gap: 28px !important; }
+    .foot-cols { gap: 28px !important; flex-direction: column !important; }
+
+    /* cibles tactiles confortables */
+    .cta-block { flex-direction: column !important; }
+    .cta-block > a, .cta-block > button { width: 100% !important; justify-content: center !important; }
+
+    /* les 4 chiffres de preuve restent sur 2 colonnes, sinon la section est interminable */
+    .stats { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+    .stats > div { padding: 22px 12px !important; }
+    .stats > div > p:first-child { font-size: 27px !important; }
+    .stats > div > p:last-child { font-size: 13px !important; }
+  }
+
+  /* ---------- Petits telephones ---------- */
+  @media (max-width: 420px) {
+    main > section > div { padding: 48px 16px !important; }
+    #hero > div { padding: 28px 16px 40px !important; }
+    .site-nav { padding: 10px 14px !important; }
+  }
+
+  /* ---------- Tres petits ecrans : on raccourcit le CTA du header ---------- */
+  @media (max-width: 372px) {
+    .cta-full { display: none !important; }
+    .cta-mini { display: inline !important; }
+  }
 </style>
 </head>
 <body>
@@ -69,20 +185,23 @@
 
   <!-- ============ NAV ============ -->
   <header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.96);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #E5E9EF">
-    <nav aria-label="Navigation principale" style="max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:14px 24px">
+    <nav aria-label="Navigation principale" class="site-nav" style="max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:14px 24px">
       <a href="#hero" aria-label="FlowChatAI, retour en haut de page" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0">
-        <img src="assets/logo-flowchatai.png" alt="FlowChatAI" style="height:34px;width:auto;display:block" />
+        <img src="assets/logo-flowchatai.png" alt="FlowChatAI" class="nav-logo" style="height:34px;width:auto;display:block" />
       </a>
-      <div style="display:flex;flex:1;justify-content:center;gap:28px;flex-wrap:wrap">
+      <div id="navLinks" class="nav-links" style="display:flex;flex:1;justify-content:center;gap:28px;flex-wrap:wrap">
         <a href="#comment" class="navlink" style="text-decoration:none;color:#1677FF;font-weight:600;font-size:15.5px">Comment ça marche</a>
         <a href="#preuve" class="navlink" style="text-decoration:none;color:#1677FF;font-weight:600;font-size:15.5px">La preuve</a>
         <a href="#offre" class="navlink" style="text-decoration:none;color:#1677FF;font-weight:600;font-size:15.5px">L'offre</a>
         <a href="#faq" class="navlink" style="text-decoration:none;color:#1677FF;font-weight:600;font-size:15.5px">FAQ</a>
       </div>
-      <a href="https://calendly.com/automations-flowchatai/demo-offerte" target="_blank" rel="noopener" class="btn-blue" style="display:inline-flex;align-items:center;gap:8px;background:#1677FF;color:#FFFFFF;text-decoration:none;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;padding:10px 18px;border-radius:10px;flex-shrink:0">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-        Réserver ma démo
+      <a href="https://calendly.com/automations-flowchatai/demo-offerte" target="_blank" rel="noopener" class="btn-blue nav-cta" style="display:inline-flex;align-items:center;gap:8px;background:#1677FF;color:#FFFFFF;text-decoration:none;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;padding:10px 18px;border-radius:10px;flex-shrink:0;margin-left:auto">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" class="nav-cta-icon"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+        <span class="cta-full">Réserver ma démo</span><span class="cta-mini">Démo</span>
       </a>
+      <button type="button" id="navBurger" class="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks" style="align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;padding:0;border:1px solid #E5E9EF;border-radius:10px;background:#FFFFFF;color:#0B1F33;cursor:pointer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </nav>
   </header>
 
@@ -90,15 +209,15 @@
 
   <!-- ============ HERO ============ -->
   <section id="hero" style="background:#F7F8FA;border-bottom:1px solid #E5E9EF">
-    <div style="max-width:1140px;margin:0 auto;padding:72px 24px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:56px;align-items:center">
+    <div class="hero-grid" style="max-width:1140px;margin:0 auto;padding:72px 24px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:56px;align-items:center">
       <div>
         <span style="display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;border:1px solid #D8E4F5;color:#1677FF;font-weight:600;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:22px">
           <span style="width:8px;height:8px;border-radius:50%;background:#14B8A6;flex-shrink:0"></span>
           Agent IA déjà en production · testable en live
         </span>
-        <h1 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(34px,4.4vw,52px);line-height:1.15;letter-spacing:-0.02em;color:#0B1F33;margin:0 0 20px">Le premier qui répond décroche le mandat. Faites en sorte que ce soit vous.</h1>
-        <p style="font-size:18px;line-height:1.65;margin:0 0 30px;max-width:520px">Vos leads Immoweb et vos demandes d'estimation reçoivent une réponse en moins de 60 secondes, sont qualifiés, et repartent avec un rendez-vous dans votre agenda. Même le samedi à 21h, quand votre agence est fermée.</p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px">
+        <h1 class="hero-title" style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(34px,4.4vw,52px);line-height:1.15;letter-spacing:-0.02em;color:#0B1F33;margin:0 0 20px">Le premier qui répond décroche le mandat. Faites en sorte que ce soit vous.</h1>
+        <p class="hero-sub" style="font-size:18px;line-height:1.65;margin:0 0 30px;max-width:520px">Vos leads Immoweb et vos demandes d'estimation reçoivent une réponse en moins de 60 secondes, sont qualifiés, et repartent avec un rendez-vous dans votre agenda. Même le samedi à 21h, quand votre agence est fermée.</p>
+        <div class="hero-actions" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px">
           <a href="https://calendly.com/automations-flowchatai/demo-offerte" target="_blank" rel="noopener" class="btn-blue" style="display:inline-flex;align-items:center;gap:10px;background:#1677FF;color:#FFFFFF;text-decoration:none;font-family:Manrope,sans-serif;font-weight:700;font-size:16px;padding:14px 24px;border-radius:12px;box-shadow:0 4px 14px rgba(22,119,255,0.25)">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
             Réserver ma démo de 15 min
@@ -108,7 +227,7 @@
             Tester l'agent en direct
           </button>
         </div>
-        <ul style="display:flex;gap:10px;flex-wrap:wrap;list-style:none;margin:0;padding:0">
+        <ul class="hero-badges" style="display:flex;gap:10px;flex-wrap:wrap;list-style:none;margin:0;padding:0">
           <li style="display:inline-flex;align-items:center;gap:7px;background:#FFFFFF;border:1px solid #E5E9EF;border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:500;color:#0B1F33">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
             Spécialiste immo FR &amp; BE
@@ -126,8 +245,8 @@
 
       <!-- Phone mock -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:22px">
-        <div aria-label="Démonstration animée d'une conversation entre un lead et Lucy, l'assistante IA" style="width:min(340px,88vw);background:#0B1F33;border-radius:42px;padding:10px;box-shadow:0 24px 60px rgba(11,31,51,0.22)">
-          <div style="background:#FFFFFF;border-radius:34px;overflow:hidden;display:flex;flex-direction:column;height:560px">
+        <div class="hero-phone" aria-label="Démonstration animée d'une conversation entre un lead et Lucy, l'assistante IA" style="width:min(360px,88vw);background:#0B1F33;border-radius:42px;padding:10px;box-shadow:0 24px 60px rgba(11,31,51,0.22)">
+          <div class="phone-screen" style="background:#FFFFFF;border-radius:34px;overflow:hidden;display:flex;flex-direction:column;height:560px">
             <!-- chat header -->
             <div style="display:flex;align-items:center;gap:10px;padding:16px 16px 12px;border-bottom:1px solid #EDF0F4;background:#FFFFFF">
               <div id="chatAvatar" style="width:40px;height:40px;border-radius:50%;background:#1677FF;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:Manrope,sans-serif;font-weight:800;font-size:17px;flex-shrink:0">L</div>
@@ -185,22 +304,22 @@
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 16px">Vos leads n'attendent pas. Vos concurrents non plus.</h2>
         <p style="font-size:17px;line-height:1.65;margin:0">Un contact Immoweb, Logic-Immo, SeLoger ou Zimmo qui reste sans réponse quelques heures est déjà chez le concurrent d'en face.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px">
-        <article class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:22px">
+        <article class="reveal card" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
           <span style="width:46px;height:46px;border-radius:12px;background:#EFF5FF;display:flex;align-items:center;justify-content:center;margin-bottom:18px">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
           </span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:19px;color:#0B1F33;margin:0 0 10px">Les leads des portails filent ailleurs</h3>
           <p style="font-size:15.5px;line-height:1.65;margin:0">Un acheteur ou un vendeur contacte trois agences à la fois. La première qui répond gagne la visite, souvent le mandat.</p>
         </article>
-        <article class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
+        <article class="reveal card" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
           <span style="width:46px;height:46px;border-radius:12px;background:#EFF5FF;display:flex;align-items:center;justify-content:center;margin-bottom:18px">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
           </span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:19px;color:#0B1F33;margin:0 0 10px">Le soir et le week-end, personne ne décroche</h3>
           <p style="font-size:15.5px;line-height:1.65;margin:0">C'est pourtant là que les particuliers cherchent. Chaque demande hors horaires est une opportunité qui refroidit.</p>
         </article>
-        <article class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
+        <article class="reveal card" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
           <span style="width:46px;height:46px;border-radius:12px;background:#EFF5FF;display:flex;align-items:center;justify-content:center;margin-bottom:18px">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </span>
@@ -218,34 +337,34 @@
         <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">Comment ça marche</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0">Du lead au rendez-vous, en 5 étapes automatiques.</h2>
       </div>
-      <ol style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;list-style:none;margin:0 0 44px;padding:0">
-        <li class="reveal" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
+      <ol class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:20px;list-style:none;margin:0 0 44px;padding:0">
+        <li class="reveal step" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
           <span style="display:inline-flex;width:34px;height:34px;border-radius:50%;background:#0B1F33;color:#FFFFFF;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;align-items:center;justify-content:center;margin-bottom:14px">1</span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;margin:0 0 8px">Le lead arrive</h3>
           <p style="font-size:14px;line-height:1.6;margin:0">Portail, site web, QR code sur une vitrine ou un panneau.</p>
         </li>
-        <li class="reveal" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
+        <li class="reveal step" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
           <span style="display:inline-flex;width:34px;height:34px;border-radius:50%;background:#0B1F33;color:#FFFFFF;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;align-items:center;justify-content:center;margin-bottom:14px">2</span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;margin:0 0 8px">Réponse en moins de 60 s</h3>
           <p style="font-size:14px;line-height:1.6;margin:0">Lucy engage la conversation par WhatsApp ou SMS, au nom de votre agence.</p>
         </li>
-        <li class="reveal" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
+        <li class="reveal step" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
           <span style="display:inline-flex;width:34px;height:34px;border-radius:50%;background:#0B1F33;color:#FFFFFF;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;align-items:center;justify-content:center;margin-bottom:14px">3</span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;margin:0 0 8px">Qualification et scoring</h3>
           <p style="font-size:14px;line-height:1.6;margin:0">Projet, budget, financement, délai. Chaque lead est noté et priorisé.</p>
         </li>
-        <li class="reveal" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
+        <li class="reveal step" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
           <span style="display:inline-flex;width:34px;height:34px;border-radius:50%;background:#0B1F33;color:#FFFFFF;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;align-items:center;justify-content:center;margin-bottom:14px">4</span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;margin:0 0 8px">RDV calé dans l'agenda</h3>
           <p style="font-size:14px;line-height:1.6;margin:0">Visite ou estimation, directement dans les créneaux de votre équipe.</p>
         </li>
-        <li class="reveal" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
+        <li class="reveal step" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:14px;padding:24px 20px">
           <span style="display:inline-flex;width:34px;height:34px;border-radius:50%;background:#0B1F33;color:#FFFFFF;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;align-items:center;justify-content:center;margin-bottom:14px">5</span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;margin:0 0 8px">CRM à jour</h3>
           <p style="font-size:14px;line-height:1.6;margin:0">Contact, historique, score et RDV synchronisés dans vos outils.</p>
         </li>
       </ol>
-      <div class="reveal" style="background:#0B1F33;border-radius:16px;padding:26px 32px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center">
+      <div class="reveal banner-dark" style="background:#0B1F33;border-radius:16px;padding:26px 32px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
         <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);color:#FFFFFF;margin:0">Du lead au RDV en quelques minutes. Zéro intervention humaine. 24h/24.</p>
       </div>
@@ -259,22 +378,22 @@
         <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">Pourquoi FlowChatAI</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 16px">Pas un chatbot générique recyclé. Un assistant conçu pour l'immobilier.</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px">
-        <article class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:22px">
+        <article class="reveal card" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
           <span style="width:46px;height:46px;border-radius:12px;background:#E0F5F1;display:flex;align-items:center;justify-content:center;margin-bottom:18px">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.5-.7L3 21l1.7-5A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
           </span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:19px;color:#0B1F33;margin:0 0 10px">WhatsApp-native, et SMS</h3>
           <p style="font-size:15.5px;line-height:1.65;margin:0">Là où vos leads répondent vraiment. WhatsApp en premier, SMS en relais, avec les mêmes conversations naturelles.</p>
         </article>
-        <article class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
+        <article class="reveal card" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
           <span style="width:46px;height:46px;border-radius:12px;background:#E0F5F1;display:flex;align-items:center;justify-content:center;margin-bottom:18px">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 0 1 7-7z"/><path d="M9 22h6"/></svg>
           </span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:700;font-size:19px;color:#0B1F33;margin:0 0 10px">En marque blanche, à votre nom</h3>
           <p style="font-size:15.5px;line-height:1.65;margin:0">Votre couleur, votre logo, votre base de connaissances. Vos leads parlent à votre agence, pas à un robot tiers.</p>
         </article>
-        <article class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
+        <article class="reveal card" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
           <span style="width:46px;height:46px;border-radius:12px;background:#E0F5F1;display:flex;align-items:center;justify-content:center;margin-bottom:18px">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M8 4v5"/></svg>
           </span>
@@ -287,7 +406,7 @@
 
   <!-- ============ RÉSEAUX & FRANCHISES ============ -->
   <section id="reseaux" style="background:#FFFFFF">
-    <div style="max-width:1140px;margin:0 auto;padding:88px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
+    <div class="reseaux-grid" style="max-width:1140px;margin:0 auto;padding:88px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
       <div class="reveal">
         <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">Réseaux &amp; franchises</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 16px">Un seul assistant, homogène sur tout votre réseau.</h2>
@@ -321,7 +440,7 @@
         <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">RGPD &amp; conformité</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 16px">Conçu pour un secteur où la confiance ne se négocie pas.</h2>
       </div>
-      <ul style="list-style:none;margin:0 0 32px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+      <ul style="list-style:none;margin:0 0 32px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px">
         <li class="reveal" style="display:flex;gap:13px;background:#FFFFFF;border:1px solid #E5E9EF;border-radius:12px;padding:18px 20px;font-size:15px;line-height:1.55;color:#0B1F33;align-items:flex-start">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><path d="M20 6L9 17l-5-5"/></svg>
           <span><strong style="font-weight:600">Opt-in et STOP natifs</strong>, dans chaque conversation</span>
@@ -359,7 +478,7 @@
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#FFFFFF;margin:0 0 18px">Le moteur tourne déjà en production.</h2>
         <p style="font-size:17px;line-height:1.7;color:#B9C3CF;margin:0">Un agent conversationnel fonctionne en autonomie depuis octobre 2025 pour un vrai client, et vous pouvez le tester en live. C'est ce même moteur conversationnel qui est décliné aujourd'hui pour les agences immobilières en France et en Belgique.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:44px">
+      <div class="stats" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:18px;margin-bottom:44px">
         <div class="reveal" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:28px 24px;text-align:center">
           <p style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,40px);color:#14B8A6;margin:0 0 6px;letter-spacing:-0.02em">~3 min</p>
           <p style="font-size:14.5px;color:#B9C3CF;margin:0">du lead au RDV calé</p>
@@ -393,12 +512,12 @@
         <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">L'offre Client Fondateur</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0">Des conditions réservées aux premières agences.</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:880px;margin:0 auto 28px;align-items:stretch">
-        <article class="reveal" style="background:#FFFFFF;border:2px solid #1677FF;border-radius:16px;padding:36px 32px;box-shadow:0 12px 32px rgba(22,119,255,0.12);position:relative;display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;max-width:880px;margin:0 auto 28px;align-items:stretch">
+        <article class="reveal plan" style="background:#FFFFFF;border:2px solid #1677FF;border-radius:16px;padding:36px 32px;box-shadow:0 12px 32px rgba(22,119,255,0.12);position:relative;display:flex;flex-direction:column">
           <span style="position:absolute;top:-13px;left:32px;background:#1677FF;color:#FFFFFF;font-family:Manrope,sans-serif;font-weight:700;font-size:12.5px;padding:4px 14px;border-radius:999px;letter-spacing:0.03em">Recommandé</span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:800;font-size:23px;color:#0B1F33;margin:6px 0 6px">Agence</h3>
           <p style="font-size:15px;margin:0 0 18px">Pour une agence indépendante, une ou plusieurs vitrines.</p>
-          <p style="margin:0 0 4px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-size:15px;color:#52606D">À partir de</span><span style="font-family:Manrope,sans-serif;font-weight:800;font-size:38px;color:#0B1F33;letter-spacing:-0.02em">797 €</span><span style="font-size:15px;color:#52606D">/mois</span></p>
+          <p style="margin:0 0 4px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-size:15px;color:#52606D">À partir de</span><span class="plan-price" style="font-family:Manrope,sans-serif;font-weight:800;font-size:38px;color:#0B1F33;letter-spacing:-0.02em">797 €</span><span style="font-size:15px;color:#52606D">/mois</span></p>
           <p style="font-size:14px;color:#52606D;margin:0 0 24px">+ installation à partir de 1 697 €</p>
           <ul style="list-style:none;margin:0 0 28px;padding:0;display:grid;gap:11px">
             <li style="display:flex;gap:10px;font-size:15px;color:#0B1F33;align-items:flex-start"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><path d="M20 6L9 17l-5-5"/></svg>WhatsApp + SMS</li>
@@ -413,10 +532,10 @@
             Réserver ma démo de 15 min
           </a>
         </article>
-        <article class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:16px;padding:36px 32px;box-shadow:0 2px 12px rgba(11,31,51,0.05);display:flex;flex-direction:column">
+        <article class="reveal plan" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:16px;padding:36px 32px;box-shadow:0 2px 12px rgba(11,31,51,0.05);display:flex;flex-direction:column">
           <h3 style="font-family:Manrope,sans-serif;font-weight:800;font-size:23px;color:#0B1F33;margin:6px 0 6px">Réseau / White-label+</h3>
           <p style="font-size:15px;margin:0 0 18px">Pour les réseaux, franchises et groupements d'agences.</p>
-          <p style="margin:0 0 4px"><span style="font-family:Manrope,sans-serif;font-weight:800;font-size:38px;color:#0B1F33;letter-spacing:-0.02em">Sur mesure</span></p>
+          <p style="margin:0 0 4px"><span class="plan-price" style="font-family:Manrope,sans-serif;font-weight:800;font-size:38px;color:#0B1F33;letter-spacing:-0.02em">Sur mesure</span></p>
           <p style="font-size:14px;color:#52606D;margin:0 0 24px">Selon le nombre de points de vente et les intégrations</p>
           <ul style="list-style:none;margin:0 0 28px;padding:0;display:grid;gap:11px">
             <li style="display:flex;gap:10px;font-size:15px;color:#0B1F33;align-items:flex-start"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><path d="M20 6L9 17l-5-5"/></svg>Tout le plan Agence, multiplié sur le réseau</li>
@@ -442,35 +561,35 @@
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0">Les questions que se posent les agences.</h2>
       </div>
       <div class="reveal" style="display:grid;gap:12px">
-        <details style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
+        <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Et le téléphone ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
           <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">L'agent ne le remplace pas. Il répond à l'écrit en moins de 60 secondes et propose un rappel dès qu'un lead préfère parler à un humain. Vous rappelez des contacts déjà qualifiés.</p>
         </details>
-        <details style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
+        <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">L'IA risque-t-elle de faire fuir mes leads ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
           <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Non. Lucy se présente comme l'assistante de votre agence, converse naturellement et passe la main à votre équipe à tout moment. Vos leads reçoivent une réponse immédiate au lieu d'un silence.</p>
         </details>
-        <details style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
+        <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Encore un chatbot gadget ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
           <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Non. Un agent en marque blanche, entraîné sur vos biens et vos process, connecté à votre agenda et votre CRM. Le moteur tourne en production depuis octobre 2025 et se teste en live sur cette page.</p>
         </details>
-        <details style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
+        <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Mes données sont-elles protégées (RGPD) ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
           <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Oui. Opt-in et STOP natifs, journal de consentement, purge automatique, hébergement UE. Votre agence reste responsable de traitement, FlowChatAI est sous-traitant avec DPA (art. 28).</p>
         </details>
-        <details style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
+        <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Combien de temps pour l'installation ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
           <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Quelques semaines, le temps de configurer votre marque blanche, votre base de connaissances et vos intégrations, avec des tests avant la mise en ligne.</p>
         </details>
-        <details style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
+        <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Ça s'intègre à mes outils ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
           <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Oui. WhatsApp Business et SMS, votre agenda et votre CRM, avec une orchestration pensée pour les outils du marché français et belge.</p>
         </details>
-        <details style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
+        <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Et si ça ne marche pas pour mon agence ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
           <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Garantie 30 jours. Si le système ne prend pas les rendez-vous automatiquement, l'installation est remboursée.</p>
         </details>
-        <details style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
+        <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Combien ça coûte ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
           <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Plan Agence à partir de 797 € par mois, installation à partir de 1 697 €. Plan Réseau / White-label+ sur mesure, selon votre organisation.</p>
         </details>
@@ -483,7 +602,7 @@
     <div class="reveal" style="max-width:760px;margin:0 auto;padding:92px 24px;text-align:center">
       <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);letter-spacing:-0.02em;line-height:1.2;color:#FFFFFF;margin:0 0 18px">Voyez-le fonctionner en 15 minutes.</h2>
       <p style="font-size:17px;line-height:1.65;color:#B9C3CF;margin:0 0 34px">Une démo en direct, sur vos cas concrets. Sans engagement.</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <div class="cta-block" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <a href="https://calendly.com/automations-flowchatai/demo-offerte" target="_blank" rel="noopener" class="btn-blue-lt" style="display:inline-flex;align-items:center;gap:10px;background:#1677FF;color:#FFFFFF;text-decoration:none;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;padding:15px 28px;border-radius:12px">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
           Réserver ma démo de 15 min
@@ -497,14 +616,14 @@
 
   <!-- ============ FOOTER ============ -->
   <footer style="background:#081827;border-top:1px solid rgba(255,255,255,0.08)">
-    <div style="max-width:1140px;margin:0 auto;padding:52px 24px 40px;display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;align-items:flex-start">
+    <div class="foot-inner" style="max-width:1140px;margin:0 auto;padding:52px 24px 40px;display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;align-items:flex-start">
       <div style="max-width:340px">
         <span style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
           <span style="background:#FFFFFF;border-radius:8px;padding:6px 12px;display:inline-flex;align-items:center"><img src="assets/logo-flowchatai.png" alt="FlowChatAI" style="height:24px;width:auto;display:block" /></span>
         </span>
         <p style="font-size:13.5px;line-height:1.6;color:#8B97A5;margin:0">L'assistant conversationnel des agences immobilières en France et en Belgique.</p>
       </div>
-      <div style="display:flex;gap:56px;flex-wrap:wrap">
+      <div class="foot-cols" style="display:flex;gap:56px;flex-wrap:wrap">
         <div>
           <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#B9C3CF;margin:0 0 14px">Contact</p>
           <p style="margin:0 0 8px"><a href="mailto:nel@flowchatai.co" class="footlink" style="color:#FFFFFF;text-decoration:none;font-size:14.5px">nel@flowchatai.co</a></p>
@@ -563,7 +682,7 @@
     b.type = 'button';
     b.setAttribute('aria-label', s.label);
     b.dataset.color = s.color;
-    b.style.cssText = 'width:26px;height:26px;border-radius:50%;background:'+s.color+';cursor:pointer;padding:0;border:'+(s.color===accent?'3px solid #0B1F33':'3px solid #FFFFFF');
+    b.style.cssText = 'width:30px;height:30px;border-radius:50%;background:'+s.color+';cursor:pointer;padding:0;border:'+(s.color===accent?'3px solid #0B1F33':'3px solid #FFFFFF');
     b.addEventListener('click', function(){ accent = s.color; paintAccent(); });
     swWrap.appendChild(b);
   });
@@ -634,6 +753,32 @@
   } else {
     loop();
   }
+
+  // ---- menu mobile (burger) ----
+  var burger = document.getElementById('navBurger');
+  var navLinks = document.getElementById('navLinks');
+  function setMenu(open){
+    navLinks.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  }
+  burger.addEventListener('click', function(){
+    setMenu(!navLinks.classList.contains('open'));
+  });
+  navLinks.addEventListener('click', function(e){
+    if (e.target.closest('a')) setMenu(false);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) { setMenu(false); burger.focus(); }
+  });
+  document.addEventListener('click', function(e){
+    if (!navLinks.classList.contains('open')) return;
+    if (!e.target.closest('.site-nav')) setMenu(false);
+  });
+  // si on repasse en large, on repart d'un etat propre
+  window.matchMedia('(min-width: 901px)').addEventListener('change', function(ev){
+    if (ev.matches) setMenu(false);
+  });
 
   // ---- Voiceflow agent ----
   function openAgent(){
