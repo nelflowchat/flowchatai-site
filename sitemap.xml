@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Un sitemap ne doit contenir que des URLs canoniques, indexables, qui repondent 200.
+
+  Les deux pages legales n'y figurent plus, pour deux raisons cumulatives :
+    1. elles portent <meta name="robots" content="noindex">, donc les declarer
+       revenait a demander a Google d'indexer ce qu'on lui interdit d'indexer ;
+    2. elles y etaient declarees sans l'extension (/mentions-legales), forme
+       heritee des rewrites Netlify perdus lors de la migration nginx du
+       22 juin 2026. Ces deux URLs renvoyaient donc 404 depuis cette date.
+  Elles restent atteignables par les liens du pied de page (robots "follow").
+
+  lastmod : date du dernier commit reel touchant le fichier.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://flowchatai.co/</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://flowchatai.co/mentions-legales</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://flowchatai.co/confidentialite</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>

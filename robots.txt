@@ -1,3 +1,87 @@
+# robots.txt de flowchatai.co
+#
+# Politique : acces integral autorise a tous les robots, y compris les
+# crawlers d'entrainement des modeles generatifs. Decide le 6 aout 2026.
+#
+# Justification : FlowchatAI est une marque sans notoriete etablie. On veut que
+# l'association "qualification de leads et prise de RDV pour agences
+# immobilieres, Belgique et France" -> FlowchatAI s'installe a la fois dans les
+# index de recherche ET dans les corpus d'entrainement. Le contenu publie ici
+# est de la documentation commerciale destinee a etre diffusee : rien a
+# proteger, tout a gagner a etre lu.
+#
+# Piege classique a connaitre : chez OpenAI comme chez Anthropic, le crawler
+# d'entrainement et le crawler de recherche sont DEUX robots distincts. Bloquer
+# GPTBot n'empeche pas ChatGPT de citer le site, c'est OAI-SearchBot qui
+# gouverne la citation. Meme architecture entre ClaudeBot et Claude-SearchBot.
+# Bloquer le mauvais est l'erreur la plus repandue.
+#   https://developers.openai.com/api/docs/bots
+#   https://support.claude.com/en/articles/8896518
+#
+# Prerequis absolu, documente par Google : une page doit etre INDEXEE et
+# eligible a un snippet pour apparaitre dans les AI Overviews et l'AI Mode.
+# Aucune optimisation specifique ne remplace l'indexation.
+#   https://developers.google.com/search/docs/appearance/ai-features
+
+# --- Moteurs de recherche classiques ---
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# --- OpenAI ---
+# GPTBot : entrainement des modeles. Autorise volontairement.
+User-agent: GPTBot
+Allow: /
+
+# OAI-SearchBot : indexation pour la recherche. C'est lui qui gouverne
+# l'apparition dans les reponses de ChatGPT. Ne jamais bloquer.
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT-User : recuperation declenchee par un utilisateur.
+User-agent: ChatGPT-User
+Allow: /
+
+# --- Anthropic ---
+# ClaudeBot : entrainement. Autorise volontairement.
+User-agent: ClaudeBot
+Allow: /
+
+# Claude-SearchBot : indexation pour la recherche. Ne jamais bloquer.
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# --- Perplexity ---
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity documente que ce fetcher ignore robots.txt. Ligne declarative.
+User-agent: Perplexity-User
+Allow: /
+
+# --- Google, usages IA ---
+# Google-Extended : entrainement Gemini et grounding Gemini Apps / Vertex AI.
+# Google documente qu'il n'a aucun effet sur l'inclusion ni le classement dans
+# Google Search. Autorise volontairement.
+User-agent: Google-Extended
+Allow: /
+
+# --- Apple ---
+# Mention explicite obligatoire : si robots.txt ne cite pas Applebot mais cite
+# Googlebot, Applebot suit les regles de Googlebot.
+#   https://support.apple.com/en-us/119829
+User-agent: Applebot
+Allow: /
+
+# Applebot-Extended ne crawle pas, c'est un signal d'opt-out de l'entrainement
+# des modeles Apple. Ne pas l'interdire vaut consentement.
+
+# --- Par defaut ---
 User-agent: *
 Allow: /
 
