@@ -3,3 +3,6 @@
 
 # Netlify
 .netlify/
+
+# La documentation d infrastructure vit dans le depot prive (jarvis-starter-kit)
+DEPLOY-VPS.md
