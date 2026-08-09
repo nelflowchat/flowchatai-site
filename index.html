@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vos leads Immoweb et SeLoger rappelés en 60 s | FlowchatAI</title>
-<meta name="description" content="Vos leads Immoweb et SeLoger arrivent par mail et attendent. FlowchatAI leur écrit en 60 secondes par SMS, les qualifie, les relance, cale le RDV." />
+<title>Vos leads Immoweb et SeLoger rappelés en 60 s | FlowChatAI</title>
+<meta name="description" content="Vos leads Immoweb et SeLoger arrivent par mail et attendent. FlowChatAI leur écrit en 60 secondes par SMS, les qualifie, les relance, cale le RDV." />
 <meta name="theme-color" content="#0B1F33" />
 <!-- URL canonique absolue. Sans elle, la meme page repondait en 200 sur
      https://flowchatai.co/, https://www.flowchatai.co/ et /index.html :
@@ -12,10 +12,10 @@
 <link rel="canonical" href="https://flowchatai.co/" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 <meta property="og:title" content="Vos leads Immoweb et SeLoger, rappelés en 60 secondes" />
-<meta property="og:description" content="Un lead de portail ne met jamais les pieds sur votre site. FlowchatAI lui écrit par SMS et WhatsApp, le qualifie, le relance s'il décroche, et pose le rendez-vous dans l'agenda du négociateur." />
+<meta property="og:description" content="Un lead de portail ne met jamais les pieds sur votre site. FlowChatAI lui écrit par SMS et WhatsApp, le qualifie, le relance s'il décroche, et pose le rendez-vous dans l'agenda du négociateur." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://flowchatai.co/" />
-<meta property="og:site_name" content="FlowchatAI" />
+<meta property="og:site_name" content="FlowChatAI" />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:locale:alternate" content="fr_BE" />
 <!-- Open Graph impose une URL ABSOLUE. En relatif ("og-image.png"), aucun
@@ -28,46 +28,64 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:type" content="image/png" />
-<meta property="og:image:alt" content="Visuel FlowchatAI sur fond bleu nuit : « Vos leads Immoweb n'iront jamais sur votre site. On va les chercher. »" />
+<meta property="og:image:alt" content="Visuel FlowChatAI sur fond bleu nuit : « Vos leads Immoweb n'iront jamais sur votre site. On va les chercher. »" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Vos leads Immoweb et SeLoger, rappelés en 60 secondes" />
-<meta name="twitter:description" content="Le lead de portail ne vient pas à vous. FlowchatAI va le chercher par SMS et WhatsApp, le qualifie, le relance, et cale le rendez-vous. Belgique et France." />
+<meta name="twitter:description" content="Le lead de portail ne vient pas à vous. FlowChatAI va le chercher par SMS et WhatsApp, le qualifie, le relance, et cale le rendez-vous. Belgique et France." />
 <meta name="twitter:image" content="https://flowchatai.co/og-image-v2.png" />
-<meta name="twitter:image:alt" content="Visuel FlowchatAI : « Vos leads Immoweb n'iront jamais sur votre site. On va les chercher. »" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1F33'/%3E%3Cpath d='M8 9.5C8 8.1 9.1 7 10.5 7h11C22.9 7 24 8.1 24 9.5v8c0 1.4-1.1 2.5-2.5 2.5H14l-4.5 4v-4C8.1 20 8 18.9 8 17.5v-8z' fill='%231677FF'/%3E%3Ccircle cx='12.5' cy='13.5' r='1.3' fill='white'/%3E%3Ccircle cx='16' cy='13.5' r='1.3' fill='white'/%3E%3Ccircle cx='19.5' cy='13.5' r='1.3' fill='%2314B8A6'/%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<meta name="twitter:image:alt" content="Visuel FlowChatAI : « Vos leads Immoweb n'iront jamais sur votre site. On va les chercher. »" />
+<!-- Icones : site-redaction/favicon/generer-favicons.py. Ordre volontaire,
+     le SVG d'abord, le .ico en repli. iOS, Android et les vieux navigateurs
+     ne lisent pas les memes formats, d'ou la serie. -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<!-- Polices auto-hebergees : 71,3 Ko en 2 requetes, contre 189,9 Ko en 7 via
+     Google Fonts, qui servait trois fois le meme fichier variable.
+     crossorigin est obligatoire : une police se recupere en mode CORS meme en
+     same-origin, sans lui elle serait telechargee deux fois. -->
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-  {"@type":"Organization","@id":"https://flowchatai.co/#organization","name":"FlowchatAI","alternateName":["Flowchat AI","FlowChatAI"],"legalName":"Olymp Automations","url":"https://flowchatai.co/","email":"nel@flowchatai.co","vatID":"BE0479233349","foundingDate":"2025","foundingLocation":{"@type":"Place","name":"Bruxelles, Belgique"},"logo":{"@type":"ImageObject","url":"https://flowchatai.co/assets/logo-flowchatai.png","width":723,"height":160},"image":"https://flowchatai.co/og-image-v2.png","address":{"@type":"PostalAddress","streetAddress":"Chaussée de Charleroi 112","postalCode":"1060","addressLocality":"Bruxelles","addressCountry":"BE"},"areaServed":["FR","BE"],"slogan":"L'assistant conversationnel des agences immobilières en France et en Belgique","description":"FlowchatAI installe pour les agences immobilières de Belgique et de France un agent conversationnel en marque blanche qui écrit au lead entrant par SMS et WhatsApp en moins de 60 secondes, le qualifie, cale un rendez-vous dans l'agenda du négociateur et alimente le CRM.","founder":{"@id":"https://flowchatai.co/#nelly-olympio"},"knowsAbout":["Qualification de leads immobiliers","Prise de rendez-vous automatisée","Agent conversationnel en marque blanche","WhatsApp Business API","SMS conversationnel","Agences immobilières","Portails immobiliers Immoweb, SeLoger, Bien'ici, Leboncoin"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"nel@flowchatai.co","availableLanguage":["fr","en"],"areaServed":["BE","FR"]}},
+  {"@type":"Organization","@id":"https://flowchatai.co/#organization","name":"FlowChatAI","alternateName":["FlowchatAI","Flowchat AI","Flowchat"],"legalName":"Olymp Automations","url":"https://flowchatai.co/","email":"nel@flowchatai.co","vatID":"BE0479233349","foundingDate":"2025-01-01","sameAs":["https://www.linkedin.com/company/flowchatai-/"],"foundingLocation":{"@type":"Place","name":"Bruxelles, Belgique"},"logo":{"@type":"ImageObject","url":"https://flowchatai.co/assets/logo-flowchatai-large.png","width":966,"height":203},"image":"https://flowchatai.co/og-image-v2.png","address":{"@type":"PostalAddress","streetAddress":"Chaussée de Charleroi 112","postalCode":"1060","addressLocality":"Bruxelles","addressCountry":"BE"},"areaServed":["FR","BE"],"slogan":"L'assistant conversationnel des agences immobilières en France et en Belgique","description":"FlowChatAI installe pour les agences immobilières de Belgique et de France un agent conversationnel en marque blanche qui écrit au lead entrant par SMS et WhatsApp en moins de 60 secondes, le qualifie, cale un rendez-vous dans l'agenda du négociateur et alimente le CRM.","founder":{"@id":"https://flowchatai.co/#nelly-olympio"},"knowsAbout":["Qualification de leads immobiliers","Prise de rendez-vous automatisée","Agent conversationnel en marque blanche","WhatsApp Business API","SMS conversationnel","Agences immobilières","Portails immobiliers Immoweb, SeLoger, Bien'ici, Leboncoin"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"nel@flowchatai.co","availableLanguage":["fr","en"],"areaServed":["BE","FR"]}},
   {"@type":"Person","@id":"https://flowchatai.co/#nelly-olympio","name":"Nelly Olympio","jobTitle":"Fondatrice","worksFor":{"@id":"https://flowchatai.co/#organization"},"homeLocation":{"@type":"Place","name":"Bruxelles, Belgique"},"knowsLanguage":["fr","en"]},
-  {"@type":"WebSite","@id":"https://flowchatai.co/#website","url":"https://flowchatai.co/","name":"FlowchatAI","inLanguage":"fr","publisher":{"@id":"https://flowchatai.co/#organization"}},
-  {"@type":"WebPage","@id":"https://flowchatai.co/#webpage","url":"https://flowchatai.co/","name":"Vos leads Immoweb et SeLoger rappelés en 60 s | FlowchatAI","isPartOf":{"@id":"https://flowchatai.co/#website"},"about":{"@id":"https://flowchatai.co/#organization"},"inLanguage":"fr","primaryImageOfPage":"https://flowchatai.co/og-image-v2.png"},
+  {"@type":"WebSite","@id":"https://flowchatai.co/#website","url":"https://flowchatai.co/","name":"FlowChatAI","inLanguage":"fr","publisher":{"@id":"https://flowchatai.co/#organization"}},
+  {"@type":"WebPage","@id":"https://flowchatai.co/#webpage","url":"https://flowchatai.co/","name":"Vos leads Immoweb et SeLoger rappelés en 60 s | FlowChatAI","isPartOf":{"@id":"https://flowchatai.co/#website"},"about":{"@id":"https://flowchatai.co/#organization"},"inLanguage":"fr","dateModified":"2026-08-09","primaryImageOfPage":{"@type":"ImageObject","url":"https://flowchatai.co/og-image-v2.png","width":1200,"height":630}},
   {"@type":"Service","@id":"https://flowchatai.co/#service","name":"Qualification de leads et prise de rendez-vous pour agences immobilières","url":"https://flowchatai.co/","serviceType":"Qualification de leads et prise de rendez-vous automatisée par SMS et WhatsApp","description":"Un agent conversationnel en marque blanche, au nom et aux couleurs de l'agence, qui écrit au lead entrant par SMS et WhatsApp en moins de 60 secondes, le qualifie, propose des créneaux, le relance une fois s'il s'arrête avant d'avoir confirmé, cale le rendez-vous dans l'agenda du négociateur et écrit la fiche dans le CRM. Il traite les leads venus des portails immobiliers, que les chatbots de site ne voient jamais. Bilingue français et anglais.","provider":{"@id":"https://flowchatai.co/#organization"},"areaServed":[{"@type":"Country","name":"Belgique"},{"@type":"Country","name":"France"}],"audience":{"@type":"BusinessAudience","name":"Agences immobilières","audienceType":"Agences immobilières, réseaux et franchises"},"availableChannel":[{"@type":"ServiceChannel","name":"WhatsApp Business"},{"@type":"ServiceChannel","name":"SMS"}],"offers":[{"@type":"Offer","name":"Plan Agence, installation","description":"Installation, configuration en marque blanche, base de connaissances et intégrations. Mise en ligne sous 21 jours à compter de la signature. Garantie 30 jours à compter de la mise en ligne.","priceSpecification":{"@type":"PriceSpecification","price":"1697","priceCurrency":"EUR","minPrice":"1697","valueAddedTaxIncluded":false},"availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Plan Agence, abonnement mensuel","priceSpecification":{"@type":"UnitPriceSpecification","price":"797","priceCurrency":"EUR","minPrice":"797","unitCode":"MON","billingIncrement":1,"valueAddedTaxIncluded":false},"availability":"https://schema.org/InStock"}]},
   {"@type":"FAQPage","@id":"https://flowchatai.co/#faq","inLanguage":"fr","isPartOf":{"@id":"https://flowchatai.co/#website"},"mainEntity":[
-    {"@type":"Question","name":"En quoi est-ce différent d'un chatbot de site web ?","acceptedAnswer":{"@type":"Answer","text":"Un chatbot de site attend que le visiteur vienne à lui. FlowchatAI va vers le lead. La différence est décisive dans l'immobilier : un lead venu d'Immoweb, de SeLoger, de Bien'ici ou de Leboncoin ne met jamais les pieds sur le site de l'agence. Il remplit un formulaire sur le portail, l'agence reçoit un e-mail. Aucun chatbot de site ne verra jamais ce lead, y compris un module de chat intégré à un CRM. FlowchatAI lui écrit par SMS ou WhatsApp, sur le canal sortant."}},
+    {"@type":"Question","name":"En quoi est-ce différent d'un chatbot de site web ?","acceptedAnswer":{"@type":"Answer","text":"Un chatbot de site attend que le visiteur vienne à lui. FlowChatAI va vers le lead. La différence est décisive dans l'immobilier : un lead venu d'Immoweb, de SeLoger, de Bien'ici ou de Leboncoin ne met jamais les pieds sur le site de l'agence. Il remplit un formulaire sur le portail, l'agence reçoit un e-mail. Aucun chatbot de site ne verra jamais ce lead, y compris un module de chat intégré à un CRM. FlowChatAI lui écrit par SMS ou WhatsApp, sur le canal sortant."}},
     {"@type":"Question","name":"Que se passe-t-il si le lead ne répond pas ?","acceptedAnswer":{"@type":"Answer","text":"L'agent le relance. Une seule fois, jamais deux : un verrou technique l'en empêche. La relance part entre 2 et 24 heures après son dernier message, uniquement pendant les horaires d'ouverture de votre agence, donc jamais à 3h du matin. Le message reprend là où le lead s'est arrêté et donne le téléphone de l'agence. Le système ne harcèlera jamais un de vos prospects en votre nom."}},
-    {"@type":"Question","name":"Et le téléphone ?","acceptedAnswer":{"@type":"Answer","text":"L'agent ne remplace pas le téléphone. Il répond à l'écrit en moins de 60 secondes et propose un rappel dès qu'un lead préfère parler à un humain."}},
-    {"@type":"Question","name":"L'IA risque-t-elle de faire fuir mes leads ?","acceptedAnswer":{"@type":"Answer","text":"Non. Lucy se présente comme l'assistante de votre agence, converse naturellement et passe la main à un humain à tout moment. Vos leads reçoivent une réponse immédiate au lieu d'un silence."}},
-    {"@type":"Question","name":"Encore un chatbot gadget ?","acceptedAnswer":{"@type":"Answer","text":"Non. Un agent en marque blanche, entraîné sur vos biens et vos process, connecté à votre agenda et votre CRM. Le moteur tourne en production depuis octobre 2025."}},
-    {"@type":"Question","name":"Mes données sont-elles protégées (RGPD) ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Opt-in et STOP natifs, journal de consentement horodaté, purge automatique. Notre orchestration est hébergée sur une infrastructure dédiée en Union européenne. Les sous-traitants ultérieurs sont documentés et les transferts hors UE encadrés par clauses contractuelles types. Votre agence reste responsable de traitement, FlowchatAI est sous-traitant avec DPA."}},
+    {"@type":"Question","name":"Et le téléphone ?","acceptedAnswer":{"@type":"Answer","text":"L'agent ne le remplace pas. Il répond à l'écrit en moins de 60 secondes et propose un rappel dès qu'un lead préfère parler à un humain. Vous rappelez des contacts déjà qualifiés."}},
+    {"@type":"Question","name":"L'IA risque-t-elle de faire fuir mes leads ?","acceptedAnswer":{"@type":"Answer","text":"Non. Lucy se présente comme l'assistante de votre agence, converse naturellement et passe la main à votre équipe à tout moment. Vos leads reçoivent une réponse immédiate au lieu d'un silence."}},
+    {"@type":"Question","name":"Encore un chatbot gadget ?","acceptedAnswer":{"@type":"Answer","text":"Non. Un agent en marque blanche, entraîné sur vos biens et vos process, connecté à votre agenda et votre CRM. Le moteur tourne en production depuis octobre 2025 et se teste en live sur cette page."}},
+    {"@type":"Question","name":"Mes données sont-elles protégées (RGPD) ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Opt-in et STOP natifs, journal de consentement horodaté, purge automatique. Notre orchestration est hébergée sur une infrastructure dédiée en Union européenne. Les sous-traitants ultérieurs sont documentés et les transferts hors UE encadrés par clauses contractuelles types. Votre agence reste responsable de traitement, FlowChatAI est sous-traitant avec DPA (art. 28)."}},
     {"@type":"Question","name":"Combien de temps pour l'installation ?","acceptedAnswer":{"@type":"Answer","text":"21 jours entre la signature et la mise en ligne : configuration de votre marque blanche, de votre base de connaissances et de vos intégrations, avec une phase de test avant activation. La garantie 30 jours démarre le jour de la mise en ligne, pas à la signature."}},
-    {"@type":"Question","name":"À qui appartient le numéro WhatsApp ?","acceptedAnswer":{"@type":"Answer","text":"Pendant la phase pilote, le numéro est ouvert et opéré par FlowchatAI, mais il affiche le nom de votre agence : vos leads ne voient que vous. À la signature, le numéro et l'agent basculent sur le compte WhatsApp Business de votre agence, dont vous restez propriétaire. Vos leads et vos rendez-vous sont écrits dans votre CRM au fil de l'eau, ils vous restent donc quoi qu'il arrive."}},
+    {"@type":"Question","name":"À qui appartient le numéro WhatsApp ?","acceptedAnswer":{"@type":"Answer","text":"Pendant la phase pilote, le numéro est ouvert et opéré par FlowChatAI, mais il affiche le nom de votre agence : vos leads ne voient que vous. À la signature, le numéro et l'agent basculent sur le compte WhatsApp Business de votre agence, dont vous restez propriétaire. Vos leads et vos rendez-vous sont écrits dans votre CRM au fil de l'eau, ils vous restent donc quoi qu'il arrive."}},
     {"@type":"Question","name":"Ça s'intègre à mes outils ?","acceptedAnswer":{"@type":"Answer","text":"Oui. WhatsApp Business et SMS, votre agenda et votre CRM, avec une orchestration pensée pour les outils du marché français et belge."}},
     {"@type":"Question","name":"Et si ça ne marche pas pour mon agence ?","acceptedAnswer":{"@type":"Answer","text":"Garantie 30 jours. Si le système ne prend pas les rendez-vous automatiquement dans les 30 jours suivant la mise en ligne, l'installation est remboursée."}},
-    {"@type":"Question","name":"Combien ça coûte ?","acceptedAnswer":{"@type":"Answer","text":"Plan Agence à partir de 797 € par mois, installation à partir de 1 697 €. Plan Réseau / White-label+ sur mesure."}}
+    {"@type":"Question","name":"Combien ça coûte ?","acceptedAnswer":{"@type":"Answer","text":"Plan Agence à partir de 797 € par mois, installation à partir de 1 697 €. Plan Réseau / White-label+ sur mesure, selon votre organisation."}}
   ]}
 ]}
 </script>
 <style>
+  /* Polices variables. "latin" couvre tout le francais ; "latin-ext" n'est
+     telecharge que si un caractere l'exige (unicode-range). */
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/inter-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Manrope';font-style:normal;font-weight:700 800;font-display:swap;src:url(/fonts/manrope-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Manrope';font-style:normal;font-weight:700 800;font-display:swap;src:url(/fonts/manrope-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body { margin: 0; background: #FFFFFF; color: #52606D; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   img, svg { max-width: 100%; }
-  /* ancres : compense la hauteur du header collant */
-  section[id] { scroll-margin-top: 80px; }
+  /* Ancres : hauteur reelle du header collant, 70px et 65px sous 640px. */
+  section[id] { scroll-margin-top: 72px; }
+  @media (max-width: 640px) { section[id] { scroll-margin-top: 67px; } }
   a { color: #1677FF; }
   a:hover { color: #0B5FD9; }
   :focus-visible { outline: 3px solid #1677FF; outline-offset: 2px; border-radius: 4px; }
@@ -91,6 +109,56 @@
     .reveal { opacity: 1; transform: none; }
   }
 
+  /* Lien d'evitement (WCAG 2.4.1) : sinon 7 tabulations avant le contenu. */
+  .skip {
+    position: absolute; left: 8px; top: -60px; z-index: 200;
+    background: #0B1F33; color: #FFFFFF; text-decoration: none;
+    font-family: Manrope, sans-serif; font-weight: 700; font-size: 15px;
+    padding: 12px 18px; border-radius: 0 0 10px 10px;
+    transition: top 0.15s ease;
+  }
+  .skip:focus { top: 0; color: #FFFFFF; }
+
+  /* CONTRASTE (WCAG 2.2 AA). #1677FF = 4,10:1 sur blanc, sous les 4,5:1
+     exiges pour du texte, dans les deux sens (le blanc SUR ce bleu echoue
+     pareil). #0B5FD9 = 5,75:1. Le bleu d'origine reste sur tout ce qui ne
+     porte pas de texte, ou le seuil n'est que de 3:1.
+     Pour revenir a l'ancienne teinte : supprimer ce bloc. */
+  a { color: #0B5FD9; }
+  a:hover { color: #0949A8; }
+  .navlink { color: #0B5FD9 !important; }
+  .navlink:hover { color: #0949A8 !important; }
+  .btn-blue, .btn-blue-lt { background: #0B5FD9 !important; }
+  .btn-blue:hover, .btn-blue-lt:hover { background: #0949A8 !important; }
+  .btn-outline { color: #0B5FD9 !important; border-color: #0B5FD9 !important; }
+  .btn-outline:hover { background: #EFF5FF !important; color: #0949A8 !important; }
+  /* Bordure du burger : #E5E9EF mesurait 1,22:1, or c'est la seule
+     delimitation visuelle du bouton. */
+  .nav-burger { border-color: #8A94A0 !important; }
+
+  /* ALIGNEMENT DES GRILLES. `auto-fit` choisissait des nombres de colonnes
+     qui ne divisent pas le nombre de cartes, d'ou une derniere rangee a un
+     seul element. On impose les seuls decoupages qui tombent juste. */
+  /* 6 etapes : 190px autorisait 5 colonnes (5+1). A 300px, seuls 3/2/1. */
+  .steps { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)) !important; }
+
+  /* 4 cartes : 4 colonnes exigeraient 1186px pour un conteneur de 1140.
+     Elles ne pouvaient JAMAIS tenir sur une rangee, d'ou 3+1 partout. */
+  #pourquoi .cards { grid-template-columns: 1fr !important; }
+  @media (min-width: 700px) { #pourquoi .cards { grid-template-columns: 1fr 1fr !important; } }
+
+  /* 3 cartes : l'etat a 2 colonnes donnait 2+1. Seuls 3 et 1 sont propres. */
+  #probleme .cards { grid-template-columns: 1fr !important; }
+  @media (min-width: 880px) { #probleme .cards { grid-template-columns: repeat(3, 1fr) !important; } }
+
+  /* 7 puces : 7 est premier, aucune grille ne tombe juste. La derniere court
+     sur toute la largeur : ligne de cloture plutot que reliquat. */
+  @media (min-width: 679px) { .rgpd-list > li:last-child { grid-column: 1 / -1; } }
+
+  /* 4 chiffres : 4 colonnes ne tiennent qu'a partir de 917px, d'ou 3+1 sur
+     toute la plage tablette. Le garde-fou s'arretait a 640px. */
+  @media (max-width: 916px) { .stats { grid-template-columns: 1fr 1fr !important; } }
+
   /* ============================================================
      RESPONSIVE
      Le corps de page est en styles inline (export Claude Design),
@@ -108,6 +176,16 @@
   .nav-burger { display: none; }
   .cta-mini { display: none; }
   .nav-burger:hover { background: #F7F8FA !important; }
+
+  /* Centrage reel des liens. En flex, ils se centraient dans l'espace
+     RESTANT entre logo et bouton, soit 20,15px trop a gauche. Trois pistes
+     a gouttieres egales : centre exact. Au-dessus de 900px seulement, en
+     dessous le burger reprend la main. */
+  @media (min-width: 901px) {
+    .site-nav { display: grid !important; grid-template-columns: 1fr auto 1fr; }
+    .site-nav > a:first-of-type { justify-self: start; }
+    .nav-cta { justify-self: end; margin-left: 0 !important; }
+  }
 
   /* ---------- Tablette et en dessous : nav en menu deroulant ---------- */
   @media (max-width: 900px) {
@@ -209,13 +287,15 @@
 </head>
 <body>
 
+<a href="#contenu" class="skip">Aller au contenu</a>
+
 <div style="font-family:Inter,system-ui,sans-serif;color:#52606D;background:#FFFFFF">
 
   <!-- ============ NAV ============ -->
   <header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.96);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #E5E9EF">
     <nav aria-label="Navigation principale" class="site-nav" style="max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:14px 24px">
-      <a href="#hero" aria-label="FlowchatAI, retour en haut de page" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0">
-        <img src="assets/logo-flowchatai.png" alt="FlowchatAI" class="nav-logo" style="height:34px;width:auto;display:block" />
+      <a href="#hero" aria-label="FlowChatAI, retour en haut de page" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0">
+        <img src="assets/logo-flowchatai.png" alt="FlowChatAI" class="nav-logo" width="162" height="34" style="height:34px;width:auto;display:block" />
       </a>
       <div id="navLinks" class="nav-links" style="display:flex;flex:1;justify-content:center;gap:28px;flex-wrap:wrap">
         <a href="#comment" class="navlink" style="text-decoration:none;color:#1677FF;font-weight:600;font-size:15.5px">Comment ça marche</a>
@@ -233,7 +313,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="contenu" tabindex="-1" style="outline:none">
 
   <!-- ============ HERO ============ -->
   <section id="hero" style="background:#F7F8FA;border-bottom:1px solid #E5E9EF">
@@ -244,7 +324,7 @@
           Système déjà en production · testable en live
         </span>
         <h1 class="hero-title" style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(34px,4.4vw,52px);line-height:1.15;letter-spacing:-0.02em;color:#0B1F33;margin:0 0 20px">Vos leads Immoweb et SeLoger n'iront jamais sur votre site. On va les chercher pour vous.</h1>
-        <p class="hero-sub" style="font-size:18px;line-height:1.65;margin:0 0 30px;max-width:520px">Immoweb, SeLoger, Leboncoin, Bien'ici : la demande arrive par mail, dans une boîte que personne ne relève un samedi à 21h. FlowchatAI écrit au lead en moins de 60 secondes par SMS et WhatsApp, le qualifie, le relance s'il s'arrête en route, et pose le rendez-vous dans l'agenda de votre négociateur. Belgique et France.</p>
+        <p class="hero-sub" style="font-size:18px;line-height:1.65;margin:0 0 30px;max-width:520px">Immoweb, SeLoger, Leboncoin, Bien'ici : la demande arrive par mail, dans une boîte que personne ne relève un samedi à 21h. FlowChatAI écrit au lead en moins de 60 secondes par SMS et WhatsApp, le qualifie, le relance s'il s'arrête en route, et pose le rendez-vous dans l'agenda de votre négociateur. Belgique et France.</p>
         <div class="hero-actions" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px">
           <button type="button" data-open-agent class="btn-blue" style="display:inline-flex;align-items:center;gap:10px;background:#1677FF;color:#FFFFFF;border:none;font-family:Manrope,sans-serif;font-weight:700;font-size:16px;padding:14px 24px;border-radius:12px;cursor:pointer;box-shadow:0 4px 14px rgba(22,119,255,0.25)">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.5-.7L3 21l1.7-5A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
@@ -277,7 +357,11 @@
 
       <!-- Phone mock -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:22px">
-        <div class="hero-phone" aria-label="Démonstration animée d'une conversation entre un lead et Lucy, l'assistante IA" style="width:min(360px,88vw);background:#0B1F33;border-radius:42px;padding:10px;box-shadow:0 24px 60px rgba(11,31,51,0.22)">
+        <!-- role="img" : sans lui l'aria-label etait ignore (role generic) et
+             le lecteur d'ecran lisait la conversation rejouee en boucle comme
+             un vrai echange. Il retire aussi les descendants de l'arbre.
+             Largeur : 88vw debordait de 20px entre 779 et 818px. -->
+        <div class="hero-phone" role="img" aria-label="Démonstration animée : un lead écrit à 21h47 au sujet d'un appartement à Ixelles, Lucy lui répond, le qualifie et cale une visite le samedi à 11h." style="width:min(360px,100%);background:#0B1F33;border-radius:42px;padding:10px;box-shadow:0 24px 60px rgba(11,31,51,0.22)">
           <div class="phone-screen" style="background:#FFFFFF;border-radius:34px;overflow:hidden;display:flex;flex-direction:column;height:560px">
             <!-- chat header -->
             <div style="display:flex;align-items:center;gap:10px;padding:16px 16px 12px;border-bottom:1px solid #EDF0F4;background:#FFFFFF">
@@ -324,7 +408,8 @@
   <!-- ============ PROMESSE ============ -->
   <section aria-label="Promesse de marque" style="background:#FFFFFF;border-bottom:1px solid #E5E9EF">
     <div class="reveal" style="max-width:1140px;margin:0 auto;padding:52px 24px;text-align:center">
-      <p style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(26px,3.6vw,40px);letter-spacing:-0.02em;line-height:1.3;margin:0"><span style="color:#0B1F33">Plus de réponses. </span><span style="color:#0B1F33">Plus de visites. </span><span style="color:#14B8A6">Plus de mandats.</span></p>
+      <p style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(26px,3.6vw,40px);letter-spacing:-0.02em;line-height:1.3;margin:0"><span style="color:#0B1F33">Plus de réponses. </span><span style="color:#0B1F33">Plus de visites. </span><!-- #14B8A6 sur blanc = 2,49:1, sous les 3:1 du grand texte. #0E7C70 = 5,08:1.
+  Le menthe reste inchange sur bleu nuit, ou il passe (6,71:1). --><span style="color:#0E7C70">Plus de mandats.</span></p>
     </div>
   </section>
 
@@ -332,11 +417,11 @@
   <section id="probleme" style="background:#F7F8FA">
     <div style="max-width:1140px;margin:0 auto;padding:88px 24px">
       <div class="reveal" style="max-width:640px;margin-bottom:48px">
-        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">Le problème</p>
+        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#0B5FD9;margin:0 0 12px">Le problème</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 16px">Où arrive vraiment un lead Immoweb, et pourquoi personne ne le voit.</h2>
         <p style="font-size:17px;line-height:1.65;margin:0">Un contact Immoweb, Logic-Immo, SeLoger ou Zimmo qui reste sans réponse quelques heures est déjà chez le concurrent d'en face.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:22px">
+      <div class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:22px">
         <article class="reveal card" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
           <span style="width:46px;height:46px;border-radius:12px;background:#EFF5FF;display:flex;align-items:center;justify-content:center;margin-bottom:18px">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
@@ -366,7 +451,7 @@
   <section id="comment" style="background:#FFFFFF">
     <div style="max-width:1140px;margin:0 auto;padding:88px 24px">
       <div class="reveal" style="max-width:640px;margin-bottom:52px">
-        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">Comment ça marche</p>
+        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#0B5FD9;margin:0 0 12px">Comment ça marche</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0">Du formulaire du portail au rendez-vous dans votre agenda.</h2>
       </div>
       <ol class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:20px;list-style:none;margin:0 0 44px;padding:0">
@@ -412,11 +497,11 @@
   <section id="pourquoi" style="background:#F7F8FA">
     <div style="max-width:1140px;margin:0 auto;padding:88px 24px">
       <div class="reveal" style="max-width:680px;margin-bottom:48px">
-        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">Pourquoi FlowchatAI</p>
+        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#0B5FD9;margin:0 0 12px">Pourquoi FlowChatAI</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 16px">« J'ai déjà un chatbot. » Il ne verra jamais ce lead.</h2>
-        <p style="font-size:17px;line-height:1.7;margin:18px 0 0;max-width:660px">Un chatbot attend sur votre site que le visiteur vienne à lui. Or le lead d'Immoweb, de SeLoger ou de Bien'ici ne met jamais les pieds sur votre site : il remplit un formulaire sur le portail, vous recevez un e-mail. Aucun chat de site ne verra jamais ce contact, module intégré à votre CRM compris. FlowchatAI, lui, va le chercher.</p>
+        <p style="font-size:17px;line-height:1.7;margin:18px 0 0">Un chatbot attend sur votre site que le visiteur vienne à lui. Or le lead d'Immoweb, de SeLoger ou de Bien'ici ne met jamais les pieds sur votre site : il remplit un formulaire sur le portail, vous recevez un e-mail. Aucun chat de site ne verra jamais ce contact, module intégré à votre CRM compris. FlowChatAI, lui, va le chercher.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:22px">
+      <div class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:22px">
         <article class="reveal card" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:14px;padding:30px;box-shadow:0 2px 12px rgba(11,31,51,0.05)">
           <span style="width:46px;height:46px;border-radius:12px;background:#E0F5F1;display:flex;align-items:center;justify-content:center;margin-bottom:18px">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.5-.7L3 21l1.7-5A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
@@ -453,7 +538,7 @@
   <section id="reseaux" style="background:#FFFFFF">
     <div class="reseaux-grid" style="max-width:1140px;margin:0 auto;padding:88px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:center">
       <div class="reveal">
-        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">Réseaux &amp; franchises</p>
+        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#0B5FD9;margin:0 0 12px">Réseaux &amp; franchises</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 16px">Le même dispositif sur toutes vos agences, sans doublon de traitement.</h2>
         <p style="font-size:17px;line-height:1.65;margin:0 0 28px">Déployez la même expérience conversationnelle en marque blanche sur chaque point de vente, avec un pilotage central.</p>
         <a href="https://calendly.com/automations-flowchatai/demo-offerte" target="_blank" rel="noopener" class="btn-dark" style="display:inline-flex;align-items:center;gap:10px;background:#0B1F33;color:#FFFFFF;text-decoration:none;font-family:Manrope,sans-serif;font-weight:700;font-size:15.5px;padding:13px 22px;border-radius:12px">
@@ -482,10 +567,10 @@
   <section id="rgpd" style="background:#F7F8FA">
     <div style="max-width:1140px;margin:0 auto;padding:88px 24px">
       <div class="reveal" style="max-width:640px;margin-bottom:48px">
-        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">RGPD &amp; conformité</p>
+        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#0B5FD9;margin:0 0 12px">RGPD &amp; conformité</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 16px">RGPD, opt-in, STOP : écrire à un prospect sans exposer votre agence.</h2>
       </div>
-      <ul style="list-style:none;margin:0 0 32px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px">
+      <ul class="rgpd-list" style="list-style:none;margin:0 0 32px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px">
         <li class="reveal" style="display:flex;gap:13px;background:#FFFFFF;border:1px solid #E5E9EF;border-radius:12px;padding:18px 20px;font-size:15px;line-height:1.55;color:#0B1F33;align-items:flex-start">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><path d="M20 6L9 17l-5-5"/></svg>
           <span><strong style="font-weight:600">Opt-in et STOP natifs</strong>, dans chaque conversation</span>
@@ -515,7 +600,7 @@
           <span><strong style="font-weight:600">Humain dans la boucle</strong>, transfert vers votre équipe à tout moment</span>
         </li>
       </ul>
-      <p class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:12px;padding:20px 24px;font-size:14.5px;line-height:1.65;margin:0;color:#52606D">Votre agence reste <strong style="color:#0B1F33;font-weight:600">responsable de traitement</strong>. FlowchatAI intervient comme <strong style="color:#0B1F33;font-weight:600">sous-traitant avec DPA</strong> (art. 28 RGPD). Dispositif conçu selon les recommandations de la CNIL (France) et de l'APD/GBA (Belgique). Registre des sous-traitants ultérieurs communiqué sur demande.</p>
+      <p class="reveal" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:12px;padding:20px 24px;font-size:14.5px;line-height:1.65;margin:0;color:#52606D">Votre agence reste <strong style="color:#0B1F33;font-weight:600">responsable de traitement</strong>. FlowChatAI intervient comme <strong style="color:#0B1F33;font-weight:600">sous-traitant avec DPA</strong> (art. 28 RGPD). Dispositif conçu selon les recommandations de la CNIL (France) et de l'APD/GBA (Belgique). Registre des sous-traitants ultérieurs communiqué sur demande.</p>
     </div>
   </section>
 
@@ -558,16 +643,13 @@
 
   <!-- ============ FONDATRICE ============ -->
   <section id="fondatrice" style="background:#FFFFFF">
-    <div class="reseaux-grid" style="max-width:1140px;margin:0 auto;padding:88px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:56px;align-items:center">
-      <div class="reveal" style="display:flex;justify-content:center">
-        <!-- Pour remplacer par la vraie photo : <img src="assets/nelly.jpg" alt="Nelly O., fondatrice de FlowchatAI"
-             style="width:220px;height:220px;border-radius:50%;object-fit:cover;box-shadow:0 12px 32px rgba(11,31,51,0.14)" /> -->
-        <span aria-hidden="true" style="width:220px;height:220px;border-radius:50%;background:#0B1F33;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:Manrope,sans-serif;font-weight:800;font-size:76px;letter-spacing:-0.02em;box-shadow:0 12px 32px rgba(11,31,51,0.14)">N</span>
-      </div>
-      <div class="reveal">
-        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">Qui est derrière</p>
+    <!-- Emplacement photo retire : la section passe de deux colonnes a une
+         seule, calee sur la largeur de lecture des autres intros. -->
+    <div style="max-width:1140px;margin:0 auto;padding:88px 24px">
+      <div class="reveal" style="max-width:680px">
+        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#0B5FD9;margin:0 0 12px">Qui est derrière</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0 0 18px">Vous n'achetez pas un logiciel, vous travaillez avec quelqu'un.</h2>
-        <p style="font-size:17px;line-height:1.7;margin:0 0 16px"><strong style="color:#0B1F33;font-weight:600">Nelly O., fondatrice.</strong> J'automatise la qualification de leads et la prise de rendez-vous pour les PME de services, depuis Bruxelles. Mon premier agent tourne en production depuis octobre 2025. J'ai choisi l'immobilier parce que c'est le secteur où le délai de réponse décide du mandat, et où presque personne ne répond le soir ni le week-end.</p>
+        <p style="font-size:17px;line-height:1.7;margin:0 0 16px"><span aria-hidden="true" style="display:inline-flex;width:30px;height:30px;border-radius:9px;background:#EFF5FF;align-items:center;justify-content:center;vertical-align:-8px;margin-right:11px;flex-shrink:0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B5FD9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><strong style="color:#0B1F33;font-weight:600">Nelly O., fondatrice.</strong> J'automatise la qualification de leads et la prise de rendez-vous pour les PME de services, depuis Bruxelles. Mon premier agent tourne en production depuis octobre 2025. J'ai choisi l'immobilier parce que c'est le secteur où le délai de réponse décide du mandat, et où presque personne ne répond le soir ni le week-end.</p>
         <p style="font-size:17px;line-height:1.7;margin:0">Chaque installation fondatrice est configurée et suivie directement par moi. Pas de sous-traitance, pas de support de niveau 1.</p>
       </div>
     </div>
@@ -577,12 +659,14 @@
   <section id="offre" style="background:#F7F8FA">
     <div style="max-width:1140px;margin:0 auto;padding:88px 24px">
       <div class="reveal" style="max-width:640px;margin:0 auto 52px;text-align:center">
-        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">L'offre Client Fondateur</p>
+        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#0B5FD9;margin:0 0 12px">L'offre Client Fondateur</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0">Tarifs : installation à partir de 1 697 €, puis 797 € par mois.</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;max-width:880px;margin:0 auto 28px;align-items:stretch">
         <article class="reveal plan" style="background:#FFFFFF;border:2px solid #1677FF;border-radius:16px;padding:36px 32px;box-shadow:0 12px 32px rgba(22,119,255,0.12);position:relative;display:flex;flex-direction:column">
-          <span style="position:absolute;top:-13px;left:32px;background:#1677FF;color:#FFFFFF;font-family:Manrope,sans-serif;font-weight:700;font-size:12.5px;padding:4px 14px;border-radius:999px;letter-spacing:0.03em">Recommandé</span>
+          <!-- top:-13px etait cale a la main et tombait a cote (11px dehors,
+               14px dedans). Centre par translation : parts egales. -->
+          <span style="position:absolute;top:0;left:32px;transform:translateY(-50%);background:#0B5FD9;color:#FFFFFF;font-family:Manrope,sans-serif;font-weight:700;font-size:12.5px;padding:4px 14px;border-radius:999px;letter-spacing:0.03em">Recommandé</span>
           <h3 style="font-family:Manrope,sans-serif;font-weight:800;font-size:23px;color:#0B1F33;margin:6px 0 6px">Agence</h3>
           <p style="font-size:15px;margin:0 0 18px">Pour une agence indépendante, une ou plusieurs vitrines.</p>
           <p style="margin:0 0 4px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-size:15px;color:#52606D">À partir de</span><span class="plan-price" style="font-family:Manrope,sans-serif;font-weight:800;font-size:38px;color:#0B1F33;letter-spacing:-0.02em">797 €</span><span style="font-size:15px;color:#52606D">/mois</span></p>
@@ -601,7 +685,9 @@
             Réserver ma démo de 15 min
           </a>
         </article>
-        <article class="reveal plan" style="background:#FFFFFF;border:1px solid #E5E9EF;border-radius:16px;padding:36px 32px;box-shadow:0 2px 12px rgba(11,31,51,0.05);display:flex;flex-direction:column">
+        <!-- 2px comme la carte recommandee : a 1px, les deux boites de padding
+             different et les titres des deux plans ne s'alignent pas. -->
+        <article class="reveal plan" style="background:#FFFFFF;border:2px solid #E5E9EF;border-radius:16px;padding:36px 32px;box-shadow:0 2px 12px rgba(11,31,51,0.05);display:flex;flex-direction:column">
           <h3 style="font-family:Manrope,sans-serif;font-weight:800;font-size:23px;color:#0B1F33;margin:6px 0 6px">Réseau / White-label+</h3>
           <p style="font-size:15px;margin:0 0 18px">Pour les réseaux, franchises et groupements d'agences.</p>
           <p style="margin:0 0 4px"><span class="plan-price" style="font-family:Manrope,sans-serif;font-weight:800;font-size:38px;color:#0B1F33;letter-spacing:-0.02em">Sur mesure</span></p>
@@ -626,13 +712,13 @@
   <section id="faq" style="background:#FFFFFF">
     <div style="max-width:820px;margin:0 auto;padding:88px 24px">
       <div class="reveal" style="margin-bottom:44px;text-align:center">
-        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#1677FF;margin:0 0 12px">FAQ</p>
+        <p style="font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#0B5FD9;margin:0 0 12px">FAQ</p>
         <h2 style="font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.25;color:#0B1F33;margin:0">Les questions que se posent les agences.</h2>
       </div>
       <div class="reveal" style="display:grid;gap:12px">
         <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">En quoi est-ce différent d'un chatbot de site web ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
-          <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Un chatbot de site attend que le visiteur vienne à lui. FlowchatAI va vers le lead. La différence est décisive dans l'immobilier : un lead venu d'Immoweb, de SeLoger, de Bien'ici ou de Leboncoin ne met jamais les pieds sur le site de l'agence. Il remplit un formulaire sur le portail, l'agence reçoit un e-mail. Aucun chatbot de site ne verra jamais ce lead, y compris un module de chat intégré à un CRM. FlowchatAI lui écrit par SMS ou WhatsApp, sur le canal sortant.</p>
+          <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Un chatbot de site attend que le visiteur vienne à lui. FlowChatAI va vers le lead. La différence est décisive dans l'immobilier : un lead venu d'Immoweb, de SeLoger, de Bien'ici ou de Leboncoin ne met jamais les pieds sur le site de l'agence. Il remplit un formulaire sur le portail, l'agence reçoit un e-mail. Aucun chatbot de site ne verra jamais ce lead, y compris un module de chat intégré à un CRM. FlowChatAI lui écrit par SMS ou WhatsApp, sur le canal sortant.</p>
         </details>
         <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Que se passe-t-il si le lead ne répond pas ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
@@ -652,7 +738,7 @@
         </details>
         <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Mes données sont-elles protégées (RGPD) ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
-          <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Oui. Opt-in et STOP natifs, journal de consentement horodaté, purge automatique. Notre orchestration est hébergée sur une infrastructure dédiée en Union européenne. Les sous-traitants ultérieurs sont documentés et les transferts hors UE encadrés par clauses contractuelles types. Votre agence reste responsable de traitement, FlowchatAI est sous-traitant avec DPA (art. 28).</p>
+          <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Oui. Opt-in et STOP natifs, journal de consentement horodaté, purge automatique. Notre orchestration est hébergée sur une infrastructure dédiée en Union européenne. Les sous-traitants ultérieurs sont documentés et les transferts hors UE encadrés par clauses contractuelles types. Votre agence reste responsable de traitement, FlowChatAI est sous-traitant avec DPA (art. 28).</p>
         </details>
         <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Combien de temps pour l'installation ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
@@ -660,7 +746,7 @@
         </details>
         <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">À qui appartient le numéro WhatsApp ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
-          <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Pendant la phase pilote, le numéro est ouvert et opéré par FlowchatAI, mais il affiche le nom de votre agence : vos leads ne voient que vous. À la signature, le numéro et l'agent basculent sur le compte WhatsApp Business de votre agence, dont vous restez propriétaire. Vos leads et vos rendez-vous sont écrits dans votre CRM au fil de l'eau, ils vous restent donc quoi qu'il arrive.</p>
+          <p style="margin:0;padding:0 0 20px;font-size:15.5px;line-height:1.65">Pendant la phase pilote, le numéro est ouvert et opéré par FlowChatAI, mais il affiche le nom de votre agence : vos leads ne voient que vous. À la signature, le numéro et l'agent basculent sur le compte WhatsApp Business de votre agence, dont vous restez propriétaire. Vos leads et vos rendez-vous sont écrits dans votre CRM au fil de l'eau, ils vous restent donc quoi qu'il arrive.</p>
         </details>
         <details class="faq-item" style="background:#F7F8FA;border:1px solid #E5E9EF;border-radius:12px;padding:0 22px">
           <summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:19px 0;font-family:Manrope,sans-serif;font-weight:700;font-size:16.5px;color:#0B1F33;list-style:none">Ça s'intègre à mes outils ?<span aria-hidden="true" class="faq-plus" style="color:#1677FF;font-size:20px;font-weight:600;flex-shrink:0">+</span></summary>
@@ -700,9 +786,15 @@
     <div class="foot-inner" style="max-width:1140px;margin:0 auto;padding:52px 24px 40px;display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;align-items:flex-start">
       <div style="max-width:340px">
         <span style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-          <span style="background:#FFFFFF;border-radius:8px;padding:6px 12px;display:inline-flex;align-items:center"><img src="assets/logo-flowchatai.png" alt="FlowchatAI" style="height:24px;width:auto;display:block" /></span>
+          <span style="background:#FFFFFF;border-radius:8px;padding:6px 10px 6px 0;display:inline-flex;align-items:center"><img src="assets/logo-flowchatai.png" alt="FlowChatAI" width="114" height="24" style="height:24px;width:auto;display:block" /></span>
         </span>
-        <p style="font-size:13.5px;line-height:1.6;color:#8B97A5;margin:0">L'assistant conversationnel des agences immobilières en France et en Belgique.</p>
+        <p style="font-size:13.5px;line-height:1.6;color:#8B97A5;margin:0 0 16px">L'assistant conversationnel des agences immobilières en France et en Belgique.</p>
+        <!-- rel="me" : marque explicitement ce lien comme designant la meme
+             entite, ce qui corrobore le sameAs declare dans le JSON-LD. -->
+        <a href="https://www.linkedin.com/company/flowchatai-/" target="_blank" rel="me noopener" class="footlink" style="display:inline-flex;align-items:center;gap:9px;color:#FFFFFF;text-decoration:none;font-size:14.5px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13M7.12 20.45H3.55V9h3.57zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0"/></svg>
+          FlowChatAI sur LinkedIn
+        </a>
       </div>
       <div class="foot-cols" style="display:flex;gap:56px;flex-wrap:wrap">
         <div>
@@ -718,7 +810,7 @@
       </div>
     </div>
     <div style="border-top:1px solid rgba(255,255,255,0.08)">
-      <p style="max-width:1140px;margin:0 auto;padding:18px 24px;font-size:13px;color:#8B97A5">© 2026 FlowchatAI. Tous droits réservés.</p>
+      <p style="max-width:1140px;margin:0 auto;padding:18px 24px;font-size:13px;color:#8B97A5">© 2026 FlowChatAI. Tous droits réservés.</p>
     </div>
   </footer>
 
@@ -727,8 +819,13 @@
 <script>
 (function(){
   "use strict";
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mqAnim = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce = mqAnim.matches;
   var accent = '#1677FF';
+
+  // Lu une seule fois au chargement : s'il est active en cours de visite,
+  // la boucle continuait de tourner. On repart d'un etat propre.
+  mqAnim.addEventListener('change', function(e){ if (e.matches) location.reload(); });
 
   // ---- scroll reveals ----
   var revealEls = document.querySelectorAll('.reveal');
@@ -743,7 +840,7 @@
 
   // ---- white-label swatches ----
   var SWATCHES = [
-    { color:'#1677FF', label:'Signal Blue (FlowchatAI)' },
+    { color:'#1677FF', label:'Signal Blue (FlowChatAI)' },
     { color:'#14B8A6', label:'Vert menthe' },
     { color:'#0B1F33', label:'Bleu nuit' },
     { color:'#D97706', label:'Ambre' }
@@ -755,15 +852,22 @@
     document.querySelectorAll('#chatBody .msg-agent').forEach(function(b){ b.style.background = accent; });
     document.querySelectorAll('.qr').forEach(function(q){ q.style.borderColor = accent; q.style.color = accent; });
     Array.prototype.forEach.call(swWrap.children, function(btn){
-      btn.style.border = (btn.dataset.color === accent) ? '3px solid #0B1F33' : '3px solid #FFFFFF';
+      var actif = btn.dataset.color === accent;
+      btn.style.border = actif ? '3px solid #0B1F33' : '3px solid #8A94A0';
+      btn.setAttribute('aria-checked', actif ? 'true' : 'false');
     });
   }
+  // radiogroup : l'etat selectionne n'etait porte que par la couleur de
+  // l'anneau, et l'anneau inactif etait blanc sur blanc (1,00:1).
+  swWrap.setAttribute('role', 'radiogroup');
   SWATCHES.forEach(function(s){
     var b = document.createElement('button');
     b.type = 'button';
+    b.setAttribute('role', 'radio');
     b.setAttribute('aria-label', s.label);
+    b.setAttribute('aria-checked', s.color === accent ? 'true' : 'false');
     b.dataset.color = s.color;
-    b.style.cssText = 'width:30px;height:30px;border-radius:50%;background:'+s.color+';cursor:pointer;padding:0;border:'+(s.color===accent?'3px solid #0B1F33':'3px solid #FFFFFF');
+    b.style.cssText = 'width:30px;height:30px;border-radius:50%;background:'+s.color+';cursor:pointer;padding:0;border:'+(s.color===accent?'3px solid #0B1F33':'3px solid #8A94A0');
     b.addEventListener('click', function(){ accent = s.color; paintAccent(); });
     swWrap.appendChild(b);
   });
@@ -780,9 +884,34 @@
   ];
   var chatBody = document.getElementById('chatBody');
   var dayLabel = chatBody.firstElementChild; // keep the "Samedi · 21:47" chip
-  var timers = [];
-  function wait(ms){ return new Promise(function(res){ timers.push(setTimeout(res, ms)); }); }
+  function wait(ms){ return new Promise(function(res){ setTimeout(res, ms); }); }
   function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+  // ---- gel de l'animation quand personne ne la regarde ----
+  // Sans condition d'arret, la boucle forcait ~38 recalculs de mise en page
+  // par minute en continu, hero hors ecran compris, soit la majeure partie
+  // de la visite sur une page de 12 sections.
+  var heroVisible = true, ongletActif = true, enAttente = [];
+  function suspendu(){ return !heroVisible || !ongletActif; }
+  function pas(ms){
+    return wait(ms).then(function(){
+      if (!suspendu()) return;
+      return new Promise(function(res){ enAttente.push(res); });
+    });
+  }
+  function reprendre(){
+    if (suspendu()) return;
+    var f = enAttente; enAttente = [];
+    f.forEach(function(res){ res(); });
+  }
+  document.addEventListener('visibilitychange', function(){
+    ongletActif = document.visibilityState === 'visible';
+    reprendre();
+  });
+  new IntersectionObserver(function(entries){
+    heroVisible = entries[0].isIntersecting;
+    reprendre();
+  }, { threshold: 0 }).observe(document.getElementById('hero'));
 
   function clearMsgs(){
     while (chatBody.lastChild && chatBody.lastChild !== dayLabel) chatBody.removeChild(chatBody.lastChild);
@@ -818,15 +947,15 @@
   async function loop(){
     while (true) {
       clearMsgs();
-      await wait(1100);
+      await pas(1100);
       for (var i=0;i<SCRIPT.length;i++){
         var m = SCRIPT[i];
-        if (m.from === 'agent'){ addTyping(); await wait(1300); removeTyping(); addBubble(m); }
+        if (m.from === 'agent'){ addTyping(); await pas(1300); removeTyping(); addBubble(m); }
         else if (m.from === 'rdv'){ addRdv(m); }
         else { addBubble(m); }
-        await wait(m.from === 'rdv' ? 400 : 1000);
+        await pas(m.from === 'rdv' ? 400 : 1000);
       }
-      await wait(4500);
+      await pas(4500);
     }
   }
   if (reduce){
@@ -852,7 +981,11 @@
     burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
   }
   burger.addEventListener('click', function(){
-    setMenu(!navLinks.classList.contains('open'));
+    var ouvrir = !navLinks.classList.contains('open');
+    setMenu(ouvrir);
+    // Le panneau est AVANT le burger dans le DOM : sans ce deplacement du
+    // focus, la tabulation sautait les 4 liens du menu.
+    if (ouvrir) { var p = navLinks.querySelector('a'); if (p) p.focus(); }
   });
   navLinks.addEventListener('click', function(e){
     if (e.target.closest('a')) setMenu(false);
@@ -888,21 +1021,28 @@
   syncLiensCalendly();
   mqPetitEcran.addEventListener('change', syncLiensCalendly);
 
-  // ---- Voiceflow agent ----
-  function openAgent(){
-    if (window.voiceflow && window.voiceflow.chat && window.voiceflow.chat.open){ window.voiceflow.chat.open(); }
-  }
-  document.querySelectorAll('[data-open-agent]').forEach(function(btn){
-    btn.addEventListener('click', openAgent);
-  });
-})();
-</script>
+  // ---- Agent Voiceflow, charge en differe ----
+  // 571 Ko transferes, 1,79 Mo a executer : charge d'emblee, il disputait la
+  // bande passante aux polices avant le premier affichage. Il attend
+  // desormais l'inactivite du navigateur, ou un clic. Sur clic, l'intention
+  // est retenue pour que la bulle s'ouvre des que le widget est pret.
+  var vfDemande = false, vfLance = false;
 
-<!-- Agent IA FlowchatAI (Voiceflow) — bulle de chat embarquée sur le site -->
-<script type="text/javascript">
-  (function (d, t) {
-    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-    v.onload = function () {
+  function ouvrirBulle(){
+    if (window.voiceflow && window.voiceflow.chat && window.voiceflow.chat.open) {
+      window.voiceflow.chat.open();
+      return true;
+    }
+    return false;
+  }
+
+  function chargerVoiceflow(){
+    if (vfLance) return;
+    vfLance = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.type = 'text/javascript';
+    s.onload = function(){
       window.voiceflow.chat.load({
         verify: { projectID: '698a3a90edb54740de5b5cd5' },
         url: 'https://general-runtime.voiceflow.com',
@@ -911,11 +1051,35 @@
         // remonte le lanceur au-dessus de la barre d'outils mobile
         assistant: { stylesheet: 'https://flowchatai.co/voiceflow-widget.css' }
       });
+      if (vfDemande) {
+        // load() est asynchrone : on retente 6 secondes, puis on abandonne.
+        var essais = 0;
+        var t = setInterval(function(){
+          if (ouvrirBulle() || ++essais > 60) clearInterval(t);
+        }, 100);
+      }
     };
-    v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
-    v.type = 'text/javascript';
-    s.parentNode.insertBefore(v, s);
-  })(document, 'script');
+    s.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+    document.head.appendChild(s);
+  }
+
+  document.querySelectorAll('[data-open-agent]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      vfDemande = true;
+      if (!ouvrirBulle()) chargerVoiceflow();
+    });
+  });
+
+  // Filet : si personne ne clique, on charge des que le navigateur souffle.
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(chargerVoiceflow, { timeout: 6000 });
+  } else {
+    setTimeout(chargerVoiceflow, 3500);
+  }
+})();
 </script>
+
+<!-- Voiceflow est charge en differe par le script ci-dessus. Le bloc
+     d'origine demarrait ses 571 Ko avant le premier affichage. -->
 </body>
 </html>

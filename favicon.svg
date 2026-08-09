@@ -1,10 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#b88cf6"/>
-      <stop offset="1" stop-color="#db0eb7"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="16" fill="#01012c"/>
-  <path d="M22 18h22v8H30v6h12v8H30v10h-8z" fill="url(#g)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="FCA, FlowChatAI">
+  <rect width="64" height="64" rx="7.5" fill="#0B1F33"/>
+  <path d="M4.48 42.6V21.4H17.44V25.4H8.49V30H15.67V34H8.49V42.6ZM29.19 43.04Q26.01 43.04 23.7 41.66Q21.4 40.28 20.15 37.79Q18.91 35.3 18.91 32Q18.91 28.7 20.15 26.21Q21.4 23.72 23.7 22.34Q26.01 20.96 29.19 20.96Q32.84 20.96 35.32 22.77Q37.8 24.58 38.82 27.67L34.78 28.79Q34.19 26.86 32.8 25.79Q31.4 24.73 29.19 24.73Q27.17 24.73 25.82 25.62Q24.48 26.52 23.8 28.16Q23.12 29.79 23.12 32Q23.12 34.21 23.8 35.84Q24.48 37.48 25.82 38.38Q27.17 39.27 29.19 39.27Q31.4 39.27 32.8 38.2Q34.19 37.12 34.78 35.21L38.82 36.33Q37.8 39.42 35.32 41.23Q32.84 43.04 29.19 43.04ZM40.58 42.6 47.06 21.4H53.04L59.52 42.6H55.4L49.63 23.9H50.39L44.71 42.6ZM44.47 38.18V34.44H55.66V38.18Z" fill="#FFFFFF"/>
 </svg>

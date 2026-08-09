@@ -1,8 +1,23 @@
 /* ============================================================
-   FlowchatAI - pages legales (mentions legales, confidentialite)
+   FlowChatAI - pages legales (mentions legales, confidentialite)
    Charte juillet 2026 : Night Blue / Signal Blue / Mint / Ivory
    Remplace l'ancien styles.css supprime lors de la refonte du site.
    ============================================================ */
+
+/* ============================================================
+   POLICES AUTO-HEBERGEES
+   Memes fichiers que l'accueil : deja en cache quand le visiteur
+   arrive ici depuis la page principale, donc zero requete.
+   ============================================================ */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/inter-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700 800;font-display:swap;src:url(/fonts/manrope-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700 800;font-display:swap;src:url(/fonts/manrope-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+/* Lien d'evitement, identique a celui de l'accueil */
+.skip{position:absolute;left:8px;top:-60px;z-index:200;background:#0B1F33;color:#FFFFFF;text-decoration:none;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;padding:12px 18px;border-radius:0 0 10px 10px;transition:top .15s ease}
+.skip:focus{top:0;color:#FFFFFF}
+main:focus{outline:none}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -20,8 +35,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: #1677FF; }
-a:hover { color: #0B5FD9; }
+a { color: #0B5FD9; }
+a:hover { color: #0949A8; }
 :focus-visible { outline: 3px solid #1677FF; outline-offset: 2px; border-radius: 4px; }
 img { max-width: 100%; height: auto; }
 
@@ -38,6 +53,10 @@ img { max-width: 100%; height: auto; }
   border-bottom: 1px solid #E5E9EF;
 }
 .legal-header .container {
+  /* 1188 et non 1140 : l'accueil met ses conteneurs en content-box, donc son
+     max-width de 1140 s'ajoute a 2x24 de padding, soit 1188 au total. Ici tout
+     est en border-box. A 1140, le logo demarrait 24px trop a droite. */
+  max-width: 1188px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,12 +64,12 @@ img { max-width: 100%; height: auto; }
   padding-top: 14px;
   padding-bottom: 14px;
 }
-.legal-header img { height: 30px; width: auto; display: block; }
+.legal-header img { height: 34px; width: auto; display: block; }
 .back {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #1677FF;
+  color: #0B5FD9;
   text-decoration: none;
   font-family: Manrope, sans-serif;
   font-weight: 600;
@@ -73,7 +92,9 @@ img { max-width: 100%; height: auto; }
 
 .legal .updated {
   font-size: 14.5px;
-  color: #8B97A5;
+  /* #8B97A5 sur blanc ne mesurait que 2,97:1, sous le minimum de 4,5:1.
+     #52606D, la couleur de texte courant du site, monte a 6,46:1. */
+  color: #52606D;
   margin: 0 0 36px;
   padding-bottom: 24px;
   border-bottom: 1px solid #E5E9EF;
@@ -146,6 +167,8 @@ img { max-width: 100%; height: auto; }
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .footer-inner {
+  /* Aligne sur l'accueil, meme calcul content-box / border-box que l'en-tete. */
+  max-width: 1188px;
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
@@ -155,6 +178,19 @@ img { max-width: 100%; height: auto; }
   padding-bottom: 32px;
 }
 .footer-inner p { margin: 6px 0 0; font-size: 13.5px; line-height: 1.6; }
+/* Lien LinkedIn du pied de page. rel="me" cote HTML : il corrobore le
+   sameAs declare dans le JSON-LD de l'accueil. */
+.li-lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+}
+.li-lien:hover { color: #3D8DFF; }
+.li-lien svg { flex-shrink: 0; }
 .brand-name {
   font-family: Manrope, sans-serif;
   font-weight: 800;

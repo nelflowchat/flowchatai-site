@@ -3,43 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Politique de confidentialité (RGPD) · FlowchatAI</title>
-  <meta name="description" content="Politique de confidentialité et de protection des données personnelles de FlowchatAI, conforme au RGPD." />
+  <title>Politique de confidentialité (RGPD) · FlowChatAI</title>
+  <meta name="description" content="Politique de confidentialité et de protection des données personnelles de FlowChatAI, conforme au RGPD." />
   <meta name="robots" content="noindex, follow" />
   <!-- Canonique auto-referente, en .html : c'est la forme d'URL unique du site.
-       /confidentialite (sans extension) redirige desormais en 301 vers celle-ci. -->
+       /confidentialite (sans extension) renvoie un 404 : la redirection etait
+       declaree dans netlify.toml, or le site est servi par nginx. Voir
+       DEPLOIEMENT-NGINX.md dans le depot prive. -->
   <link rel="canonical" href="https://flowchatai.co/confidentialite.html" />
+  <meta property="og:title" content="Politique de confidentialité · FlowChatAI" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://flowchatai.co/confidentialite.html" />
+  <meta property="og:image" content="https://flowchatai.co/og-image-v2.png" />
   <meta property="og:locale" content="fr_FR" />
-  <meta property="og:site_name" content="FlowchatAI" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:site_name" content="FlowChatAI" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#0B1F33" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="legal.css" />
 </head>
 <body>
+  <a href="#contenu" class="skip">Aller au contenu</a>
   <header class="legal-header">
     <div class="container">
-      <a href="index.html" aria-label="FlowchatAI, retour à l'accueil">
-        <img src="assets/logo-flowchatai.png" alt="FlowchatAI" />
+      <a href="index.html" aria-label="FlowChatAI, retour à l'accueil">
+        <img src="assets/logo-flowchatai.png" alt="FlowChatAI" width="162" height="34" />
       </a>
       <a href="index.html" class="back">&#8592;<span> Retour à l'accueil</span></a>
     </div>
   </header>
 
-  <main class="legal">
+  <main class="legal" id="contenu" tabindex="-1">
     <div class="container">
       <h1>Politique de confidentialité</h1>
       <p class="updated">Conforme au RGPD · Dernière mise à jour : août 2026</p>
 
       <p>
-        La présente politique explique comment FlowchatAI (marque exploitée par Olymp Automations) collecte, utilise et protège vos données personnelles, conformément au Règlement général sur la protection des données (RGPD) et à la législation belge applicable.
+        La présente politique explique comment FlowChatAI (marque exploitée par Olymp Automations) collecte, utilise et protège vos données personnelles, conformément au Règlement général sur la protection des données (RGPD) et à la législation belge applicable.
       </p>
 
       <h2>1. Responsable du traitement</h2>
       <p>
-        Olymp Automations, exploitant FlowchatAI, dont le siège est situé Chaussée de Charleroi 112, 1060 Bruxelles, Belgique. Numéro d'entreprise (BCE) : 0479.233.349. Contact : <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a>.
+        Olymp Automations, exploitant FlowChatAI, dont le siège est situé Chaussée de Charleroi 112, 1060 Bruxelles, Belgique. Numéro d'entreprise (BCE) : 0479.233.349. Contact : <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a>.
       </p>
 
       <h2>2. Données collectées</h2>
@@ -83,7 +93,7 @@
       </table>
 
       <h3>5.2 Pour le service fourni aux agences clientes</h3>
-      <p>Dans le cadre du service FlowchatAI, l'agence cliente est <strong>responsable de traitement</strong> et FlowchatAI intervient comme <strong>sous-traitant</strong> au sens de l'article 28 du RGPD, sur la base d'un accord de traitement dédié. Les sous-traitants ultérieurs mobilisés sont :</p>
+      <p>Dans le cadre du service FlowChatAI, l'agence cliente est <strong>responsable de traitement</strong> et FlowChatAI intervient comme <strong>sous-traitant</strong> au sens de l'article 28 du RGPD, sur la base d'un accord de traitement dédié. Les sous-traitants ultérieurs mobilisés sont :</p>
       <table>
         <thead>
           <tr><th>Sous-traitant</th><th>Finalité</th><th>Lieu de traitement</th><th>Encadrement du transfert</th></tr>
@@ -128,14 +138,15 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <span class="brand-name">FlowchatAI</span>
+        <span class="brand-name">FlowChatAI</span>
         <p>Une solution Olymp Automations. Bruxelles, Belgique.</p>
+        <p><a href="https://www.linkedin.com/company/flowchatai-/" target="_blank" rel="me noopener" class="li-lien"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13M7.12 20.45H3.55V9h3.57zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0"/></svg>FlowChatAI sur LinkedIn</a></p>
       </div>
       <nav class="footer-links" aria-label="Liens légaux">
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="confidentialite.html">Politique de confidentialité (RGPD)</a>
       </nav>
-      <p class="copyright">© 2026 FlowchatAI</p>
+      <p class="copyright">© 2026 FlowChatAI</p>
     </div>
   </footer>
 </body>
