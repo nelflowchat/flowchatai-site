@@ -126,6 +126,12 @@
         versionID: 'production',
         voice: { url: 'https://runtime-api.voiceflow.com' },
         autostart: true,
+        // Un identifiant neuf a chaque ouverture. Sans lui, Voiceflow reprend
+        // la session gardee dans le stockage local du navigateur : on retombe
+        // sur une conversation deja terminee ("Chat has ended"), ou pire, sur
+        // celle de l'ancien agent immo. Une demo doit repartir de zero a
+        // chaque scan, c'est tout l'effet recherche.
+        userID: 'demo-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10),
         render: { mode: 'embedded', target: cible }
       });
       // Le widget s'insere dans la cible : des qu'un enfant apparait, on
