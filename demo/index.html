@@ -14,6 +14,14 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+<!-- Le widget pese environ 570 Ko et vit sur deux domaines tiers. Ouvrir les
+     connexions des le parsing du head fait gagner les allers-retours DNS, TCP
+     et TLS, soit plusieurs centaines de ms sur un 4G de salle bondee. -->
+<link rel="preconnect" href="https://cdn.voiceflow.com" crossorigin>
+<link rel="preconnect" href="https://general-runtime.voiceflow.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.voiceflow.com">
+<link rel="dns-prefetch" href="https://general-runtime.voiceflow.com">
+
 <style>
   /* Memes fichiers que l'accueil, deja en cache pour qui a visite le site. */
   @font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(/fonts/inter-latin.woff2) format('woff2')}
@@ -134,12 +142,22 @@
         userID: 'demo-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10),
         render: { mode: 'embedded', target: cible }
       });
-      // Le widget s'insere dans la cible : des qu'un enfant apparait, on
-      // retire le message d'attente.
+      // Voiceflow rend le chat dans un SHADOW DOM attache a la cible, pas en
+      // enfants classiques. Compter cible.children reste donc a 1 pour
+      // toujours, et l'ancien test declenchait le message d'echec a chaque
+      // chargement, y compris quand tout marchait. On interroge le shadowRoot.
+      //
+      // Effet de bord utile : des qu'un shadowRoot existe sans <slot>, le
+      // navigateur cesse d'afficher les enfants classiques. Le message
+      // d'attente disparait donc tout seul, on le retire par proprete.
       var essais = 0;
       var t = setInterval(function(){
-        if (cible.children.length > 1) { etat.remove(); clearInterval(t); }
-        else if (++essais > 150) { clearInterval(t); echec(); }
+        var pret = cible.shadowRoot && cible.shadowRoot.childElementCount > 0;
+        if (pret) { etat.remove(); clearInterval(t); }
+        // 570 Ko sur le 4G d'une salle bondee prennent du temps. On patiente
+        // 30 s avant d'annoncer un echec : annoncer trop tot est pire que
+        // faire attendre, la personne abandonne alors que ca arrivait.
+        else if (++essais > 300) { clearInterval(t); echec(); }
       }, 100);
     } catch (e) { echec(); }
   };
