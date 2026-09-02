@@ -20,91 +20,75 @@
   @font-face{font-family:'Manrope';font-style:normal;font-weight:700 800;font-display:swap;src:url(/fonts/manrope-latin.woff2) format('woff2')}
 
   *,*::before,*::after{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;height:100%}
 
   /* Fond Night Blue : c'est la face recto de la carte que la personne tient en
      main au moment ou elle scanne. La continuite visuelle fait la moitie de
      l'effet. */
   body{
-    margin:0;min-height:100svh;
+    margin:0;height:100svh;overflow:hidden;
     background:#0B1F33;color:#E8E6E1;
     font-family:Inter,system-ui,-apple-system,sans-serif;
     -webkit-font-smoothing:antialiased;
     display:flex;flex-direction:column;
-    padding:calc(env(safe-area-inset-top) + 40px) 24px calc(env(safe-area-inset-bottom) + 24px);
+    padding:calc(env(safe-area-inset-top) + 22px) 18px calc(env(safe-area-inset-bottom) + 14px);
+    gap:14px;
   }
 
+  header{flex:none;max-width:560px;width:100%;margin:0 auto}
   .marque{
     font-family:Manrope,system-ui,sans-serif;font-weight:800;
-    font-size:26px;letter-spacing:-.01em;color:#F2EFE9;
-    display:flex;align-items:center;gap:9px;
+    font-size:22px;letter-spacing:-.01em;color:#F2EFE9;
+    display:flex;align-items:center;gap:8px;margin-bottom:12px;
   }
-  .point{width:9px;height:9px;border-radius:50%;background:#14B8A6;flex:none}
+  .point{width:8px;height:8px;border-radius:50%;background:#14B8A6;flex:none}
 
-  main{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:520px;width:100%;margin:0 auto}
-
-  .sur-titre{
-    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-    color:#8FA3B5;margin:0 0 18px;
-  }
   h1{
     font-family:Manrope,system-ui,sans-serif;font-weight:800;
-    font-size:clamp(30px,8vw,42px);line-height:1.14;letter-spacing:-.02em;
-    color:#F2EFE9;margin:0 0 18px;
+    font-size:clamp(21px,5.6vw,27px);line-height:1.2;letter-spacing:-.015em;
+    color:#F2EFE9;margin:0 0 6px;
   }
   h1 em{font-style:normal;color:#14B8A6}
-  p.intro{font-size:17px;line-height:1.6;color:#B8C4CF;margin:0 0 32px;max-width:34em}
+  p.intro{font-size:14.5px;line-height:1.5;color:#8FA3B5;margin:0}
 
-  .bouton{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    background:#1677FF;color:#fff;border:0;border-radius:11px;
-    font-family:inherit;font-size:16.5px;font-weight:600;
-    padding:16px 26px;cursor:pointer;text-decoration:none;
-    width:100%;max-width:340px;
-    -webkit-tap-highlight-color:transparent;
+  /* Le chat EST le contenu : integre, pas une bulle a aller chercher. La
+     personne est debout dans une salle, elle ne cherchera rien. */
+  #agent{
+    flex:1;min-height:0;width:100%;max-width:560px;margin:0 auto;
+    border-radius:14px;overflow:hidden;background:#F2EFE9;
+    box-shadow:0 10px 34px rgba(0,0,0,.3);
+    position:relative;
   }
-  .bouton:active{background:#0F5FD6}
+  #agent > *{height:100%}
 
-  .attente{
-    font-size:13.5px;color:#7C8FA1;margin:16px 0 0;min-height:1.2em;
+  .etat{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:26px;font-size:14.5px;line-height:1.6;color:#52606D;
   }
+  .etat a{color:#1677FF;font-weight:600}
 
   footer{
-    max-width:520px;width:100%;margin:40px auto 0;
-    padding-top:22px;border-top:1px solid rgba(232,230,225,.13);
-    font-size:13.5px;line-height:1.75;color:#8FA3B5;
+    flex:none;max-width:560px;width:100%;margin:0 auto;
+    font-size:12.5px;line-height:1.6;color:#7C8FA1;text-align:center;
   }
-  footer a{color:#B8C4CF;text-decoration:none}
-  footer strong{color:#E8E6E1;font-weight:600}
-
-  /* Le widget est clair, il se detache seul sur ce fond. On lui laisse la
-     place en bas a droite. */
-  @media (min-height:760px){ main{justify-content:flex-start;padding-top:8vh} }
+  footer a{color:#8FA3B5;text-decoration:none}
+  footer strong{color:#B8C4CF;font-weight:600}
 </style>
 </head>
 <body>
 
-<div class="marque">FlowChatAI<span class="point" aria-hidden="true"></span></div>
-
-<main>
-  <p class="sur-titre">Vous venez de scanner ma carte</p>
-
+<header>
+  <div class="marque">FlowChatAI<span class="point" aria-hidden="true"></span></div>
   <h1>Vous parlez à un <em>agent IA</em>.</h1>
+  <p class="intro">Posez-lui une question. Il répond comme il répondrait à vos clients, un dimanche soir comme un mardi matin.</p>
+</header>
 
-  <p class="intro">
-    Posez-lui une question, n'importe laquelle. Il vous répond en quelques secondes,
-    exactement comme il répondrait à vos clients, un dimanche soir comme un mardi matin.
-  </p>
-
-  <button class="bouton" type="button" data-open-agent>Démarrer la conversation</button>
-  <p class="attente" id="attente">Chargement de l'agent…</p>
-</main>
+<div id="agent">
+  <div class="etat" id="etat">Chargement de l'agent…</div>
+</div>
 
 <footer>
-  <strong>Nelly OLYMPIO</strong>, fondatrice<br>
-  <a href="tel:+32466077602">+32 466 077 602</a> ·
-  <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a><br>
-  <a href="https://flowchatai.co/">flowchatai.co</a>
+  <strong>Nelly OLYMPIO</strong> · <a href="tel:+32466077602">+32 466 077 602</a> · <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a>
 </footer>
 
 <script>
@@ -116,60 +100,43 @@
   // site, dont la persona est centree sur l'immobilier.
   var PROJET = '698a3a90edb54740de5b5cd5';
 
-  var attente = document.getElementById('attente');
-  var ouvert = false;
+  var cible = document.getElementById('agent');
+  var etat  = document.getElementById('etat');
 
-  function ouvrirBulle(){
-    if (ouvert) return true;
-    if (window.voiceflow && window.voiceflow.chat && window.voiceflow.chat.open) {
-      window.voiceflow.chat.open();
-      ouvert = true;
-      attente.textContent = '';
-      return true;
-    }
-    return false;
-  }
-
-  // La personne est debout dans une salle, elle ne cliquera pas deux fois.
-  // On ouvre la conversation des que le widget repond, sans rien lui demander.
-  function insister(){
-    var essais = 0;
-    var t = setInterval(function(){
-      if (ouvrirBulle() || ++essais > 100) clearInterval(t);
-    }, 100);
+  function echec(){
+    etat.innerHTML = 'L\'agent ne se charge pas, le réseau de la salle est capricieux.<br>' +
+      'Écrivez-moi plutôt sur <a href="https://wa.me/32466077602">WhatsApp</a>.';
   }
 
   var s = document.createElement('script');
   s.async = true;
   s.type = 'text/javascript';
   s.onload = function(){
-    window.voiceflow.chat.load({
-      verify: { projectID: PROJET },
-      url: 'https://general-runtime.voiceflow.com',
-      versionID: 'production',
-      voice: { url: 'https://runtime-api.voiceflow.com' },
-      assistant: { stylesheet: 'https://flowchatai.co/voiceflow-widget.css' }
-    });
-    insister();
+    try {
+      // Mode "embedded" et non la bulle flottante : en popup, open() est
+      // appele avant que le widget soit monte, il ne fait rien, et l'accroche
+      // Voiceflow vient recouvrir le pied de page. Integre, la conversation
+      // est simplement la, deja ouverte.
+      window.voiceflow.chat.load({
+        verify: { projectID: PROJET },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production',
+        voice: { url: 'https://runtime-api.voiceflow.com' },
+        autostart: true,
+        render: { mode: 'embedded', target: cible }
+      });
+      // Le widget s'insere dans la cible : des qu'un enfant apparait, on
+      // retire le message d'attente.
+      var essais = 0;
+      var t = setInterval(function(){
+        if (cible.children.length > 1) { etat.remove(); clearInterval(t); }
+        else if (++essais > 150) { clearInterval(t); echec(); }
+      }, 100);
+    } catch (e) { echec(); }
   };
-  s.onerror = function(){
-    // Reseau de salle de conference : on ne laisse jamais un ecran muet.
-    attente.innerHTML = 'L\'agent ne se charge pas ici, le réseau est capricieux. ' +
-      'Écrivez-moi plutôt sur <a href="https://wa.me/32466077602" style="color:#14B8A6">WhatsApp</a>.';
-  };
+  s.onerror = echec;
   s.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
   document.head.appendChild(s);
-
-  document.querySelector('[data-open-agent]').addEventListener('click', function(){
-    if (!ouvrirBulle()) attente.textContent = 'L\'agent finit de se charger, une seconde…';
-  });
-
-  // Si rien ne s'est ouvert au bout de 12 secondes, on le dit plutot que de
-  // laisser tourner un "Chargement..." indefini devant un prospect.
-  setTimeout(function(){
-    if (!ouvert) attente.innerHTML = 'L\'agent tarde à répondre. ' +
-      'Touchez le bouton, ou écrivez-moi sur <a href="https://wa.me/32466077602" style="color:#14B8A6">WhatsApp</a>.';
-  }, 12000);
 })();
 </script>
 
