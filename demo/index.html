@@ -87,8 +87,11 @@
   <div class="etat" id="etat">Chargement de l'agent…</div>
 </div>
 
+<!-- Ni nom de famille ni numero personnel : la page est publique et un tel: en
+     clair se fait moissonner. La personne tient deja la carte, qui porte les
+     coordonnees completes. Ici, l'adresse pro suffit. -->
 <footer>
-  <strong>Nelly OLYMPIO</strong> · <a href="tel:+32466077602">+32 466 077 602</a> · <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a>
+  <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a> · <a href="https://flowchatai.co/">flowchatai.co</a>
 </footer>
 
 <script>
@@ -105,7 +108,7 @@
 
   function echec(){
     etat.innerHTML = 'L\'agent ne se charge pas, le réseau de la salle est capricieux.<br>' +
-      'Écrivez-moi plutôt sur <a href="https://wa.me/32466077602">WhatsApp</a>.';
+      'Écrivez-moi plutôt à <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a>.';
   }
 
   var s = document.createElement('script');
