@@ -114,9 +114,24 @@
   var cible = document.getElementById('agent');
   var etat  = document.getElementById('etat');
 
+  // Journal des erreurs reelles. Sans lui, tout echec du widget se traduisait
+  // par un ecran "Chargement" muet pendant 30 secondes, puis un message qui
+  // accusait le reseau meme quand le reseau n'y etait pour rien. On ne pouvait
+  // donc pas distinguer un projet non publie d'un wifi de salle sature.
+  var journal = [];
+  function noter(source, e){
+    var m = (e && (e.message || e.reason && (e.reason.message || e.reason) || e)) || 'inconnu';
+    journal.push(source + ' : ' + String(m).slice(0, 200));
+  }
+  window.addEventListener('error', function(e){ noter('erreur', e); });
+  window.addEventListener('unhandledrejection', function(e){ noter('promesse', e); });
+
   function echec(){
-    etat.innerHTML = 'L\'agent ne se charge pas, le réseau de la salle est capricieux.<br>' +
-      'Écrivez-moi plutôt à <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a>.';
+    etat.innerHTML = 'L\'agent ne se charge pas.<br>' +
+      'Écrivez-moi plutôt à <a href="mailto:nel@flowchatai.co">nel@flowchatai.co</a>.' +
+      '<br><br><span style="font-size:12px;opacity:.75;word-break:break-word">' +
+      'Détail technique : ' + (journal.length ? journal.join(' · ') : 'aucune erreur remontée, le widget n\'a jamais répondu') +
+      '</span>';
   }
 
   var s = document.createElement('script');
@@ -128,7 +143,9 @@
       // appele avant que le widget soit monte, il ne fait rien, et l'accroche
       // Voiceflow vient recouvrir le pied de page. Integre, la conversation
       // est simplement la, deja ouverte.
-      window.voiceflow.chat.load({
+      // load() renvoie une promesse dans widget-next. Sans ce .catch, un projet
+      // non publie ou un identifiant errone echouait sans rien afficher.
+      var chargement = window.voiceflow.chat.load({
         verify: { projectID: PROJET },
         url: 'https://general-runtime.voiceflow.com',
         versionID: 'production',
@@ -150,14 +167,21 @@
       // Effet de bord utile : des qu'un shadowRoot existe sans <slot>, le
       // navigateur cesse d'afficher les enfants classiques. Le message
       // d'attente disparait donc tout seul, on le retire par proprete.
+      if (chargement && typeof chargement.catch === 'function') {
+        chargement.catch(function(e){ noter('load', e); echec(); });
+      }
       var essais = 0;
       var t = setInterval(function(){
-        var pret = cible.shadowRoot && cible.shadowRoot.childElementCount > 0;
-        if (pret) { etat.remove(); clearInterval(t); }
+        if (cible.shadowRoot && cible.shadowRoot.childElementCount > 0) {
+          etat.remove(); clearInterval(t); return;
+        }
+        essais++;
         // 570 Ko sur le 4G d'une salle bondee prennent du temps. On patiente
         // 30 s avant d'annoncer un echec : annoncer trop tot est pire que
         // faire attendre, la personne abandonne alors que ca arrivait.
-        else if (++essais > 300) { clearInterval(t); echec(); }
+        // Au bout de 8 s on rassure quand meme, un texte fige passe pour un plantage.
+        if (essais === 80) { etat.textContent = 'Toujours en cours, la connexion est lente…'; }
+        else if (essais > 300) { clearInterval(t); echec(); }
       }, 100);
     } catch (e) { echec(); }
   };
