@@ -44,10 +44,12 @@
   }
 
   header{flex:none;max-width:560px;width:100%;margin:0 auto}
-  .marque{
-    font-family:Manrope,system-ui,sans-serif;font-weight:800;
-    font-size:22px;letter-spacing:-.01em;color:#F2EFE9;
-    display:flex;align-items:center;gap:8px;margin-bottom:12px;
+  /* La marque est passee dans le H1, qui reprend mot pour mot le titre affiche
+     par le widget. Ne reste ici que l'indicateur de disponibilite : dans une
+     salle, savoir que ca repond MAINTENANT vaut mieux qu'un second logo. */
+  .statut{
+    font-size:12.5px;font-weight:600;letter-spacing:.02em;color:#8FA3B5;
+    display:flex;align-items:center;gap:8px;margin-bottom:10px;
   }
   .point{width:8px;height:8px;border-radius:50%;background:#14B8A6;flex:none}
 
@@ -86,9 +88,9 @@
 <body>
 
 <header>
-  <div class="marque">FlowChatAI<span class="point" aria-hidden="true"></span></div>
-  <h1>Vous parlez à un <em>agent IA</em>.</h1>
-  <p class="intro">Posez-lui une question. Il répond comme il répondrait à vos clients, un dimanche soir comme un mardi matin.</p>
+  <div class="statut"><span class="point" aria-hidden="true"></span>En ligne, il répond tout de suite</div>
+  <h1>Agent <em>FlowChatAI</em></h1>
+  <p class="intro">Vous parlez à un agent IA. Posez-lui une question. Il répond comme il répondrait à vos clients, un dimanche soir comme un mardi matin.</p>
 </header>
 
 <div id="agent">
