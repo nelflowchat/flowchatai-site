@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Testez l'agent · FlowChatAI</title>
-<meta name="description" content="Posez une question à l'agent IA de FlowChatAI. Il vous répond en quelques secondes, comme il répondrait à vos clients." />
+<title>Parlez à l'agent · FlowChatAI</title>
+<meta name="description" content="L'agent IA de FlowChatAI reprend le fil après un premier échange : il comprend le besoin, vérifie si le moment est bon, et propose un créneau." />
 
 <!-- Page d'atterrissage du QR code de la carte de visite (rencontres BECI, BNI).
      noindex volontaire : elle n'a pas vocation a etre trouvee par un moteur, et
@@ -88,9 +88,13 @@
 <body>
 
 <header>
-  <div class="statut"><span class="point" aria-hidden="true"></span>En ligne, il répond tout de suite</div>
+  <div class="statut"><span class="point" aria-hidden="true"></span>En ligne, il reprend le fil tout de suite</div>
   <h1>Agent <em>FlowChatAI</em></h1>
-  <p class="intro">Vous parlez à un agent IA. Posez-lui une question. Il répond comme il répondrait à vos clients, un dimanche soir comme un mardi matin.</p>
+  <!-- La page dit ce que la carte promet, mot pour mot : « du on se rappelle au
+       rendez-vous qualifie ». Quelqu'un qui scanne apres une rencontre doit
+       retrouver ici la phrase qu'il vient d'entendre, sinon le scan casse
+       l'elan au lieu de le prolonger. -->
+  <p class="intro">Vous parlez à un agent IA. C'est lui qui reprend le fil après un premier échange, quand la conversation s'arrête sur un « on se rappelle ». Là, il le fait avec vous.</p>
 </header>
 
 <div id="agent">
