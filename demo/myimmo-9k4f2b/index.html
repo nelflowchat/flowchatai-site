@@ -47,7 +47,11 @@
     agencyName:   "MYIMMO",
     agentName:    "Manon",              // prénom neutre, absent de leurs 5 équipes (Camille et Julie sont pris par les autres démos)
     brandColor:   "#114C81",            // bleu MYIMMO, relevé dans leur CSS (accent orange #EB6913)
-    logoUrl:      "https://www.myimmo.be/app/themes/eazyclick/resources/images/myimmo-logo.svg",
+    // Variante SOMBRE, et surtout pas myimmo-logo.svg : ce SVG est la version
+    // blanche du logo (6 chemins fill="white", un seul fill="#EB6913"), faite
+    // pour leur bandeau fonce. Sur l'en-tete blanc de cette page, seul le
+    // fragment orange etait visible, le reste du logo disparaissait.
+    logoUrl:      "https://www.myimmo.be/app/themes/eazyclick/resources/images/myimmo-logo-dark.png",
 
     heroTitle:    "Votre projet à Forest et dans le sud de Bruxelles, suivi dès le premier message",
     heroSubtitle: "Posez vos questions sur nos biens, décrivez votre projet, et fixez votre rendez-vous avec un conseiller MYIMMO. Sans attendre l'ouverture de l'agence.",
