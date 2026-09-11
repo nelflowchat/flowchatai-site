@@ -20,12 +20,17 @@
        3. Coller le projectID ci-dessous.                           [FAIT 11/09]
        4. Revérifier les 3 références du matin même.                [A FAIRE]
 
-     PROJECT ID, point a lever : deux identifiants ont circule le
-     11/09, ne differant que du dernier caractere, ...48ad et
-     ...48ae. Celui retenu ci-dessous vient de l'URL du canvas.
-     Pour essayer l'autre sans redeployer, ajouter ?pid=... a
-     l'URL de la page. Une fois le bon identifie, le figer ici et
-     supprimer ce paragraphe.
+     PROJECT ID, tranche par le test du 11/09 : c'est ...48ad.
+     A RETENIR POUR LES PROCHAINS CLONES : l'identifiant visible
+     dans l'URL du canvas Voiceflow (creator.voiceflow.com/project/
+     <...>) n'est PAS le projectID attendu par le widget, c'est le
+     versionID. Les deux sont generes ensemble et ne different que
+     du dernier caractere, d'ou la confusion. Le bon identifiant se
+     lit dans le snippet d'integration, section Publish.
+
+     Le parametre ?pid=... de l'URL surcharge encore l'identifiant,
+     et ?debug=1 affiche le bandeau de diagnostic. A retirer quand
+     la demo sera figee.
 
      Annonces réelles et disponibles, relevées le 11/09/2026.
      ========================================================= -->
@@ -36,7 +41,7 @@
   const PID_URL = new URLSearchParams(location.search).get('pid');
 
   const CONFIG = {
-    projectID: PID_URL || "6aa3f54da9aa452d3b6f48ae",
+    projectID: PID_URL || "6aa3f54da9aa452d3b6f48ad",
     // Pas de versionID : comme dans le snippet officiel, le widget charge la version publiée.
 
     agencyName:   "MYIMMO",
