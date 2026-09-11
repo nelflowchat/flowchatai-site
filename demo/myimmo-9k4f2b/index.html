@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Démo assistant IA</title>
+
+<!-- =========================================================
+     CONFIG MYIMMO, démo préparée pour le rendez-vous du
+     lundi 14 septembre 2026 avec Sébastien Mullenders.
+
+     Calée sur l'agence ALTITUDE (Forest), celle qu'il dirige,
+     et non sur le groupe entier : c'est l'agence du pilote.
+
+     A FAIRE AVANT DE MONTRER :
+       1. Cloner le projet Voiceflow template, y charger la KB     [FAIT 11/09]
+          (myimmo.be, page Nos Services, pages agence Altitude).
+       2. PUBLISH le projet, le widget charge la version publiée.   [FAIT 11/09]
+       3. Coller le projectID ci-dessous.                           [FAIT 11/09]
+       4. Revérifier les 3 références du matin même.                [A FAIRE]
+
+     PROJECT ID, point a lever : deux identifiants ont circule le
+     11/09, ne differant que du dernier caractere, ...48ad et
+     ...48ae. Celui retenu ci-dessous vient de l'URL du canvas.
+     Pour essayer l'autre sans redeployer, ajouter ?pid=... a
+     l'URL de la page. Une fois le bon identifie, le figer ici et
+     supprimer ce paragraphe.
+
+     Annonces réelles et disponibles, relevées le 11/09/2026.
+     ========================================================= -->
+<script>
+  // Surcharge de l'identifiant par l'URL (?pid=...), pour comparer deux
+  // candidats depuis un téléphone sans repasser par un déploiement.
+  // A retirer le jour où le bon identifiant est figé.
+  const PID_URL = new URLSearchParams(location.search).get('pid');
+
+  const CONFIG = {
+    projectID: PID_URL || "6aa3f54da9aa452d3b6f48ae",
+    // Pas de versionID : comme dans le snippet officiel, le widget charge la version publiée.
+
+    agencyName:   "MYIMMO",
+    agentName:    "Manon",              // prénom neutre, absent de leurs 5 équipes (Camille et Julie sont pris par les autres démos)
+    brandColor:   "#114C81",            // bleu MYIMMO, relevé dans leur CSS (accent orange #EB6913)
+    logoUrl:      "https://www.myimmo.be/app/themes/eazyclick/resources/images/myimmo-logo.svg",
+
+    heroTitle:    "Votre projet à Forest et dans le sud de Bruxelles, suivi dès le premier message",
+    heroSubtitle: "Posez vos questions sur nos biens, décrivez votre projet, et fixez votre rendez-vous avec un conseiller MYIMMO. Sans attendre l'ouverture de l'agence.",
+    widgetTitle:  "",
+    widgetSubtitle: "En ligne, répond en quelques secondes",
+
+    // Références réelles, vérifiables sur myimmo.be/properties/<ref>
+    listings: [
+      { ref: "7859687", title: "Appartement à vendre", area: "100 m2", city: "Forest, Place Constantin Meunier", price: "330 000 EUR",   img: "" },
+      { ref: "7852832", title: "Maison à vendre",      area: "239 m2", city: "Forest, Rue du Bambou",            price: "550 000 EUR",   img: "" },
+      { ref: "7850454", title: "Appartement à louer",  area: "95 m2",  city: "Forest, Avenue du Domaine",        price: "1 300 EUR/mois", img: "" }
+    ]
+  };
+</script>
+
+<style>
+  :root { --brand: #114C81; --brand-soft: #E5EDF5; --text: #1a1d27; --muted: #6b7280; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: #fff; line-height: 1.5; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header { display: flex; align-items: center; gap: 14px; padding: 22px 0; border-bottom: 1px solid #eee; }
+  header .logo { height: 40px; }
+  header .name { font-weight: 700; font-size: 20px; color: var(--brand); }
+  header .badge { margin-left: auto; font-size: 12px; color: var(--muted); border: 1px solid #e5e7eb; padding: 5px 10px; border-radius: 999px; }
+
+  .hero { padding: 72px 0 48px; }
+  .hero h1 { font-size: 40px; line-height: 1.15; max-width: 18ch; color: var(--brand); }
+  .hero p { margin-top: 18px; font-size: 18px; color: var(--muted); max-width: 52ch; }
+  .cta { margin-top: 28px; display: inline-block; background: var(--brand); color: #fff; border: none; font-size: 16px; font-weight: 600; padding: 14px 26px; border-radius: 10px; cursor: pointer; }
+  .cta:hover { opacity: .92; }
+
+  .listings { padding: 24px 0 80px; }
+  .listings h2 { font-size: 22px; margin-bottom: 22px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { border: 1px solid #eee; border-radius: 14px; overflow: hidden; background: #fff; transition: box-shadow .2s; }
+  .card:hover { box-shadow: 0 8px 30px rgba(0,0,0,.07); }
+  .card .img { height: 150px; background: var(--brand-soft); display: flex; align-items: center; justify-content: center; color: var(--brand); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+  .card .img img { width: 100%; height: 100%; object-fit: cover; }
+  .card .body { padding: 16px; }
+  .card .ref { font-size: 12px; color: var(--muted); }
+  .card .title { font-weight: 600; margin: 4px 0 6px; }
+  .card .meta { font-size: 14px; color: var(--muted); }
+  .card .price { margin-top: 10px; font-weight: 700; color: var(--brand); }
+
+  footer { border-top: 1px solid #eee; padding: 22px 0; font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img id="logo" class="logo" alt="" style="display:none">
+      <span id="agencyName" class="name"></span>
+      <span class="badge">Assistant IA</span>
+    </header>
+
+    <section class="hero">
+      <h1 id="heroTitle"></h1>
+      <p id="heroSubtitle"></p>
+      <button class="cta" onclick="if(window.voiceflow&&window.voiceflow.chat)window.voiceflow.chat.open()">Discuter avec l'assistant</button>
+    </section>
+
+    <section class="listings">
+      <h2>Biens en vedette</h2>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <footer class="wrap" style="padding-left:0;padding-right:0">
+      Page de démonstration préparée par FlowChatAI pour MYIMMO. Ce n'est pas le site de l'agence.
+      Les biens affichés proviennent du catalogue public de myimmo.be, relevé le 11 septembre 2026.
+    </footer>
+  </div>
+
+<script>
+  document.documentElement.style.setProperty('--brand', CONFIG.brandColor);
+  document.title = "Démo - " + CONFIG.agencyName;
+  document.getElementById('agencyName').textContent = CONFIG.agencyName;
+  document.getElementById('heroTitle').textContent = CONFIG.heroTitle;
+  document.getElementById('heroSubtitle').textContent = CONFIG.heroSubtitle;
+  if (CONFIG.logoUrl) { var l = document.getElementById('logo'); l.src = CONFIG.logoUrl; l.style.display = 'block'; }
+
+  document.getElementById('grid').innerHTML = CONFIG.listings.map(function(b){
+    return '<div class="card">' +
+      '<div class="img">' + (b.img ? '<img src="'+b.img+'" alt="">' : ('REF ' + b.ref)) + '</div>' +
+      '<div class="body">' +
+        '<div class="ref">REF ' + b.ref + '</div>' +
+        '<div class="title">' + b.title + '</div>' +
+        '<div class="meta">' + b.area + ' . ' + b.city + '</div>' +
+        '<div class="price">' + b.price + '</div>' +
+      '</div></div>';
+  }).join('');
+
+  (function(d, t) {
+    // Bandeau de diagnostic, affiché UNIQUEMENT en phase de test, c'est-à-dire
+    // quand l'URL porte ?pid=... ou ?debug=1. Sans lui, un identifiant erroné
+    // ou un projet non publié ne produit rien du tout : pas de bulle, pas
+    // d'erreur, et on ne sait pas lequel des deux est en cause.
+    // Il ne dit pas "l'agent a chargé", ce qui n'est pas détectable de façon
+    // fiable depuis la page. Il dit quel identifiant a servi, et il remonte
+    // les erreurs réelles. La bulle, elle, se voit à l'oeil nu.
+    var TEST = PID_URL || new URLSearchParams(location.search).get('debug');
+    var journal = [];
+    function noter(src, e) {
+      var m = (e && (e.message || (e.reason && (e.reason.message || e.reason)) || e)) || 'inconnu';
+      journal.push(src + ' : ' + String(m).slice(0, 200));
+    }
+    window.addEventListener('error', function(e) { noter('erreur', e); });
+    window.addEventListener('unhandledrejection', function(e) { noter('promesse', e); });
+
+    function bandeau(txt, rouge) {
+      var b = d.createElement('div');
+      b.style.cssText = 'position:fixed;left:16px;bottom:16px;z-index:99999;max-width:min(92vw,430px);' +
+        'font:13px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;' +
+        'padding:10px 13px;border-radius:10px;word-break:break-word;' +
+        (rouge ? 'background:#FDECEC;color:#7f1d1d;border:1px solid #f5c2c2'
+               : 'background:#F1F3F6;color:#374151;border:1px solid #dfe3e9');
+      b.textContent = txt;
+      d.body.appendChild(b);
+    }
+
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onerror = function() {
+      if (TEST) bandeau('Le script Voiceflow ne se charge pas du tout : réseau ou CDN bloqué.', true);
+    };
+    v.onload = function() {
+      window.voiceflow.chat.load({
+        verify: { projectID: CONFIG.projectID },
+        url: 'https://general-runtime.voiceflow.com',
+        voice: { url: 'https://runtime-api.voiceflow.com' },
+        assistant: {
+          title: CONFIG.widgetTitle || CONFIG.agencyName,
+          description: CONFIG.widgetSubtitle,
+          color: CONFIG.brandColor,
+          image: CONFIG.logoUrl || undefined,
+          side: 'right',
+          spacing: { side: '24', bottom: '24' }
+        }
+      });
+
+      // 8 secondes : le widget négocie avec le runtime avant de s'afficher.
+      if (TEST) setTimeout(function() {
+        bandeau('Identifiant utilisé : ...' + CONFIG.projectID.slice(-6) +
+                (journal.length ? '  |  ERREUR REMONTEE  ->  ' + journal.join(' . ')
+                                : '  |  aucune erreur. Si la bulle reste absente, le projet n\'est pas publié ou l\'identifiant ne correspond à rien.'),
+                journal.length > 0);
+      }, 8000);
+    };
+    v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+    v.type = "text/javascript";
+    s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+</body>
+</html>
