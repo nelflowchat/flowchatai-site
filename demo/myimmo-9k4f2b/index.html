@@ -20,7 +20,6 @@
        3. Coller le projectID ci-dessous.                           [FAIT 11/09]
        4. Revérifier les 3 références du matin même.                [A FAIRE]
 
-     PROJECT ID, tranche par le test du 11/09 : c'est ...48ad.
      A RETENIR POUR LES PROCHAINS CLONES : l'identifiant visible
      dans l'URL du canvas Voiceflow (creator.voiceflow.com/project/
      <...>) n'est PAS le projectID attendu par le widget, c'est le
@@ -28,20 +27,16 @@
      du dernier caractere, d'ou la confusion. Le bon identifiant se
      lit dans le snippet d'integration, section Publish.
 
-     Le parametre ?pid=... de l'URL surcharge encore l'identifiant,
-     et ?debug=1 affiche le bandeau de diagnostic. A retirer quand
-     la demo sera figee.
+     ?debug=1 ajoute un bandeau de diagnostic en bas a gauche. Il
+     est invisible sans le parametre, donc sans risque en rendez-
+     vous, et il evite d'avoir a redeployer pour comprendre un
+     ecran muet.
 
      Annonces réelles et disponibles, relevées le 11/09/2026.
      ========================================================= -->
 <script>
-  // Surcharge de l'identifiant par l'URL (?pid=...), pour comparer deux
-  // candidats depuis un téléphone sans repasser par un déploiement.
-  // A retirer le jour où le bon identifiant est figé.
-  const PID_URL = new URLSearchParams(location.search).get('pid');
-
   const CONFIG = {
-    projectID: PID_URL || "6aa3f54da9aa452d3b6f48ad",
+    projectID: "6aa3f54da9aa452d3b6f48ad",
     // Pas de versionID : comme dans le snippet officiel, le widget charge la version publiée.
 
     agencyName:   "MYIMMO",
@@ -157,7 +152,7 @@
     // Il ne dit pas "l'agent a chargé", ce qui n'est pas détectable de façon
     // fiable depuis la page. Il dit quel identifiant a servi, et il remonte
     // les erreurs réelles. La bulle, elle, se voit à l'oeil nu.
-    var TEST = PID_URL || new URLSearchParams(location.search).get('debug');
+    var TEST = new URLSearchParams(location.search).get('debug');
     var journal = [];
     function noter(src, e) {
       var m = (e && (e.message || (e.reason && (e.reason.message || e.reason)) || e)) || 'inconnu';
