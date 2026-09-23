@@ -122,8 +122,10 @@
 
   // Reprend la phrase imprimee au recto de la carte anglaise, pour que l'agent
   // la reutilise mot pour mot.
-  var LANCEMENT = 'Hi Lucy. I just met Nelly at the Beci networking breakfast, which is held in English today, ' +
-    'and we said "let\'s keep in touch". Please talk to me in English only.';
+  // Le Good Morning 500 a lieu tous les jeudis sous ce nom : on le nomme. Sans la
+  // consigne explicite de le citer, l'agent l'ignorait (teste le 23 septembre).
+  var LANCEMENT = 'Hi Lucy. I just met Nelly at Beci\'s Good Morning 500 networking breakfast, which is held in English today, ' +
+    'and we said "let\'s keep in touch". Please talk to me in English only, and mention the Good Morning 500 by name when you greet me.';
 
   var cible = document.getElementById('agent');
   var etat  = document.getElementById('etat');
