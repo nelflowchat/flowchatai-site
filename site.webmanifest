@@ -1,7 +1,7 @@
 {
   "name": "FlowChatAI",
   "short_name": "FlowChatAI",
-  "description": "L'assistant conversationnel des agences immobilieres en France et en Belgique.",
+  "description": "Un systeme sur mesure qui reprend le fil de vos conversations commerciales, jusqu'au rendez-vous. Pour les PME qui vendent des services, en francais et en anglais.",
   "lang": "fr",
   "start_url": "/",
   "scope": "/",

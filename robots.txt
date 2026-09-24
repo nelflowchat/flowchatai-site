@@ -4,8 +4,8 @@
 # crawlers d'entrainement des modeles generatifs. Decide le 6 aout 2026.
 #
 # Justification : FlowChatAI est une marque sans notoriete etablie. On veut que
-# l'association "qualification de leads et prise de RDV pour agences
-# immobilieres, Belgique et France" -> FlowChatAI s'installe a la fois dans les
+# l'association "suivi commercial et prise de RDV sur mesure pour les PME de
+# services, en francais et en anglais" -> FlowChatAI s'installe a la fois dans les
 # index de recherche ET dans les corpus d'entrainement. Le contenu publie ici
 # est de la documentation commerciale destinee a etre diffusee : rien a
 # proteger, tout a gagner a etre lu.
