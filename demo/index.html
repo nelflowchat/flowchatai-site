@@ -117,6 +117,18 @@
   // centree sur l'immobilier et qui tombait a cote devant une salle BNI.
   var PROJET = '6a9848aa9411e200c54bd154';
 
+  // Evenement du jour : l'agent le nomme dans son accueil, comme /demo/en/ nomme
+  // le Good Morning 500. Borne a la date, heure de Bruxelles : le QR de la carte
+  // francaise pointe toujours ici, la page redevient generique le lendemain sans
+  // qu'on y touche. Accueil verifie le 24 septembre 2026 sur l'API publique.
+  var EVENEMENTS = {
+    '2026-09-25': 'Bonjour Lucy. Je viens de rencontrer Nelly au Club 500 de Beci, et on s\'est dit « on se rappelle ». ' +
+      'Parle-moi en français, et cite le Club 500 par son nom quand tu m\'accueilles.'
+  };
+  var aujourdhui = '';
+  try { aujourdhui = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date()); } catch (e) {}
+  var LANCEMENT = EVENEMENTS[aujourdhui];
+
   var cible = document.getElementById('agent');
   var etat  = document.getElementById('etat');
 
@@ -151,7 +163,7 @@
       // est simplement la, deja ouverte.
       // load() renvoie une promesse dans widget-next. Sans ce .catch, un projet
       // non publie ou un identifiant errone echouait sans rien afficher.
-      var chargement = window.voiceflow.chat.load({
+      var options = {
         verify: { projectID: PROJET },
         url: 'https://general-runtime.voiceflow.com',
         versionID: 'production',
@@ -164,7 +176,12 @@
         // chaque scan, c'est tout l'effet recherche.
         userID: 'demo-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10),
         render: { mode: 'embedded', target: cible }
-      });
+      };
+      // Un jour d'evenement, la session s'ouvre par un message texte que le widget
+      // n'affiche pas (meme mecanisme que /demo/en/). Les autres jours, l'accueil
+      // standard de l'agent.
+      if (LANCEMENT) { options.launch = { event: { type: 'text', payload: LANCEMENT } }; }
+      var chargement = window.voiceflow.chat.load(options);
       // Voiceflow rend le chat dans un SHADOW DOM attache a la cible, pas en
       // enfants classiques. Compter cible.children reste donc a 1 pour
       // toujours, et l'ancien test declenchait le message d'echec a chaque
