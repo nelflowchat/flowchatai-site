@@ -121,10 +121,10 @@
   // le Good Morning 500. Borne a la date, heure de Bruxelles : le QR de la carte
   // francaise pointe toujours ici, la page redevient generique le lendemain sans
   // qu'on y touche. Accueil verifie le 24 septembre 2026 sur l'API publique.
-  var EVENEMENTS = {
-    '2026-09-25': 'Bonjour Lucy. Je viens de rencontrer Nelly au Club 500 de Beci, et on s\'est dit « on se rappelle ». ' +
-      'Parle-moi en français, et cite le Club 500 par son nom quand tu m\'accueilles.'
-  };
+  // Vide depuis le 25 septembre 2026 : le widget affiche desormais ce message
+  // comme s'il venait du visiteur, consignes a l'agent comprises. Ne rien
+  // remettre ici sans avoir verifie sur un telephone qu'il reste invisible.
+  var EVENEMENTS = {};
   var aujourdhui = '';
   try { aujourdhui = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date()); } catch (e) {}
   var LANCEMENT = EVENEMENTS[aujourdhui];
