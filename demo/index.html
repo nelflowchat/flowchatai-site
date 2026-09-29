@@ -88,7 +88,7 @@
 <body>
 
 <header>
-  <div class="statut"><span class="point" aria-hidden="true"></span>En ligne, il reprend le fil tout de suite</div>
+  <div class="statut"><span class="point" aria-hidden="true"></span><span id="statut">En ligne, il reprend le fil tout de suite</span></div>
   <h1>Agent <em>FlowChatAI</em></h1>
   <!-- La page dit ce que la carte promet, mot pour mot : « du on se rappelle au
        rendez-vous qualifie ». Quelqu'un qui scanne apres une rencontre doit
@@ -128,6 +128,14 @@
   var aujourdhui = '';
   try { aujourdhui = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels' }).format(new Date()); } catch (e) {}
   var LANCEMENT = EVENEMENTS[aujourdhui];
+
+  // Salle du jour, nommee par la page et non par l'agent : une ligne de HTML que
+  // le widget ne peut pas afficher comme venant du visiteur. Meme borne a la
+  // date que EVENEMENTS, la ligne redevient generique le lendemain.
+  var SALLES = { '2026-09-29': 'Brussels Business Club' };
+  if (SALLES[aujourdhui]) {
+    document.getElementById('statut').textContent = SALLES[aujourdhui] + ' · en ligne maintenant';
+  }
 
   var cible = document.getElementById('agent');
   var etat  = document.getElementById('etat');
