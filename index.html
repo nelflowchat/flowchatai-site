@@ -366,6 +366,7 @@
       <div style="display:flex;flex-direction:column;align-items:center;gap:22px">
         <!-- Secteurs : la scene tourne seule de l'un a l'autre, un clic
              saute directement au secteur voulu (utile en presentation). -->
+        <div id="langues" role="radiogroup" aria-label="Langue de l'exemple / Example language" style="display:flex;border:1.5px solid #D5DBE3;border-radius:999px;padding:2px;margin-bottom:-12px"></div>
         <div id="secteurs" role="radiogroup" aria-label="Choisir le secteur de l'exemple" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:360px"></div>
         <!-- role="img" : sans lui l'aria-label etait ignore (role generic) et
              le lecteur d'ecran lisait la conversation rejouee en boucle comme
@@ -382,7 +383,7 @@
                   <span style="background:#E4EEFF;color:#1677FF;font-weight:600;font-size:10.5px;padding:2px 7px;border-radius:999px;letter-spacing:0.04em">IA</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:#52606D">
-                  <span style="width:7px;height:7px;border-radius:50%;background:#14B8A6"></span> En ligne
+                  <span style="width:7px;height:7px;border-radius:50%;background:#14B8A6"></span> <span id="chatEnLigne">En ligne</span>
                 </div>
               </div>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA5B1" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
@@ -398,7 +399,7 @@
                 <span class="qr" style="border:1.5px solid #1677FF;color:#1677FF;font-weight:600;font-size:12px;padding:6px 12px;border-radius:999px">Plus tard</span>
               </div>
               <div style="display:flex;align-items:center;gap:8px">
-                <div style="flex:1;background:#F7F8FA;border:1px solid #E5E9EF;border-radius:999px;padding:9px 15px;font-size:13px;color:#9AA5B1">Écrire un message…</div>
+                <div style="flex:1;background:#F7F8FA;border:1px solid #E5E9EF;border-radius:999px;padding:9px 15px;font-size:13px;color:#9AA5B1" id="chatSaisie">Écrire un message…</div>
                 <span id="sendBtn" style="width:36px;height:36px;border-radius:50%;background:#1677FF;display:flex;align-items:center;justify-content:center;flex-shrink:0">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                 </span>
@@ -408,7 +409,7 @@
         </div>
         <!-- À vos couleurs -->
         <div style="display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #E5E9EF;border-radius:999px;padding:9px 18px;box-shadow:0 2px 10px rgba(11,31,51,0.05)">
-          <span style="font-family:Manrope,sans-serif;font-weight:700;font-size:13.5px;color:#0B1F33">À vos couleurs</span>
+          <span style="font-family:Manrope,sans-serif;font-weight:700;font-size:13.5px;color:#0B1F33" id="labelCouleurs">À vos couleurs</span>
           <div id="swatches" style="display:flex;gap:9px" role="group" aria-label="Choisir la couleur de l'agent"></div>
         </div>
       </div>
@@ -1053,6 +1054,67 @@
       { from:'rdv',   text:'Diagnostic calé · Samedi 11h', sub:"Dans l'agenda de l'institut" }
     ]}
   ];
+  // Meme scenes en anglais, pour les evenements bilingues. Meme ordre que
+  // SCENARIOS : l'index de la scene en cours reste valable d'une langue a
+  // l'autre.
+  var SCENARIOS_EN = [
+    { label:'Real estate', day:'Tuesday · 10:02', script:[
+      { from:'agent', text:"Hi Claire, it's Lucy from the agency. After Saturday's viewing, you mentioned selling your flat. We said we'd talk again: is it still on your mind?", time:'10:02' },
+      { from:'lead',  text:"Yes! I just haven't found the time to get back to you.", time:'10:14' },
+      { from:'agent', text:"No problem. Are you thinking of selling before summer, or by the end of the year?", time:'10:14' },
+      { from:'lead',  text:"Before summer, ideally.", time:'10:15' },
+      { from:'agent', text:"Then let's start with a valuation. Thursday 5:30pm or Saturday 10am, which suits you?", time:'10:15' },
+      { from:'lead',  text:"Thursday 5:30pm.", time:'10:16' },
+      { from:'rdv',   text:'Valuation booked · Thursday 5:30pm', sub:"In the agent's calendar" }
+    ]},
+    { label:'Accounting', day:'Monday · 09:30', script:[
+      { from:'agent', text:"Hi Marc, it's Lucy from the firm. At Thursday's breakfast, you mentioned changing accountants. We said we'd talk again: is it still on your mind?", time:'09:30' },
+      { from:'lead',  text:"Yes, it's been bugging me. I just haven't had a minute.", time:'09:47' },
+      { from:'agent', text:"I understand. Does your financial year close at the end of December, or later?", time:'09:47' },
+      { from:'lead',  text:"End of December, actually.", time:'09:48' },
+      { from:'agent', text:"Then we'd better talk soon. Tuesday 9am or Wednesday 2pm, by video call?", time:'09:48' },
+      { from:'lead',  text:"Tuesday 9am.", time:'09:49' },
+      { from:'rdv',   text:'First call booked · Tuesday 9am', sub:"In the accountant's calendar" }
+    ]},
+    { label:'Renovation', day:'Wednesday · 08:15', script:[
+      { from:'agent', text:"Hi Julie, it's Lucy from the company. After our visit for your bathroom, we were meant to call you about the quote: is the project still on?", time:'08:15' },
+      { from:'lead',  text:"Yes! We were still unsure about the budget.", time:'08:31' },
+      { from:'agent', text:"That's normal. Are you aiming for the works this winter, or in spring?", time:'08:31' },
+      { from:'lead',  text:"In spring.", time:'08:32' },
+      { from:'agent', text:"Good timing to book the schedule. Friday 8am or Monday 6pm to finalise the quote on site?", time:'08:32' },
+      { from:'lead',  text:"Monday 6pm.", time:'08:33' },
+      { from:'rdv',   text:'Quote visit booked · Monday 6pm', sub:"In the site manager's calendar" }
+    ]},
+    { label:'Insurance', day:'Thursday · 11:05', script:[
+      { from:'agent', text:"Hi Thomas, it's Lucy from the brokerage. You wanted to review the insurance on your company vehicles. We said we'd talk again: is it still on your mind?", time:'11:05' },
+      { from:'lead',  text:"Yes, and the renewal date is coming up.", time:'11:22' },
+      { from:'agent', text:"Exactly. Is it in January, or sooner?", time:'11:22' },
+      { from:'lead',  text:"End of November.", time:'11:23' },
+      { from:'agent', text:"Then there's still time to compare. Wednesday 11am or Thursday 4pm, by video call?", time:'11:23' },
+      { from:'lead',  text:"Wednesday 11am.", time:'11:24' },
+      { from:'rdv',   text:'Insurance review booked · Wednesday 11am', sub:"In the broker's calendar" }
+    ]},
+    { label:'Wellness', day:'Monday · 09:05', script:[
+      { from:'agent', text:"Hi Awa, it's Lucy from the salon. You wrote to us on Saturday evening about a hair treatment, and nobody replied. Sorry! Are you still interested?", time:'09:05' },
+      { from:'lead',  text:"Yes, I'm looking for a treatment before a wedding.", time:'09:20' },
+      { from:'agent', text:"With pleasure. How far away is the wedding?", time:'09:20' },
+      { from:'lead',  text:"In three weeks.", time:'09:21' },
+      { from:'agent', text:"Then let's start with a consultation. Wednesday 6pm or Saturday 11am, which suits you?", time:'09:21' },
+      { from:'lead',  text:"Saturday 11am.", time:'09:22' },
+      { from:'rdv',   text:'Consultation booked · Saturday 11am', sub:"In the salon's calendar" }
+    ]}
+  ];
+  // Libelles du telephone autour de la conversation, selon la langue.
+  var UI = {
+    fr: { enLigne:'En ligne', qr:['Prendre rendez-vous','Plus tard'], saisie:'Écrire un message…', couleurs:'À vos couleurs',
+          secteurs:"Choisir le secteur de l'exemple",
+          phone:"Démonstration animée : Lucy reprend le fil avec un contact resté sans suite, dans plusieurs secteurs (immobilier, comptabilité, rénovation, assurance, bien-être), cerne son besoin et cale un rendez-vous dans l'agenda." },
+    en: { enLigne:'Online', qr:['Book a meeting','Later'], saisie:'Type a message…', couleurs:'Your colours',
+          secteurs:'Choose the example sector',
+          phone:'Animated demo: Lucy picks up the thread with a contact who went quiet, in several sectors (real estate, accounting, renovation, insurance, wellness), understands the need and books a meeting in the calendar.' }
+  };
+  var langue = 'fr';
+  function scenes(){ return langue === 'en' ? SCENARIOS_EN : SCENARIOS; }
   var chatBody = document.getElementById('chatBody');
   var dayLabel = chatBody.firstElementChild; // la pastille du jour, reecrite a chaque scene
   function wait(ms){ return new Promise(function(res){ setTimeout(res, ms); }); }
@@ -1134,20 +1196,54 @@
     var b = document.createElement('button');
     b.type = 'button';
     b.setAttribute('role', 'radio');
-    b.textContent = sc.label;
     b.style.cssText = 'font:600 12.5px Inter,sans-serif;padding:6px 13px;border-radius:999px;border:1.5px solid #D5DBE3;background:#FFFFFF;color:#52606D;cursor:pointer';
     b.addEventListener('click', function(){ choisirScene(i); });
     secWrap.appendChild(b);
   });
 
+  var langWrap = document.getElementById('langues');
+  ['fr','en'].forEach(function(l){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'radio');
+    b.setAttribute('lang', l);
+    b.textContent = l.toUpperCase();
+    b.style.cssText = 'font:700 12px Inter,sans-serif;padding:4px 12px;border-radius:999px;border:0;cursor:pointer';
+    b.addEventListener('click', function(){ choisirLangue(l); });
+    langWrap.appendChild(b);
+  });
+  function appliquerLangue(){
+    var t = UI[langue];
+    Array.prototype.forEach.call(langWrap.children, function(btn){
+      var actif = btn.getAttribute('lang') === langue;
+      btn.setAttribute('aria-checked', actif ? 'true' : 'false');
+      btn.style.background = actif ? '#0B1F33' : 'transparent';
+      btn.style.color = actif ? '#FFFFFF' : '#52606D';
+    });
+    Array.prototype.forEach.call(secWrap.children, function(btn, i){ btn.textContent = scenes()[i].label; });
+    document.getElementById('chatEnLigne').textContent = t.enLigne;
+    document.querySelectorAll('.qr').forEach(function(q, i){ q.textContent = t.qr[i]; });
+    document.getElementById('chatSaisie').textContent = t.saisie;
+    document.getElementById('labelCouleurs').textContent = t.couleurs;
+    secWrap.setAttribute('aria-label', t.secteurs);
+    document.querySelector('.hero-phone').setAttribute('aria-label', t.phone);
+    document.querySelector('.hero-phone').setAttribute('lang', langue);
+  }
+  function choisirLangue(l){
+    langue = l;
+    appliquerLangue();
+    choisirScene(scene);
+  }
+  appliquerLangue();
+
   function preparerScene(){
     clearMsgs();
-    dayLabel.textContent = SCENARIOS[scene].day;
+    dayLabel.textContent = scenes()[scene].day;
     marquerSecteur();
   }
   function afficherTout(){
     preparerScene();
-    SCENARIOS[scene].script.forEach(function(m){ if(m.from==='rdv') addRdv(m); else addBubble(m); });
+    scenes()[scene].script.forEach(function(m){ if(m.from==='rdv') addRdv(m); else addBubble(m); });
     chatBody.scrollTop = 0;
   }
 
@@ -1155,7 +1251,7 @@
     while (true) {
       preparerScene();
       await pas(1100); if (t !== tour) return;
-      var script = SCENARIOS[scene].script;
+      var script = scenes()[scene].script;
       for (var i=0;i<script.length;i++){
         var m = script[i];
         if (m.from === 'agent'){ addTyping(); await pas(1300); if (t !== tour) return; removeTyping(); addBubble(m); }
