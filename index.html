@@ -364,11 +364,14 @@
 
       <!-- Phone mock -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:22px">
+        <!-- Secteurs : la scene tourne seule de l'un a l'autre, un clic
+             saute directement au secteur voulu (utile en presentation). -->
+        <div id="secteurs" role="radiogroup" aria-label="Choisir le secteur de l'exemple" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:360px"></div>
         <!-- role="img" : sans lui l'aria-label etait ignore (role generic) et
              le lecteur d'ecran lisait la conversation rejouee en boucle comme
              un vrai echange. Il retire aussi les descendants de l'arbre.
              Largeur : 88vw debordait de 20px entre 779 et 818px. -->
-        <div class="hero-phone" role="img" aria-label="Démonstration animée&nbsp;: après une visite restée sans suite, Lucy reprend le fil avec une candidate vendeuse, vérifie son calendrier et cale un rendez-vous d'estimation le jeudi à 17h30." style="width:min(360px,100%);background:#0B1F33;border-radius:42px;padding:10px;box-shadow:0 24px 60px rgba(11,31,51,0.22)">
+        <div class="hero-phone" role="img" aria-label="Démonstration animée&nbsp;: Lucy reprend le fil avec un contact resté sans suite, dans plusieurs secteurs (immobilier, comptabilité, rénovation, assurance, bien-être), cerne son besoin et cale un rendez-vous dans l'agenda." style="width:min(360px,100%);background:#0B1F33;border-radius:42px;padding:10px;box-shadow:0 24px 60px rgba(11,31,51,0.22)">
           <div class="phone-screen" style="background:#FFFFFF;border-radius:34px;overflow:hidden;display:flex;flex-direction:column;height:560px">
             <!-- chat header -->
             <div style="display:flex;align-items:center;gap:10px;padding:16px 16px 12px;border-bottom:1px solid #EDF0F4;background:#FFFFFF">
@@ -997,21 +1000,61 @@
   });
 
   // ---- animated chat demo ----
-  // C'est l'agent qui ecrit en premier : la scene montre la reprise d'un
-  // "on se rappelle" (une candidate vendeuse croisee a une visite), pas une
-  // reponse a une demande entrante. L'ecart 10:02 / 10:14 est voulu, la
-  // personne ne repond pas dans la seconde.
-  var SCRIPT = [
-    { from:'agent', text:"Bonjour Claire, c'est Lucy, de l'agence. Samedi, après la visite, vous parliez de vendre votre appartement. On devait se rappeler\u00a0: c'est toujours d'actualité\u00a0?", time:'10:02' },
-    { from:'lead',  text:"Oui\u00a0! Je n'ai juste pas trouvé le temps de vous recontacter.", time:'10:14' },
-    { from:'agent', text:"Aucun souci. Vous pensez vendre plutôt avant l'été, ou d'ici la fin de l'année\u00a0?", time:'10:14' },
-    { from:'lead',  text:"Avant l'été, idéalement.", time:'10:15' },
-    { from:'agent', text:"Alors commençons par l'estimation. Jeudi 17h30 ou samedi 10h, qu'est-ce qui vous arrange\u00a0?", time:'10:15' },
-    { from:'lead',  text:"Jeudi 17h30.", time:'10:16' },
-    { from:'rdv',   text:'Estimation calée · Jeudi 17h30', sub:"Dans l'agenda du négociateur" }
+  // C'est l'agent qui ecrit en premier : chaque scene montre la reprise d'un
+  // "on se rappelle", ou d'une demande restee sans reponse (bien-etre), pas
+  // une reponse instantanee. L'ecart entre le premier message et la reponse
+  // est voulu, la personne ne repond pas dans la seconde. Les scenes gardent
+  // la longueur de l'immobilier : au-dela, les bulles debordent de l'ecran
+  // du telephone sur mobile.
+  var SCENARIOS = [
+    { label:'Immobilier', day:'Mardi · 10:02', script:[
+      { from:'agent', text:"Bonjour Claire, c'est Lucy, de l'agence. Samedi, après la visite, vous parliez de vendre votre appartement. On devait se rappeler : c'est toujours d'actualité ?", time:'10:02' },
+      { from:'lead',  text:"Oui ! Je n'ai juste pas trouvé le temps de vous recontacter.", time:'10:14' },
+      { from:'agent', text:"Aucun souci. Vous pensez vendre plutôt avant l'été, ou d'ici la fin de l'année ?", time:'10:14' },
+      { from:'lead',  text:"Avant l'été, idéalement.", time:'10:15' },
+      { from:'agent', text:"Alors commençons par l'estimation. Jeudi 17h30 ou samedi 10h, qu'est-ce qui vous arrange ?", time:'10:15' },
+      { from:'lead',  text:"Jeudi 17h30.", time:'10:16' },
+      { from:'rdv',   text:'Estimation calée · Jeudi 17h30', sub:"Dans l'agenda du négociateur" }
+    ]},
+    { label:'Comptabilité', day:'Lundi · 09:30', script:[
+      { from:'agent', text:"Bonjour Marc, c'est Lucy, du cabinet. Jeudi, au petit-déjeuner, vous parliez de changer de comptable avant la clôture. On devait se rappeler : toujours d'actualité ?", time:'09:30' },
+      { from:'lead',  text:"Oui, ça me travaille. Je n'ai pas eu une minute.", time:'09:47' },
+      { from:'agent', text:"Je comprends. Votre clôture tombe fin décembre, ou plus tard dans l'année ?", time:'09:47' },
+      { from:'lead',  text:"Fin décembre, justement.", time:'09:48' },
+      { from:'agent', text:"Alors mieux vaut en parler vite. Mardi 9h ou mercredi 14h, en visio ?", time:'09:48' },
+      { from:'lead',  text:"Mardi 9h.", time:'09:49' },
+      { from:'rdv',   text:'Premier échange calé · Mardi 9h', sub:"Dans l'agenda de l'expert-comptable" }
+    ]},
+    { label:'Rénovation', day:'Mercredi · 08:15', script:[
+      { from:'agent', text:"Bonjour Julie, c'est Lucy, de l'entreprise. Après notre passage pour la salle de bain, on devait vous rappeler pour le devis : le projet tient toujours ?", time:'08:15' },
+      { from:'lead',  text:"Oui ! On hésitait encore sur le budget.", time:'08:31' },
+      { from:'agent', text:"C'est normal. Vous visez les travaux plutôt cet hiver, ou au printemps ?", time:'08:31' },
+      { from:'lead',  text:"Au printemps.", time:'08:32' },
+      { from:'agent', text:"Bon timing pour réserver le planning. Vendredi 8h ou lundi 18h pour finaliser le devis sur place ?", time:'08:32' },
+      { from:'lead',  text:"Lundi 18h.", time:'08:33' },
+      { from:'rdv',   text:'Visite devis calée · Lundi 18h', sub:"Dans l'agenda du chef de chantier" }
+    ]},
+    { label:'Assurance', day:'Jeudi · 11:05', script:[
+      { from:'agent', text:"Bonjour Thomas, c'est Lucy, du bureau de courtage. Vous vouliez revoir l'assurance de vos véhicules de société. On devait se rappeler : toujours d'actualité ?", time:'11:05' },
+      { from:'lead',  text:"Oui, et l'échéance approche d'ailleurs.", time:'11:22' },
+      { from:'agent', text:"Justement. Elle tombe en janvier, ou plus tôt ?", time:'11:22' },
+      { from:'lead',  text:"Fin novembre.", time:'11:23' },
+      { from:'agent', text:"Alors on a encore le temps de comparer. Mercredi 11h ou jeudi 16h, en visio ?", time:'11:23' },
+      { from:'lead',  text:"Mercredi 11h.", time:'11:24' },
+      { from:'rdv',   text:'Bilan assurances calé · Mercredi 11h', sub:"Dans l'agenda du courtier" }
+    ]},
+    { label:'Bien-être', day:'Lundi · 09:05', script:[
+      { from:'agent', text:"Bonjour Awa, c'est Lucy, de l'institut. Vous nous avez écrit samedi soir pour un soin capillaire, et personne ne vous a répondu. Désolée ! C'est toujours d'actualité ?", time:'09:05' },
+      { from:'lead',  text:"Oui, je cherche un soin avant un mariage.", time:'09:20' },
+      { from:'agent', text:"Avec plaisir. Le mariage a lieu dans combien de temps ?", time:'09:20' },
+      { from:'lead',  text:"Dans trois semaines.", time:'09:21' },
+      { from:'agent', text:"Alors commençons par un diagnostic. Mercredi 18h ou samedi 11h, qu'est-ce qui vous arrange ?", time:'09:21' },
+      { from:'lead',  text:"Samedi 11h.", time:'09:22' },
+      { from:'rdv',   text:'Diagnostic calé · Samedi 11h', sub:"Dans l'agenda de l'institut" }
+    ]}
   ];
   var chatBody = document.getElementById('chatBody');
-  var dayLabel = chatBody.firstElementChild; // keep the "Mardi · 10:02" chip
+  var dayLabel = chatBody.firstElementChild; // la pastille du jour, reecrite a chaque scene
   function wait(ms){ return new Promise(function(res){ setTimeout(res, ms); }); }
   function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 
@@ -1072,19 +1115,62 @@
   }
   function removeTyping(){ var t=document.getElementById('typingRow'); if(t) t.remove(); }
 
-  async function loop(){
+  // ---- choix du secteur ----
+  // scene = index affiche ; tour = numero de lecture. Un clic incremente le
+  // tour : la lecture precedente voit qu'elle n'est plus la bonne au reveil
+  // de son prochain "pas" et s'arrete sans toucher a l'ecran.
+  var scene = 0, tour = 0;
+  var secWrap = document.getElementById('secteurs');
+  function marquerSecteur(){
+    Array.prototype.forEach.call(secWrap.children, function(btn, i){
+      var actif = i === scene;
+      btn.setAttribute('aria-checked', actif ? 'true' : 'false');
+      btn.style.background = actif ? '#0B1F33' : '#FFFFFF';
+      btn.style.color = actif ? '#FFFFFF' : '#52606D';
+      btn.style.borderColor = actif ? '#0B1F33' : '#D5DBE3';
+    });
+  }
+  SCENARIOS.forEach(function(sc, i){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'radio');
+    b.textContent = sc.label;
+    b.style.cssText = 'font:600 12.5px Inter,sans-serif;padding:6px 13px;border-radius:999px;border:1.5px solid #D5DBE3;background:#FFFFFF;color:#52606D;cursor:pointer';
+    b.addEventListener('click', function(){ choisirScene(i); });
+    secWrap.appendChild(b);
+  });
+
+  function preparerScene(){
+    clearMsgs();
+    dayLabel.textContent = SCENARIOS[scene].day;
+    marquerSecteur();
+  }
+  function afficherTout(){
+    preparerScene();
+    SCENARIOS[scene].script.forEach(function(m){ if(m.from==='rdv') addRdv(m); else addBubble(m); });
+    chatBody.scrollTop = 0;
+  }
+
+  async function loop(t){
     while (true) {
-      clearMsgs();
-      await pas(1100);
-      for (var i=0;i<SCRIPT.length;i++){
-        var m = SCRIPT[i];
-        if (m.from === 'agent'){ addTyping(); await pas(1300); removeTyping(); addBubble(m); }
+      preparerScene();
+      await pas(1100); if (t !== tour) return;
+      var script = SCENARIOS[scene].script;
+      for (var i=0;i<script.length;i++){
+        var m = script[i];
+        if (m.from === 'agent'){ addTyping(); await pas(1300); if (t !== tour) return; removeTyping(); addBubble(m); }
         else if (m.from === 'rdv'){ addRdv(m); }
         else { addBubble(m); }
-        await pas(m.from === 'rdv' ? 400 : 1000);
+        await pas(m.from === 'rdv' ? 400 : 1000); if (t !== tour) return;
       }
-      await pas(4500);
+      await pas(4500); if (t !== tour) return;
+      scene = (scene + 1) % SCENARIOS.length;
     }
+  }
+  function choisirScene(i){
+    scene = i;
+    tour++;
+    if (reduce) afficherTout(); else loop(tour);
   }
   if (reduce){
     // Le visiteur a demande moins d'animations (reglage d'accessibilite iOS
@@ -1092,12 +1178,12 @@
     // joue pas la conversation. On affiche l'echange complet, cale sur son
     // debut et non sur sa fin, et on le rend defilable a la main. Sinon la
     // demo ressemble a une animation bloquee sur une bulle coupee en deux.
-    SCRIPT.forEach(function(m){ if(m.from==='rdv') addRdv(m); else addBubble(m); });
-    chatBody.scrollTop = 0;
+    // Les boutons de secteur changent alors l'echange affiche, sans rotation.
+    afficherTout();
     chatBody.style.overflowY = 'auto';
     chatBody.style.webkitOverflowScrolling = 'touch';
   } else {
-    loop();
+    loop(tour);
   }
 
   // ---- menu mobile (burger) ----
